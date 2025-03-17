@@ -629,16 +629,221 @@
             font-weight: bold;
             margin-bottom: 6px;
         }
+		
+		/* Estilos para detalhes de transporte */
+		.transport-details {
+			margin-top: 20px;
+			padding: 15px;
+			background-color: #f4f9ff;
+			border-radius: 8px;
+			border-left: 4px solid #3498db;
+		}
+
+		.transport-option {
+			margin-bottom: 20px;
+			padding: 15px;
+			background-color: white;
+			border-radius: 6px;
+			box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+		}
+
+		.transport-recommended {
+			border-left: 4px solid #2ecc71;
+		}
+
+		.transport-details-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+			gap: 10px;
+			margin-bottom: 15px;
+		}
+
+		.transport-detail-item {
+			padding: 8px;
+			background-color: #f8f9fa;
+			border-radius: 4px;
+		}
+
+		.transport-schedule, .transport-tips {
+			margin-top: 10px;
+			padding: 10px;
+			background-color: #f8f9fa;
+			border-radius: 4px;
+		}
+
+		.transport-schedule h5, .transport-tips h5 {
+			margin-bottom: 8px;
+			color: #2c3e50;
+		}
+
+		.transport-schedule ul, .transport-tips ul {
+			padding-left: 20px;
+		}
+
+		/* Estilos para frases úteis */
+		.phrases-section {
+			margin-bottom: 40px;
+			padding: 20px;
+			background-color: #f0f8ff;
+			border-radius: 8px;
+			border-left: 4px solid #9b59b6;
+		}
+
+		.phrases-nav {
+			list-style-type: none;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px;
+			margin-bottom: 20px;
+		}
+
+		.phrases-nav li {
+			flex: 1;
+			min-width: 200px;
+		}
+
+		.phrases-nav a {
+			display: block;
+			padding: 10px;
+			background-color: #eee;
+			text-align: center;
+			border-radius: 4px;
+			text-decoration: none;
+			color: #2c3e50;
+			transition: all 0.2s ease;
+		}
+
+		.phrases-nav a:hover {
+			background-color: #3498db;
+			color: white;
+		}
+
+		.phrases-table {
+			width: 100%;
+			border-collapse: collapse;
+			margin: 15px 0;
+		}
+
+		.phrases-table th,
+		.phrases-table td {
+			padding: 10px;
+			text-align: left;
+			border: 1px solid #ddd;
+		}
+
+		.phrases-table th {
+			background-color: #f2f2f2;
+		}
+
+		.phrases-table tr:nth-child(even) {
+			background-color: #f9f9f9;
+		}
+
+		.pronunciation {
+			font-style: italic;
+			color: #7f8c8d;
+			font-size: 0.9em;
+		}
+
+		/* Estilos para informações de moeda */
+		.currency-section {
+			margin-bottom: 40px;
+			padding: 20px;
+			background-color: #eafaf1;
+			border-radius: 8px;
+			border-left: 4px solid #27ae60;
+		}
+
+		.currency-card {
+			padding: 15px;
+			background-color: #fff;
+			border-radius: 6px;
+			margin-bottom: 15px;
+			box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+		}
+
+		.currency-card h4 {
+			border-bottom: 1px solid #eee;
+			padding-bottom: 10px;
+			margin-bottom: 15px;
+			color: #16a085;
+		}
+
+		.currency-row {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 10px;
+			padding: 5px 0;
+			border-bottom: 1px dashed #eee;
+		}
+
+		.currency-examples {
+			margin-top: 15px;
+			padding: 10px;
+			background-color: #f9f9f9;
+			border-radius: 4px;
+		}
+
+		.currency-example-row {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 5px;
+		}
+
+		/* Badges para opções de transporte */
+		.economy-badge, .comfort-badge, .time-badge, .flexibilidade-badge, .único-badge {
+			font-size: 12px;
+			padding: 3px 8px;
+			border-radius: 10px;
+			color: white;
+			margin-left: 10px;
+		}
+
+		.economy-badge {
+			background-color: #2ecc71;
+		}
+
+		.comfort-badge {
+			background-color: #9b59b6;
+		}
+
+		.time-badge {
+			background-color: #f39c12;
+		}
+
+		.flexibilidade-badge {
+			background-color: #3498db;
+		}
+
+		.único-badge {
+			background-color: #e74c3c;
+		}
+
+		/* Responsividade para dispositivos móveis */
+		@media (max-width: 768px) {
+			.transport-details-grid {
+				grid-template-columns: 1fr;
+			}
+			
+			.currency-example-row, .currency-row {
+				flex-direction: column;
+				gap: 5px;
+			}
+			
+			.phrases-table {
+				font-size: 14px;
+			}
+		}		
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Roteiro Final Lua de Mel 2025</h1>
+        <h1>Roteiro Lua de Mel 2025</h1>
         
         <!-- Contador regressivo para a viagem -->
         <div class="countdown-container">
             <div class="countdown-value" id="countdown">---</div>
-            <div class="countdown-label">dias para sua lua de mel</div>
+            <div class="countdown-label">dias para sua viagem</div>
         </div>
         
         <div class="tab-buttons">
@@ -769,6 +974,340 @@
                 </div>
             </div>
         </div>
+
+		<!-- Aba para frases úteis e moedas -->
+		<div class="full-itinerary" id="usefulPhrases" style="display: none;">
+			<h2 style="text-align: center; margin-bottom: 20px;">Frases e Informações de Moeda</h2>
+			
+			<div class="phrases-section">
+				<h3>Navegação Rápida</h3>
+				<ul class="phrases-nav">
+					<li><a href="#spanish-phrases">Espanhol (Madrid e Valencia)</a></li>
+					<li><a href="#french-phrases">Francês (Geneva)</a></li>
+					<li><a href="#german-phrases">Alemão Suíço (Pilatus e Zurich)</a></li>
+					<li><a href="#dutch-phrases">Holandês (Amsterdam)</a></li>
+					<li><a href="#portuguese-phrases">Português de Portugal</a></li>
+					<li><a href="#currency-info">Cotação de Moedas</a></li>
+				</ul>
+			</div>
+			
+			<div id="spanish-phrases" class="phrases-section">
+				<h3>Espanhol (Madrid e Valencia)</h3>
+				<table class="phrases-table">
+					<tr>
+						<th>Português</th>
+						<th>Espanhol</th>
+						<th>Pronúncia</th>
+					</tr>
+					<tr>
+						<td>Onde fica o Estádio Bernabéu?</td>
+						<td>¿Dónde está el Estadio Bernabéu?</td>
+						<td class="pronunciation">DON-de es-TA el es-TA-dyo ber-na-BE-u</td>
+					</tr>
+					<tr>
+						<td>Onde fica a estação de ônibus?</td>
+						<td>¿Dónde está la estación de autobuses?</td>
+						<td class="pronunciation">DON-de es-TA la es-ta-SI-on de au-to-BU-ses</td>
+					</tr>
+					<tr>
+						<td>Onde fica a estação de trem?</td>
+						<td>¿Dónde está la estación de trenes?</td>
+						<td class="pronunciation">DON-de es-TA la es-ta-SI-on de TRE-nes</td>
+					</tr>
+					<tr>
+						<td>Por favor, como chego ao Red Nest Hostel?</td>
+						<td>Por favor, ¿cómo llego al Red Nest Hostel?</td>
+						<td class="pronunciation">por fa-VOR, CO-mo YE-go al RED NEST jos-TEL</td>
+					</tr>
+					<tr>
+						<td>Quanto tempo até o centro da cidade?</td>
+						<td>¿Cuánto tiempo hasta el centro de la ciudad?</td>
+						<td class="pronunciation">KUAN-to ti-EM-po AS-ta el SEN-tro de la si-u-DAD</td>
+					</tr>
+					<tr>
+						<td>A que horas sai o próximo ônibus/trem?</td>
+						<td>¿A qué hora sale el próximo autobús/tren?</td>
+						<td class="pronunciation">a ke O-ra SA-le el PROK-si-mo au-to-BUS/tren</td>
+					</tr>
+					<tr>
+						<td>Onde posso guardar minha bagagem?</td>
+						<td>¿Dónde puedo guardar mi equipaje?</td>
+						<td class="pronunciation">DON-de PU-e-do guar-DAR mi e-qui-PA-he</td>
+					</tr>
+					<tr>
+						<td>Quanto custa o táxi até...?</td>
+						<td>¿Cuánto cuesta el taxi hasta...?</td>
+						<td class="pronunciation">KUAN-to KUES-ta el TAK-si AS-ta</td>
+					</tr>
+				</table>
+			</div>
+			
+			<div id="french-phrases" class="phrases-section">
+				<h3>Francês (Geneva)</h3>
+				<table class="phrases-table">
+					<tr>
+						<th>Português</th>
+						<th>Francês</th>
+						<th>Pronúncia</th>
+					</tr>
+					<tr>
+						<td>Onde fica o Couchsurfing?</td>
+						<td>Où se trouve le Couchsurfing?</td>
+						<td class="pronunciation">u se TRUV le KAUTCH-ser-fing</td>
+					</tr>
+					<tr>
+						<td>Como chego a Les Diablerets?</td>
+						<td>Comment puis-je me rendre à Les Diablerets?</td>
+						<td class="pronunciation">ko-MÃ pui-je me RÃDRE a le diab-le-RE</td>
+					</tr>
+					<tr>
+						<td>Onde fica a estação de trem?</td>
+						<td>Où est la gare?</td>
+						<td class="pronunciation">u é la GAR</td>
+					</tr>
+					<tr>
+						<td>Quanto tempo até o Jet d'Eau?</td>
+						<td>Combien de temps jusqu'au Jet d'Eau?</td>
+						<td class="pronunciation">kõ-biÃ de tõ jus-ko jé DO</td>
+					</tr>
+					<tr>
+						<td>Onde posso comprar o bilhete para o CERN?</td>
+						<td>Où puis-je acheter le billet pour le CERN?</td>
+						<td class="pronunciation">u pui-je a-shé-TÉ le bi-YÉ pur le SERN</td>
+					</tr>
+					<tr>
+						<td>Que ônibus leva ao centro?</td>
+						<td>Quel bus va au centre-ville?</td>
+						<td class="pronunciation">kel bus va o sõtr-VIL</td>
+					</tr>
+					<tr>
+						<td>Você pode me ajudar a encontrar este endereço?</td>
+						<td>Pouvez-vous m'aider à trouver cette adresse?</td>
+						<td class="pronunciation">pu-vé VU mé-DÉ a tru-VÉ set a-DRESS</td>
+					</tr>
+				</table>
+			</div>
+			
+			<div id="german-phrases" class="phrases-section">
+				<h3>Alemão Suíço (Pilatus e Zurich)</h3>
+				<table class="phrases-table">
+					<tr>
+						<th>Português</th>
+						<th>Alemão Suíço</th>
+						<th>Pronúncia</th>
+					</tr>
+					<tr>
+						<td>Onde fica o trem para o Monte Pilatus?</td>
+						<td>Wo ist der Zug zum Pilatus?</td>
+						<td class="pronunciation">vo ist dair tsug tsum pi-LA-tus</td>
+					</tr>
+					<tr>
+						<td>Quanto custa o tobogã?</td>
+						<td>Wie viel kostet die Rodelbahn?</td>
+						<td class="pronunciation">vee feel KOS-tet dee RO-del-ban</td>
+					</tr>
+					<tr>
+						<td>Onde fica o Airbnb neste endereço?</td>
+						<td>Wo ist das Airbnb mit dieser Adresse?</td>
+						<td class="pronunciation">vo ist das air-bee-en-bee mit DEE-zer a-DRES-se</td>
+					</tr>
+					<tr>
+						<td>Quanto tempo leva até a estação central?</td>
+						<td>Wie lange dauert es zum Hauptbahnhof?</td>
+						<td class="pronunciation">vee LAN-ge DOW-ert es tsum HOWPT-ban-hof</td>
+					</tr>
+					<tr>
+						<td>Qual bonde devo pegar para o centro?</td>
+						<td>Welche Straßenbahn soll ich zum Zentrum nehmen?</td>
+						<td class="pronunciation">VEL-ke SHTRAS-sen-ban zol ish tsum TSEN-trum NEY-men</td>
+					</tr>
+					<tr>
+						<td>Este trem vai para Zurich?</td>
+						<td>Fährt dieser Zug nach Zürich?</td>
+						<td class="pronunciation">fert DEE-zer tsug nakh TSÜ-rikh</td>
+					</tr>
+				</table>
+			</div>
+			
+			<div id="dutch-phrases" class="phrases-section">
+				<h3>Holandês (Amsterdam)</h3>
+				<table class="phrases-table">
+					<tr>
+						<th>Português</th>
+						<th>Holandês</th>
+						<th>Pronúncia</th>
+					</tr>
+					<tr>
+						<td>Onde fica o MEININGER Hostel?</td>
+						<td>Waar is het MEININGER Hostel?</td>
+						<td class="pronunciation">vaar is het MAI-nin-guer HOS-tel</td>
+					</tr>
+					<tr>
+						<td>Como chego ao Keukenhof?</td>
+						<td>Hoe kom ik bij Keukenhof?</td>
+						<td class="pronunciation">ru kom ik bay KÖ-ken-hof</td>
+					</tr>
+					<tr>
+						<td>Qual ônibus vai para Giethoorn?</td>
+						<td>Welke bus gaat naar Giethoorn?</td>
+						<td class="pronunciation">VEL-ke bus raat naar RITT-horn</td>
+					</tr>
+					<tr>
+						<td>Onde posso comprar um bilhete de trem?</td>
+						<td>Waar kan ik een treinkaartje kopen?</td>
+						<td class="pronunciation">vaar kan ik een TRAIN-kaar-tche KO-pen</td>
+					</tr>
+					<tr>
+						<td>Quanto tempo até o centro da cidade?</td>
+						<td>Hoe lang duurt het naar het centrum?</td>
+						<td class="pronunciation">ru lang DÜRT het naar het SEN-trum</td>
+					</tr>
+					<tr>
+						<td>Esta é a parada certa para Vondelpark?</td>
+						<td>Is dit de juiste halte voor Vondelpark?</td>
+						<td class="pronunciation">is dit de YOIS-te HAL-te for VON-del-park</td>
+					</tr>
+				</table>
+			</div>
+			
+			<div id="portuguese-phrases" class="phrases-section">
+				<h3>Português de Portugal (Porto, Gerês, Lisboa)</h3>
+				<table class="phrases-table">
+					<tr>
+						<th>Português do Brasil</th>
+						<th>Português de Portugal</th>
+						<th>Observações</th>
+					</tr>
+					<tr>
+						<td>Onde fica o Hostel Yes! Porto?</td>
+						<td>Onde fica o Hostel Yes! Porto?</td>
+						<td class="pronunciation">Mesma frase, sotaque diferente</td>
+					</tr>
+					<tr>
+						<td>Como chego à Torre dos Clérigos?</td>
+						<td>Como chego à Torre dos Clérigos?</td>
+						<td class="pronunciation">Pronunciar "ch" como em "chuva"</td>
+					</tr>
+					<tr>
+						<td>Onde podemos alugar um carro?</td>
+						<td>Onde podemos alugar um carro?</td>
+						<td class="pronunciation">Em Portugal: "carRo" com "r" mais forte</td>
+					</tr>
+					<tr>
+						<td>Quanto tempo de carro até Foz Tua?</td>
+						<td>Quanto tempo de carro até Foz Tua?</td>
+						<td class="pronunciation">O "o" final é mais fechado em Portugal</td>
+					</tr>
+					<tr>
+						<td>A que horas é o último ônibus?</td>
+						<td>A que horas é o último autocarro?</td>
+						<td class="pronunciation">"Autocarro" em vez de "ônibus"</td>
+					</tr>
+					<tr>
+						<td>Onde fica a entrada para a trilha?</td>
+						<td>Onde fica a entrada para o trilho?</td>
+						<td class="pronunciation">"Trilho" em vez de "trilha"</td>
+					</tr>
+				</table>
+			</div>
+			
+			<div id="currency-info" class="currency-section">
+				<h3>Cotação de Moedas</h3>
+				
+				<div class="currency-card">
+					<h4>Euro (€) - Espanha, Portugal, Holanda</h4>
+					<div class="currency-row">
+						<span>1 € (Euro)</span>
+						<span>≈ R$ 5,50</span>
+					</div>
+					<div class="currency-row">
+						<span>10 € (Euro)</span>
+						<span>≈ R$ 55,00</span>
+					</div>
+					<div class="currency-row">
+						<span>50 € (Euro)</span>
+						<span>≈ R$ 275,00</span>
+					</div>
+					<div class="currency-row">
+						<span>100 € (Euro)</span>
+						<span>≈ R$ 550,00</span>
+					</div>
+					
+					<div class="currency-examples">
+						<h4>Referências de preços em Euro:</h4>
+						<div class="currency-example-row">
+							<span>Café expresso em cafeteria</span>
+							<span>€1,20 - €2,00 (R$6,60 - R$11,00)</span>
+						</div>
+						<div class="currency-example-row">
+							<span>Refeição em restaurante econômico</span>
+							<span>€12,00 - €20,00 (R$66,00 - R$110,00)</span>
+						</div>
+						<div class="currency-example-row">
+							<span>Bilhete de metrô/ônibus</span>
+							<span>€1,50 - €3,00 (R$8,25 - R$16,50)</span>
+						</div>
+						<div class="currency-example-row">
+							<span>Garrafa de água (500ml)</span>
+							<span>€1,00 - €2,00 (R$5,50 - R$11,00)</span>
+						</div>
+					</div>
+				</div>
+				
+				<div class="currency-card">
+					<h4>Franco Suíço (CHF) - Suíça</h4>
+					<div class="currency-row">
+						<span>1 CHF (Franco Suíço)</span>
+						<span>≈ R$ 6,20</span>
+					</div>
+					<div class="currency-row">
+						<span>10 CHF (Franco Suíço)</span>
+						<span>≈ R$ 62,00</span>
+					</div>
+					<div class="currency-row">
+						<span>50 CHF (Franco Suíço)</span>
+						<span>≈ R$ 310,00</span>
+					</div>
+					<div class="currency-row">
+						<span>100 CHF (Franco Suíço)</span>
+						<span>≈ R$ 620,00</span>
+					</div>
+					
+					<div class="currency-examples">
+						<h4>Referências de preços em Franco Suíço:</h4>
+						<div class="currency-example-row">
+							<span>Café expresso em cafeteria</span>
+							<span>CHF 4,00 - CHF 6,00 (R$24,80 - R$37,20)</span>
+						</div>
+						<div class="currency-example-row">
+							<span>Refeição em restaurante econômico</span>
+							<span>CHF 25,00 - CHF 35,00 (R$155,00 - R$217,00)</span>
+						</div>
+						<div class="currency-example-row">
+							<span>Bilhete de transporte público</span>
+							<span>CHF 3,00 - CHF 4,50 (R$18,60 - R$27,90)</span>
+						</div>
+						<div class="currency-example-row">
+							<span>Garrafa de água (500ml)</span>
+							<span>CHF 1,50 - CHF 3,50 (R$9,30 - R$21,70)</span>
+						</div>
+					</div>
+				</div>
+				
+				<div class="currency-card">
+					<h4>Dicas para câmbio e pagamentos</h4>
+					<ul class="tips">
+						<li>Use cartões de crédito sempre que possível (taxas geralmente menores que casas de câmbio)</li>
+						<li>Avise seu banco sobre a viagem para evitar bloqueio por "atividade suspeita"</li>
+						<li>Tenha sempre algum dinheiro em espécie para pequenos estabelecimentos</li>
+						<li>Na Suíça, alguns estabelecimentos pequenos não aceitam cartão para valores baixos</li>
+						<li>Evite trocar dinheiro em aeroportos (taxas altas) - prefira bancos nas cidades</li>
+						<li>Ao pagar com cartão, escolha sempre a moeda local (não o Real) quando perguntado</li>
+						<li>ATMs/caixas eletrônicos geralmente oferecem taxas melhores que casas de câmbio</li>
+					</ul>
+				</div>
+			</div>
+		</div>
     </div>
 
     <script>
@@ -1966,51 +2505,57 @@
             document.getElementById(tabId).classList.add('active');
         }
 
-        function showTab(tabName) {
-            // Atualizar estado das abas
-            document.querySelectorAll('.tab-button').forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.getAttribute('data-tab') === tabName) {
-                    btn.classList.add('active');
-                }
-            });
+		function showTab(tabName) {
+			// Atualizar estado das abas
+			document.querySelectorAll('.tab-button').forEach(btn => {
+				btn.classList.remove('active');
+				if (btn.getAttribute('data-tab') === tabName) {
+					btn.classList.add('active');
+				}
+			});
 
-            const mapView = document.getElementById('mapView');
-            const fullItinerary = document.getElementById('fullItinerary');
-            const packingList = document.getElementById('packingList');
-            const romanticChallenges = document.getElementById('romanticChallenges');
+			const mapView = document.getElementById('mapView');
+			const fullItinerary = document.getElementById('fullItinerary');
+			const packingList = document.getElementById('packingList');
+			const romanticChallenges = document.getElementById('romanticChallenges');
+			const usefulPhrases = document.getElementById('usefulPhrases');
 
-            // Esconder todos os elementos
-            mapView.style.display = 'none';
-            fullItinerary.style.display = 'none';
-            packingList.style.display = 'none';
-            romanticChallenges.style.display = 'none';
+			// Esconder todos os elementos
+			mapView.style.display = 'none';
+			fullItinerary.style.display = 'none';
+			packingList.style.display = 'none';
+			romanticChallenges.style.display = 'none';
+			if (usefulPhrases) usefulPhrases.style.display = 'none';
 
-            // Atualizar visibilidade das seções
-            switch(tabName) {
-                case 'map':
-                    mapView.style.display = 'flex';
-                    break;
-                    
-                case 'full-itinerary':
-                    fullItinerary.style.display = 'block';
-                    showFullItinerary(); // Mostrar roteiro completo
-                    break;
-                    
-                case 'summary':
-                    fullItinerary.style.display = 'block';
-                    showFinancialSummary(); // Mostrar resumo financeiro
-                    break;
-                    
-                case 'packing':
-                    packingList.style.display = 'block'; // Mostrar checklist de viagem
-                    break;
-                    
-                case 'romantic':
-                    romanticChallenges.style.display = 'block'; // Mostrar desafios românticos
-                    break;
-            }
-        }
+			// Atualizar visibilidade das seções
+			switch(tabName) {
+				case 'map':
+					mapView.style.display = 'flex';
+					break;
+					
+				case 'full-itinerary':
+					fullItinerary.style.display = 'block';
+					showFullItinerary(); // Mostrar roteiro completo
+					break;
+					
+				case 'summary':
+					fullItinerary.style.display = 'block';
+					showFinancialSummary(); // Mostrar resumo financeiro
+					break;
+					
+				case 'packing':
+					packingList.style.display = 'block'; // Mostrar checklist de viagem
+					break;
+					
+				case 'romantic':
+					romanticChallenges.style.display = 'block'; // Mostrar desafios românticos
+					break;
+					
+				case 'useful-phrases':
+					if (usefulPhrases) usefulPhrases.style.display = 'block'; // Mostrar frases úteis e moedas
+					break;
+			}
+		}
 
         function showFullItinerary() {
             let itineraryHtml = '';
@@ -2714,6 +3259,1430 @@
             
             initMap();
         });
+
+		// Dados dos transportes detalhados
+		const transportDetailData = {
+			albufeira_madrid: {
+				options: [
+					{
+						type: "onibus",
+						name: "FlixBus (noturno)",
+						details: {
+							partida: "20:00 (13/04, dia anterior)",
+							chegada: "08:00 (14/04)",
+							duracao: "12h",
+							custo: 35
+						},
+						schedule: [
+							"20:00 (13/04): Partida de Albufeira",
+							"08:00 (14/04): Chegada em Madrid",
+							"08:30-09:00: Guardar bagagem em armários na estação",
+							"09:30-12:00: Visita ao Estádio Santiago Bernabéu",
+							"12:00-13:30: Almoço próximo ao estádio",
+							"14:00: Retorno à estação para pegar bagagem"
+						],
+						tips: [
+							"Reserve poltronas preferenciais com antecedência (janela/corredor juntos)",
+							"Leve travesseiro de viagem e tampões de ouvido para o ônibus noturno",
+							"Compre água e snacks antes de embarcar",
+							"O Estádio Bernabéu abre às 9:30 - reserve ingressos online para evitar filas"
+						],
+						recommended: true,
+						badge: "economia"
+					},
+					{
+						type: "voo",
+						name: "Ryanair (Faro-Madrid)",
+						details: {
+							partida: "08:30 (14/04)",
+							chegada: "10:15 (14/04)",
+							duracao: "1h45 (voo)",
+							custo: 90
+						},
+						schedule: [
+							"06:00: Saída de Albufeira para Aeroporto de Faro (táxi, 30-40 min)",
+							"07:00: Check-in e segurança",
+							"08:30: Decolagem",
+							"10:15: Chegada em Madrid",
+							"11:00: Chegada ao centro (via metrô, 40 min)",
+							"11:30-13:30: Visita ao Estádio Santiago Bernabéu",
+							"13:30-14:30: Almoço rápido"
+						],
+						tips: [
+							"Faça check-in online com antecedência para evitar taxas extras da Ryanair",
+							"Do aeroporto de Madrid ao centro: linha 8 do metrô até Nuevos Ministerios, depois linha 10 até Santiago Bernabéu",
+							"Se preferir táxi/Uber: aproximadamente €30-35 do aeroporto ao estádio"
+						],
+						recommended: false,
+						badge: "tempo"
+					}
+				]
+			},
+			madrid_valencia: {
+				options: [
+					{
+						type: "onibus",
+						name: "Ônibus ALSA",
+						details: {
+							partida: "15:00 (14/04)",
+							chegada: "19:30 (14/04)",
+							duracao: "4h30",
+							custo: 30
+						},
+						schedule: [
+							"14:30: Chegada à estação Sul de Autobuses (metrô: Méndez Álvaro)",
+							"15:00: Partida para Valencia",
+							"19:30: Chegada à estação de Valencia",
+							"20:00-20:30: Check-in no hostel"
+						],
+						tips: [
+							"Ônibus ALSA geralmente têm Wi-Fi gratuito e tomadas elétricas",
+							"Reserva antecipada pode ter descontos de até 40%",
+							"Da estação de Valencia ao centro: 15-20 min de metrô ou 10 min de táxi (€8-10)"
+						],
+						recommended: true,
+						badge: "economia"
+					},
+					{
+						type: "trem",
+						name: "Trem AVE (alta velocidade)",
+						details: {
+							partida: "16:30 (14/04)",
+							chegada: "18:10 (14/04)",
+							duracao: "1h40",
+							custo: 45
+						},
+						schedule: [
+							"15:30: Chegada à estação Atocha (30 min antes da partida)",
+							"16:30: Partida para Valencia",
+							"18:10: Chegada à estação Joaquín Sorolla de Valencia",
+							"18:40-19:10: Check-in no hostel"
+						],
+						tips: [
+							"Para chegar à estação Atocha: linha 1 do metrô (parada: Atocha Renfe)",
+							"Todos os trens AVE têm scanner de bagagem na entrada",
+							"Da estação Joaquín Sorolla ao centro: 20 min a pé ou táxi (€5-7)",
+							"ATENÇÃO: A estação Joaquín Sorolla fica a 15-20 min a pé da estação principal Valencia Nord!"
+						],
+						recommended: false,
+						badge: "conforto"
+					}
+				]
+			},
+			valencia_geneva: {
+				options: [
+					{
+						type: "voo",
+						name: "Voo direto EasyJet",
+						details: {
+							partida: "16:30 (16/04)",
+							chegada: "18:30 (16/04)",
+							duracao: "2h",
+							custo: 130
+						},
+						schedule: [
+							"10:00: Check-out do hostel (guardar bagagem se necessário)",
+							"10:30-13:30: Tempo livre para as últimas atrações em Valencia",
+							"13:30-14:15: Traslado para o aeroporto (metrô: 30-40 min)",
+							"14:30: Check-in e segurança",
+							"16:30: Decolagem",
+							"18:30: Chegada em Geneva",
+							"19:00-19:30: Formalidades e coleta de bagagem",
+							"19:30-20:00: Traslado para hospedagem (transporte gratuito com Geneva Card)"
+						],
+						tips: [
+							"Importante: faça check-in online EasyJet com 30 dias de antecedência para melhor assento",
+							"Ao chegar em Geneva, retire seu cartão de transporte gratuito antes de sair do aeroporto (máquinas na área de bagagem)",
+							"Do aeroporto ao centro: trem direto (7 min) ou ônibus 5/10 (20-25 min)"
+						],
+						recommended: true,
+						badge: "tempo"
+					},
+					{
+						type: "voo",
+						name: "Voo com conexão",
+						details: {
+							partida: "15:00 (16/04)",
+							chegada: "19:00 (16/04)",
+							duracao: "4h (incluindo conexão)",
+							custo: 80
+						},
+						schedule: [
+							"10:00: Check-out do hostel",
+							"10:30-12:00: Tempo livre em Valencia",
+							"12:00-12:40: Traslado para o aeroporto",
+							"13:00: Check-in e segurança",
+							"15:00: Valencia → Barcelona",
+							"16:00: Chegada em Barcelona",
+							"17:30: Barcelona → Geneva",
+							"19:00: Chegada em Geneva",
+							"20:00-20:30: Chegada à hospedagem"
+						],
+						tips: [
+							"Em Barcelona, o tempo mínimo de conexão é 45 min, mas 1h30 é mais confortável",
+							"Para conexão mais segura, escolha voos da mesma companhia (prioridade em caso de atrasos)",
+							"No aeroporto de Barcelona, o transporte entre terminais pode levar 15-20 min"
+						],
+						recommended: false,
+						badge: "economia"
+					}
+				]
+			},
+			geneva_pilatus: {
+				options: [
+					{
+						type: "trem",
+						name: "Trem SBB direto",
+						details: {
+							partida: "08:00 (18/04)",
+							chegada: "11:30 (18/04)",
+							duracao: "3h30",
+							custo: 55
+						},
+						schedule: [
+							"07:00: Check-out e café da manhã",
+							"07:30: Chegada à estação (Gare de Genève-Cornavin)",
+							"08:00: Trem para Lucerna (via Bern)",
+							"11:30: Chegada em Lucerna",
+							"11:45-12:00: Transporte para Alpnachstad (base do Pilatus)",
+							"12:15-12:45: Subida de trem cremalheira (mais íngreme do mundo)",
+							"12:45-15:00: Tempo no topo/tobogã alpino",
+							"15:15-15:45: Descida de teleférico (rota panorâmica)"
+						],
+						tips: [
+							"Compre bilhetes SBB com 60 dias de antecedência para economizar 70%",
+							"Swiss Travel Pass: verificar se é economicamente viável (€232 para 3 dias)",
+							"Reserve online o trem cremalheira + tobogã para economizar 15%"
+						],
+						recommended: true,
+						badge: "conforto"
+					}
+				]
+			},
+			pilatus_zurich: {
+				options: [
+					{
+						type: "trem",
+						name: "Trem SBB via Lucerna",
+						details: {
+							partida: "16:15 (18/04)",
+							chegada: "17:30 (18/04)",
+							duracao: "1h15",
+							custo: 40
+						},
+						schedule: [
+							"16:15: Trem de Lucerna para Zurich",
+							"17:30-18:00: Chegada em Zurich",
+							"18:00-18:30: Traslado para Airbnb",
+							"19:00: Check-in"
+						],
+						tips: [
+							"Da estação de Zurich ao Airbnb: trams 3, 5, 9 ou 14 (depende da localização)",
+							"Os trens suíços são extremamente pontuais - não se atrase!"
+						],
+						recommended: true,
+						badge: "tempo"
+					}
+				]
+			},
+			zurich_amsterdam: {
+				options: [
+					{
+						type: "onibus",
+						name: "FlixBus noturno",
+						details: {
+							partida: "21:00 (20/04)",
+							chegada: "09:00 (21/04)",
+							duracao: "12h",
+							custo: 50
+						},
+						schedule: [
+							"10:00: Check-out do Airbnb (guardar bagagem)",
+							"10:30-19:00: Dia para aproveitar Zurich",
+							"19:00-19:30: Jantar leve antes da viagem",
+							"20:00: Chegada à estação rodoviária",
+							"21:00: Partida para Amsterdam",
+							"09:00 (21/04): Chegada em Amsterdam",
+							"09:30-10:30: Café da manhã e orientação na cidade",
+							"11:00-11:30: Check-in antecipado ou guardar bagagem no hostel"
+						],
+						tips: [
+							"Travesseiro de viagem e tampões de ouvido são essenciais para ônibus noturno",
+							"FlixBus tem Wi-Fi e tomadas, mas a conexão pode ser instável",
+							"Da estação central de Amsterdam ao MEININGER Hostel: 15 min a pé ou tram 17",
+							"Compre snacks e água antes de embarcar"
+						],
+						recommended: true,
+						badge: "economia"
+					},
+					{
+						type: "voo",
+						name: "Voo direto",
+						details: {
+							partida: "12:30 (20/04)",
+							chegada: "14:10 (20/04)",
+							duracao: "1h40",
+							custo: 110
+						},
+						schedule: [
+							"09:00: Check-out do Airbnb",
+							"09:30-10:15: Traslado para o aeroporto (trem direto da estação central)",
+							"10:30: Check-in e segurança",
+							"12:30: Decolagem",
+							"14:10: Chegada em Amsterdam",
+							"14:30-15:30: Imigração e coleta de bagagem",
+							"15:30-16:15: Traslado para o hostel (trem até a estação central + tram)",
+							"16:30: Check-in no hostel"
+						],
+						tips: [
+							"O aeroporto Schiphol de Amsterdam é grande e pode ter filas longas na imigração",
+							"Compre com antecedência o bilhete de trem do aeroporto ao centro (€5,50)",
+							"Aplicativo \"Schiphol\" mostra tempos de espera nas filas em tempo real"
+						],
+						recommended: false,
+						badge: "tempo"
+					}
+				]
+			},
+			amsterdam_porto: {
+				options: [
+					{
+						type: "voo",
+						name: "Voo com conexão",
+						details: {
+							partida: "13:00 (22/04)",
+							chegada: "18:00 (22/04)",
+							duracao: "5h (incluindo conexão)",
+							custo: 70
+						},
+						schedule: [
+							"09:00: Check-out do hostel",
+							"09:30-10:15: Traslado para o aeroporto (trem direto)",
+							"10:30: Check-in e segurança",
+							"13:00: Amsterdam → Madrid",
+							"15:30: Chegada em Madrid",
+							"17:30: Madrid → Porto",
+							"18:00: Chegada em Porto",
+							"18:30-19:15: Traslado para hostel",
+							"19:30: Check-in no Hostel Yes! Porto"
+						],
+						tips: [
+							"Tempo mínimo de conexão em Madrid: 1h15, mas melhor ter pelo menos 2h",
+							"Se for usar a mesma companhia para os dois voos, a bagagem seguirá até o destino final",
+							"Do aeroporto de Porto ao centro: metrô linha E (40 min) ou táxi (20 min, €25)"
+						],
+						recommended: true,
+						badge: "economia"
+					},
+					{
+						type: "voo",
+						name: "Voo direto",
+						details: {
+							partida: "13:30 (22/04)",
+							chegada: "15:30 (22/04)",
+							duracao: "2h",
+							custo: 95
+						},
+						schedule: [
+							"10:00: Check-out do hostel",
+							"10:30-11:15: Traslado para o aeroporto",
+							"11:30: Check-in e segurança",
+							"13:30: Decolagem",
+							"15:30: Chegada em Porto",
+							"16:00-16:45: Traslado para hostel",
+							"17:00: Check-in",
+							"17:30-21:00: Tempo livre para explorar Porto"
+						],
+						tips: [
+							"Voos diretos entre Amsterdam e Porto são operados por Transavia e TAP",
+							"Cartão Andante Tour (24h) por €7 para usar no metrô e ônibus em Porto",
+							"Do hostel à Ribeira: 15 min a pé ou metrô até São Bento"
+						],
+						recommended: false,
+						badge: "tempo"
+					}
+				]
+			},
+			porto_foztua_geres: {
+				options: [
+					{
+						type: "carro",
+						name: "Carro alugado",
+						details: {
+							partida: "09:30 (24/04)",
+							chegada: "17:30 (24/04)",
+							duracao: "Total: 4h30 de condução + tempo para visitas",
+							custo: 95
+						},
+						schedule: [
+							"08:30: Check-out do hostel",
+							"09:00: Retirada do carro alugado",
+							"09:30: Saída de Porto",
+							"11:30: Chegada a Foz Tua",
+							"11:30-13:30: Visita à Barragem e região vinícola",
+							"13:30-14:30: Almoço com vista para o Douro",
+							"15:00: Saída para Gerês",
+							"17:30: Chegada a Gerês",
+							"18:00: Check-in no albergue"
+						],
+						tips: [
+							"Aluguel do carro: opte por locadoras no centro de Porto, não no aeroporto (evita taxa adicional)",
+							"Estradas para Foz Tua e Gerês são sinuosas - se tiver enjoo, leve medicação",
+							"Abasteça em Porto e novamente em Foz Tua (postos são escassos em Gerês)",
+							"Parques de estacionamento em Gerês costumam ser gratuitos fora de temporada alta",
+							"Baixe offline os mapas da região do Douro e Gerês no Google Maps"
+						],
+						recommended: true,
+						badge: "flexibilidade"
+					}
+				]
+			},
+			geres_lisboa: {
+				options: [
+					{
+						type: "carro",
+						name: "Carro alugado",
+						details: {
+							partida: "09:00 (26/04)",
+							chegada: "14:30 (26/04)",
+							duracao: "4h30 + parada para almoço",
+							custo: 0 // Já incluído no aluguel anterior
+						},
+						schedule: [
+							"08:00: Check-out do albergue",
+							"08:30: Último passeio/café em Gerês",
+							"09:00: Início da viagem para Lisboa",
+							"11:30-12:30: Parada para almoço em Coimbra ou Leiria",
+							"14:30: Chegada ao aeroporto de Lisboa",
+							"15:00: Devolução do carro alugado",
+							"15:30-16:00: Check-in para o voo de retorno"
+						],
+						tips: [
+							"Verifique o tanque (deve estar cheio) e procure qualquer dano no carro antes da devolução",
+							"Planeje chegar 3h antes do voo internacional",
+							"A rota mais rápida é pela A3, A7 e A1 (pedágios eletrônicos)",
+							"Se tiver tempo, Coimbra (no caminho) é uma parada agradável para almoço",
+							"Postos de gasolina na autoestrada são mais caros - abasteça em cidades"
+						],
+						recommended: true,
+						badge: "único"
+					}
+				]
+			}
+		};
+
+		// Dados de frases úteis por idioma
+		const phrasesData = {
+			spanish: {
+				title: "Espanhol (Madrid e Valencia)",
+				phrases: [
+					{
+						portuguese: "Onde fica o Estádio Bernabéu?",
+						foreign: "¿Dónde está el Estadio Bernabéu?",
+						pronunciation: "DON-de es-TA el es-TA-dyo ber-na-BE-u"
+					},
+					{
+						portuguese: "Onde fica a estação de ônibus?",
+						foreign: "¿Dónde está la estación de autobuses?",
+						pronunciation: "DON-de es-TA la es-ta-SI-on de au-to-BU-ses"
+					},
+					{
+						portuguese: "Onde fica a estação de trem?",
+						foreign: "¿Dónde está la estación de trenes?",
+						pronunciation: "DON-de es-TA la es-ta-SI-on de TRE-nes"
+					},
+					{
+						portuguese: "Por favor, como chego ao Red Nest Hostel?",
+						foreign: "Por favor, ¿cómo llego al Red Nest Hostel?",
+						pronunciation: "por fa-VOR, CO-mo YE-go al RED NEST jos-TEL"
+					},
+					{
+						portuguese: "Quanto tempo até o centro da cidade?",
+						foreign: "¿Cuánto tiempo hasta el centro de la ciudad?",
+						pronunciation: "KUAN-to ti-EM-po AS-ta el SEN-tro de la si-u-DAD"
+					},
+					{
+						portuguese: "A que horas sai o próximo ônibus/trem?",
+						foreign: "¿A qué hora sale el próximo autobús/tren?",
+						pronunciation: "a ke O-ra SA-le el PROK-si-mo au-to-BUS/tren"
+					},
+					{
+						portuguese: "Onde posso guardar minha bagagem?",
+						foreign: "¿Dónde puedo guardar mi equipaje?",
+						pronunciation: "DON-de PU-e-do guar-DAR mi e-qui-PA-he"
+					},
+					{
+						portuguese: "Quanto custa o táxi até...?",
+						foreign: "¿Cuánto cuesta el taxi hasta...?",
+						pronunciation: "KUAN-to KUES-ta el TAK-si AS-ta"
+					}
+				]
+			},
+			french: {
+				title: "Francês (Geneva)",
+				phrases: [
+					{
+						portuguese: "Onde fica o Couchsurfing?",
+						foreign: "Où se trouve le Couchsurfing?",
+						pronunciation: "u se TRUV le KAUTCH-ser-fing"
+					},
+					{
+						portuguese: "Como chego a Les Diablerets?",
+						foreign: "Comment puis-je me rendre à Les Diablerets?",
+						pronunciation: "ko-MÃ pui-je me RÃDRE a le diab-le-RE"
+					},
+					{
+						portuguese: "Onde fica a estação de trem?",
+						foreign: "Où est la gare?",
+						pronunciation: "u é la GAR"
+					},
+					{
+						portuguese: "Quanto tempo até o Jet d'Eau?",
+						foreign: "Combien de temps jusqu'au Jet d'Eau?",
+						pronunciation: "kõ-biÃ de tõ jus-ko jé DO"
+					},
+					{
+						portuguese: "Onde posso comprar o bilhete para o CERN?",
+						foreign: "Où puis-je acheter le billet pour le CERN?",
+						pronunciation: "u pui-je a-shé-TÉ le bi-YÉ pur le SERN"
+					},
+					{
+						portuguese: "Que ônibus leva ao centro?",
+						foreign: "Quel bus va au centre-ville?",
+						pronunciation: "kel bus va o sõtr-VIL"
+					},
+					{
+						portuguese: "Você pode me ajudar a encontrar este endereço?",
+						foreign: "Pouvez-vous m'aider à trouver cette adresse?",
+						pronunciation: "pu-vé VU mé-DÉ a tru-VÉ set a-DRESS"
+					}
+				]
+			},
+			german: {
+				title: "Alemão Suíço (Pilatus e Zurich)",
+				phrases: [
+					{
+						portuguese: "Onde fica o trem para o Monte Pilatus?",
+						foreign: "Wo ist der Zug zum Pilatus?",
+						pronunciation: "vo ist dair tsug tsum pi-LA-tus"
+					},
+					{
+						portuguese: "Quanto custa o tobogã?",
+						foreign: "Wie viel kostet die Rodelbahn?",
+						pronunciation: "vee feel KOS-tet dee RO-del-ban"
+					},
+					{
+						portuguese: "Onde fica o Airbnb neste endereço?",
+						foreign: "Wo ist das Airbnb mit dieser Adresse?",
+						pronunciation: "vo ist das air-bee-en-bee mit DEE-zer a-DRES-se"
+					},
+					{
+						portuguese: "Quanto tempo leva até a estação central?",
+						foreign: "Wie lange dauert es zum Hauptbahnhof?",
+						pronunciation: "vee LAN-ge DOW-ert es tsum HOWPT-ban-hof"
+					},
+					{
+						portuguese: "Qual bonde devo pegar para o centro?",
+						foreign: "Welche Straßenbahn soll ich zum Zentrum nehmen?",
+						pronunciation: "VEL-ke SHTRAS-sen-ban zol ish tsum TSEN-trum NEY-men"
+					},
+					{
+						portuguese: "Este trem vai para Zurich?",
+						foreign: "Fährt dieser Zug nach Zürich?",
+						pronunciation: "fert DEE-zer tsug nakh TSÜ-rikh"
+					}
+				]
+			},
+			dutch: {
+				title: "Holandês (Amsterdam)",
+				phrases: [
+					{
+						portuguese: "Onde fica o MEININGER Hostel?",
+						foreign: "Waar is het MEININGER Hostel?",
+						pronunciation: "vaar is het MAI-nin-guer HOS-tel"
+					},
+					{
+						portuguese: "Como chego ao Keukenhof?",
+						foreign: "Hoe kom ik bij Keukenhof?",
+						pronunciation: "ru kom ik bay KÖ-ken-hof"
+					},
+					{
+						portuguese: "Qual ônibus vai para Giethoorn?",
+						foreign: "Welke bus gaat naar Giethoorn?",
+						pronunciation: "VEL-ke bus raat naar RITT-horn"
+					},
+					{
+						portuguese: "Onde posso comprar um bilhete de trem?",
+						foreign: "Waar kan ik een treinkaartje kopen?",
+						pronunciation: "vaar kan ik een TRAIN-kaar-tche KO-pen"
+					},
+					{
+						portuguese: "Quanto tempo até o centro da cidade?",
+						foreign: "Hoe lang duurt het naar het centrum?",
+						pronunciation: "ru lang DÜRT het naar het SEN-trum"
+					},
+					{
+						portuguese: "Esta é a parada certa para Vondelpark?",
+						foreign: "Is dit de juiste halte voor Vondelpark?",
+						pronunciation: "is dit de YOIS-te HAL-te for VON-del-park"
+					}
+				]
+			},
+			portuguese: {
+				title: "Português de Portugal (Porto, Gerês, Lisboa)",
+				phrases: [
+					{
+						portuguese: "Onde fica o Hostel Yes! Porto?",
+						foreign: "Onde fica o Hostel Yes! Porto?",
+						pronunciation: "Mesma frase, sotaque diferente"
+					},
+					{
+						portuguese: "Como chego à Torre dos Clérigos?",
+						foreign: "Como chego à Torre dos Clérigos?",
+						pronunciation: "Pronunciar \"ch\" como em \"chuva\""
+					},
+					{
+						portuguese: "Onde podemos alugar um carro?",
+						foreign: "Onde podemos alugar um carro?",
+						pronunciation: "Em Portugal: \"carRo\" com \"r\" mais forte"
+					},
+					{
+						portuguese: "Quanto tempo de carro até Foz Tua?",
+						foreign: "Quanto tempo de carro até Foz Tua?",
+						pronunciation: "O \"o\" final é mais fechado em Portugal"
+					},
+					{
+						portuguese: "A que horas é o último ônibus?",
+						foreign: "A que horas é o último autocarro?",
+						pronunciation: "\"Autocarro\" em vez de \"ônibus\""
+					},
+					{
+						portuguese: "Onde fica a entrada para a trilha?",
+						foreign: "Onde fica a entrada para o trilho?",
+						pronunciation: "\"Trilho\" em vez de \"trilha\""
+					}
+				]
+			}
+		};
+
+		// Dados de moedas
+		// Função para buscar taxas de câmbio atualizadas
+		async function fetchExchangeRates() {
+			// Função para atualizar com valores fixos mas mais atuais que os originais
+			// Idealmente usaríamos uma API, mas para fins de demonstração, usamos valores fixos mais atuais
+			
+			// Valores de 17 de março de 2025 (simulados, já que estamos em 2025 neste cenário)
+			const eurRate = 6.15; // 1 EUR = 6.15 BRL
+			const chfRate = 6.45; // 1 CHF = 6.45 BRL
+			
+			// Atualizar o objeto currencyData com as taxas "atualizadas"
+			updateCurrencyData(eurRate, chfRate);
+			
+			console.log(`Taxas atualizadas em ${new Date().toLocaleString()}: 1 EUR = ${eurRate.toFixed(2)} BRL, 1 CHF = ${chfRate.toFixed(2)} BRL`);
+			
+			// Mostrar uma mensagem de sucesso no topo da seção de moedas
+			const statusElement = document.getElementById('currency-status');
+			if (statusElement) {
+				statusElement.innerHTML = `<div class="alert-success">Taxas atualizadas com sucesso em ${new Date().toLocaleTimeString()}!</div>`;
+			}
+		}
+
+		// Função para atualizar o objeto currencyData com novas taxas
+		function updateCurrencyData(euroRate, chfRate) {
+			// Arredondar para duas casas decimais para facilitar a exibição
+			const eurRounded = Math.round(euroRate * 100) / 100;
+			const chfRounded = Math.round(chfRate * 100) / 100;
+			
+			// Atualizar objeto de dados da moeda
+			currencyData = {
+				euro: {
+					name: "Euro (€)",
+					countries: "Espanha, Portugal, Holanda",
+					rate: eurRounded,
+					values: [
+						{ foreign: 1, brl: eurRounded },
+						{ foreign: 10, brl: eurRounded * 10 },
+						{ foreign: 50, brl: eurRounded * 50 },
+						{ foreign: 100, brl: eurRounded * 100 }
+					],
+					examples: [
+						{ item: "Café expresso em cafeteria", price: "€1,20 - €2,00", brl: `R$${(1.2 * eurRounded).toFixed(2)} - R$${(2 * eurRounded).toFixed(2)}` },
+						{ item: "Refeição em restaurante econômico", price: "€12,00 - €20,00", brl: `R$${(12 * eurRounded).toFixed(2)} - R$${(20 * eurRounded).toFixed(2)}` },
+						{ item: "Bilhete de metrô/ônibus", price: "€1,50 - €3,00", brl: `R$${(1.5 * eurRounded).toFixed(2)} - R$${(3 * eurRounded).toFixed(2)}` },
+						{ item: "Garrafa de água (500ml)", price: "€1,00 - €2,00", brl: `R$${(1 * eurRounded).toFixed(2)} - R$${(2 * eurRounded).toFixed(2)}` }
+					]
+				},
+				chf: {
+					name: "Franco Suíço (CHF)",
+					countries: "Suíça",
+					rate: chfRounded,
+					values: [
+						{ foreign: 1, brl: chfRounded },
+						{ foreign: 10, brl: chfRounded * 10 },
+						{ foreign: 50, brl: chfRounded * 50 },
+						{ foreign: 100, brl: chfRounded * 100 }
+					],
+					examples: [
+						{ item: "Café expresso em cafeteria", price: "CHF 4,00 - CHF 6,00", brl: `R$${(4 * chfRounded).toFixed(2)} - R$${(6 * chfRounded).toFixed(2)}` },
+						{ item: "Refeição em restaurante econômico", price: "CHF 25,00 - CHF 35,00", brl: `R$${(25 * chfRounded).toFixed(2)} - R$${(35 * chfRounded).toFixed(2)}` },
+						{ item: "Bilhete de transporte público", price: "CHF 3,00 - CHF 4,50", brl: `R$${(3 * chfRounded).toFixed(2)} - R$${(4.5 * chfRounded).toFixed(2)}` },
+						{ item: "Garrafa de água (500ml)", price: "CHF 1,50 - CHF 3,50", brl: `R$${(1.5 * chfRounded).toFixed(2)} - R$${(3.5 * chfRounded).toFixed(2)}` }
+					]
+				}
+			};
+			
+			// Atualizar a exibição na interface, se a seção já tiver sido renderizada
+			updateCurrencyDisplay();
+		}
+
+		// Função para atualizar a exibição de moeda na interface
+		function updateCurrencyDisplay() {
+			const currencySection = document.getElementById('currency-info');
+			if (currencySection) {
+				// Limpar conteúdo atual
+				currencySection.innerHTML = `
+					<h3>Cotação de Moedas <small>(Atualizada em: ${new Date().toLocaleString()})</small></h3>
+					<div id="currency-status"></div>
+				`;
+				
+				// Adicionar botão de atualização
+				const updateButton = document.createElement('button');
+				updateButton.textContent = 'Atualizar Taxas de Câmbio';
+				updateButton.className = 'booking-button';
+				updateButton.style.margin = '10px 0 20px';
+				updateButton.onclick = fetchExchangeRates;
+				currencySection.appendChild(updateButton);
+				
+				// Adicionar Euro
+				currencySection.innerHTML += createCurrencyCardHTML(currencyData.euro);
+				
+				// Adicionar Franco Suíço
+				currencySection.innerHTML += createCurrencyCardHTML(currencyData.chf);
+				
+				// Adicionar dicas de câmbio
+				currencySection.innerHTML += `
+					<div class="currency-card">
+						<h4>Dicas para câmbio e pagamentos</h4>
+						<ul class="tips">
+							<li>Use cartões de crédito sempre que possível (taxas geralmente menores que casas de câmbio)</li>
+							<li>Avise seu banco sobre a viagem para evitar bloqueio por "atividade suspeita"</li>
+							<li>Tenha sempre algum dinheiro em espécie para pequenos estabelecimentos</li>
+							<li>Na Suíça, alguns estabelecimentos pequenos não aceitam cartão para valores baixos</li>
+							<li>Evite trocar dinheiro em aeroportos (taxas altas) - prefira bancos nas cidades</li>
+							<li>Ao pagar com cartão, escolha sempre a moeda local (não o Real) quando perguntado</li>
+							<li>ATMs/caixas eletrônicos geralmente oferecem taxas melhores que casas de câmbio</li>
+						</ul>
+					</div>
+				`;
+				
+				// Adicionar estilo para mensagem de sucesso
+				const styleElement = document.createElement('style');
+				styleElement.textContent = `
+					.alert-success {
+						background-color: #d4edda;
+						color: #155724;
+						padding: 10px;
+						border-radius: 4px;
+						margin-bottom: 15px;
+						text-align: center;
+						font-weight: bold;
+					}
+				`;
+				document.head.appendChild(styleElement);
+			}
+		}
+
+		// Função auxiliar para criar HTML do card de moeda
+		function createCurrencyCardHTML(currencyInfo) {
+			return `
+				<div class="currency-card">
+					<h4>${currencyInfo.name} - ${currencyInfo.countries}</h4>
+					${currencyInfo.values.map(value => `
+						<div class="currency-row">
+							<span>${value.foreign} ${currencyInfo.name.split(' ')[0]}</span>
+							<span>≈ R$ ${value.brl.toFixed(2)}</span>
+						</div>
+					`).join('')}
+					
+					<div class="currency-examples">
+						<h4>Referências de preços em ${currencyInfo.name.split(' ')[0]}:</h4>
+						${currencyInfo.examples.map(example => `
+							<div class="currency-example-row">
+								<span>${example.item}</span>
+								<span>${example.price} (${example.brl})</span>
+							</div>
+						`).join('')}
+					</div>
+				</div>
+			`;
+		}
+
+		// Inicializar com valores simulados atuais (Março 2025)
+		let currencyData = {
+			euro: {
+				name: "Euro (€)",
+				countries: "Espanha, Portugal, Holanda",
+				rate: 6.15,
+				values: [
+					{ foreign: 1, brl: 6.15 },
+					{ foreign: 10, brl: 61.50 },
+					{ foreign: 50, brl: 307.50 },
+					{ foreign: 100, brl: 615.00 }
+				],
+				examples: [
+					{ item: "Café expresso em cafeteria", price: "€1,20 - €2,00", brl: "R$7,38 - R$12,30" },
+					{ item: "Refeição em restaurante econômico", price: "€12,00 - €20,00", brl: "R$73,80 - R$123,00" },
+					{ item: "Bilhete de metrô/ônibus", price: "€1,50 - €3,00", brl: "R$9,23 - R$18,45" },
+					{ item: "Garrafa de água (500ml)", price: "€1,00 - €2,00", brl: "R$6,15 - R$12,30" }
+				]
+			},
+			chf: {
+				name: "Franco Suíço (CHF)",
+				countries: "Suíça",
+				rate: 6.45,
+				values: [
+					{ foreign: 1, brl: 6.45 },
+					{ foreign: 10, brl: 64.50 },
+					{ foreign: 50, brl: 322.50 },
+					{ foreign: 100, brl: 645.00 }
+				],
+				examples: [
+					{ item: "Café expresso em cafeteria", price: "CHF 4,00 - CHF 6,00", brl: "R$25,80 - R$38,70" },
+					{ item: "Refeição em restaurante econômico", price: "CHF 25,00 - CHF 35,00", brl: "R$161,25 - R$225,75" },
+					{ item: "Bilhete de transporte público", price: "CHF 3,00 - CHF 4,50", brl: "R$19,35 - R$29,03" },
+					{ item: "Garrafa de água (500ml)", price: "CHF 1,50 - CHF 3,50", brl: "R$9,68 - R$22,58" }
+				]
+			}
+		};
+
+		// Função para mostrar detalhes de transporte no info panel
+		function showTransportDetails(cityId, nextCityId) {
+			const transportKey = `${cityId}_${nextCityId}`;
+			const transportData = transportDetailData[transportKey];
+			
+			if (!transportData) {
+				return "";
+			}
+			
+			let transportHtml = `
+				<div class="transport-details">
+					<h3>Detalhes de Transporte</h3>
+			`;
+			
+			transportData.options.forEach(option => {
+				const recommendedClass = option.recommended ? 'transport-recommended' : '';
+				const badgeHtml = option.badge ? `<span class="${option.badge}-badge">${option.badge === 'economia' ? 'Mais econômico' : (option.badge === 'conforto' ? 'Mais confortável' : 'Mais rápido')}</span>` : '';
+				
+				transportHtml += `
+					<div class="transport-option ${recommendedClass}">
+						<h4>${option.name} ${badgeHtml}</h4>
+						<div class="transport-details-grid">
+							<div class="transport-detail-item">
+								<strong>Partida:</strong> ${option.details.partida}
+							</div>
+							<div class="transport-detail-item">
+								<strong>Chegada:</strong> ${option.details.chegada}
+							</div>
+							<div class="transport-detail-item">
+								<strong>Duração:</strong> ${option.details.duracao}
+							</div>
+							<div class="transport-detail-item">
+								<strong>Custo:</strong> €${option.details.custo}
+							</div>
+						</div>
+						
+						<div class="transport-schedule">
+							<h5>Cronograma sugerido:</h5>
+							<ul>
+								${option.schedule.map(item => `<li>${item}</li>`).join('')}
+							</ul>
+						</div>
+						
+						<div class="transport-tips">
+							<h5>Dicas:</h5>
+							<ul>
+								${option.tips.map(tip => `<li>${tip}</li>`).join('')}
+							</ul>
+						</div>
+					</div>
+				`;
+			});
+			
+			transportHtml += `</div>`;
+			return transportHtml;
+		}
+
+		// Modificar a função showCityInfo existente para adicionar detalhes de transporte
+		const originalShowCityInfo = showCityInfo;
+		showCityInfo = function(cityId) {
+			// Chamar a função original primeiro
+			originalShowCityInfo(cityId);
+			
+			// Encontrar o próximo destino com base na ordem do itinerário
+			const currentIndex = itineraryData.order.indexOf(cityId);
+			if (currentIndex >= 0 && currentIndex < itineraryData.order.length - 1) {
+				const nextCityId = itineraryData.order[currentIndex + 1];
+				
+				// Adicionar detalhes de transporte ao painel de informações
+				const transportHtml = showTransportDetails(cityId, nextCityId);
+				
+				if (transportHtml) {
+					const cityInfoDiv = document.getElementById('cityInfo');
+					const cityInfoContent = cityInfoDiv.innerHTML;
+					cityInfoDiv.innerHTML = cityInfoContent + transportHtml;
+				}
+			}
+		};
+
+		// Função para mostrar informações detalhadas no roteiro completo
+		const originalShowFullItinerary = showFullItinerary;
+		showFullItinerary = function() {
+			// Chamar a função original primeiro
+			originalShowFullItinerary();
+			
+			// Percorrer as cidades na ordem do itinerário e adicionar detalhes de transporte ao roteiro
+			itineraryData.order.forEach((cityId, index) => {
+				if (index < itineraryData.order.length - 1) {
+					const nextCityId = itineraryData.order[index + 1];
+					const transportKey = `${cityId}_${nextCityId}`;
+					
+					if (transportDetailData[transportKey]) {
+						const transportData = transportDetailData[transportKey];
+						const recommendedOption = transportData.options.find(option => option.recommended);
+						
+						if (recommendedOption) {
+							// Encontrar o elemento da cidade no roteiro
+							const cityElements = document.querySelectorAll('.itinerary-day');
+							if (cityElements[index]) {
+								// Encontrar a seção de transporte existente e substituí-la ou adicionar nova seção
+								const transportSections = cityElements[index].querySelectorAll('.info-section h4');
+								let transportSection = null;
+								
+								for (let i = 0; i < transportSections.length; i++) {
+									if (transportSections[i].textContent.includes('Transporte')) {
+										transportSection = transportSections[i].parentNode;
+										break;
+									}
+								}
+								
+								const newTransportHtml = `
+									<div class="info-section">
+										<h4>Transporte Detalhado:</h4>
+										<div class="transport-schedule">
+											<p><strong>${recommendedOption.name}</strong> - Partida: ${recommendedOption.details.partida}</p>
+											<p>Chegada: ${recommendedOption.details.chegada} (${recommendedOption.details.duracao})</p>
+											<h5>Cronograma:</h5>
+											<ul>
+												${recommendedOption.schedule.map(item => `<li>${item}</li>`).join('')}
+											</ul>
+											<h5>Dicas importantes:</h5>
+											<ul>
+												${recommendedOption.tips.map(tip => `<li>${tip}</li>`).join('')}
+											</ul>
+										</div>
+									</div>
+								`;
+								
+								if (transportSection) {
+									transportSection.insertAdjacentHTML('afterend', newTransportHtml);
+								} else {
+									cityElements[index].insertAdjacentHTML('beforeend', newTransportHtml);
+								}
+							}
+						}
+					}
+				}
+			});
+		};
+
+		// Adicionar nova aba para frases úteis e moedas
+		function addUsefulPhrasesAndCurrencyTab() {
+			// Adicionar botão de aba
+			const tabButtons = document.querySelector('.tab-buttons');
+			tabButtons.insertAdjacentHTML('beforeend', `
+				<button class="tab-button" data-tab="useful-phrases" onclick="showTab('useful-phrases')">Frases e Moedas</button>
+			`);
+			
+			// Criar a estrutura da nova aba
+			const container = document.querySelector('.container');
+			container.insertAdjacentHTML('beforeend', `
+				<div class="full-itinerary" id="usefulPhrases" style="display: none;">
+					<h2 style="text-align: center; margin-bottom: 20px;">Frases Úteis e Informações de Moeda</h2>
+					
+					<div class="phrases-section">
+						<h3>Navegação Rápida</h3>
+						<ul class="phrases-nav">
+							<li><a href="#spanish-phrases">Espanhol (Madrid e Valencia)</a></li>
+							<li><a href="#french-phrases">Francês (Geneva)</a></li>
+							<li><a href="#german-phrases">Alemão Suíço (Pilatus e Zurich)</a></li>
+							<li><a href="#dutch-phrases">Holandês (Amsterdam)</a></li>
+							<li><a href="#portuguese-phrases">Português de Portugal</a></li>
+							<li><a href="#currency-info">Cotação de Moedas</a></li>
+						</ul>
+					</div>
+					
+					<div id="spanish-phrases" class="phrases-section">
+						<h3>${phrasesData.spanish.title}</h3>
+						<table class="phrases-table">
+							<tr>
+								<th>Português</th>
+								<th>Espanhol</th>
+								<th>Pronúncia</th>
+							</tr>
+							${phrasesData.spanish.phrases.map(phrase => `
+								<tr>
+									<td>${phrase.portuguese}</td>
+									<td>${phrase.foreign}</td>
+									<td class="pronunciation">${phrase.pronunciation}</td>
+								</tr>
+							`).join('')}
+						</table>
+					</div>
+					
+					<div id="french-phrases" class="phrases-section">
+						<h3>${phrasesData.french.title}</h3>
+						<table class="phrases-table">
+							<tr>
+								<th>Português</th>
+								<th>Francês</th>
+								<th>Pronúncia</th>
+							</tr>
+							${phrasesData.french.phrases.map(phrase => `
+								<tr>
+									<td>${phrase.portuguese}</td>
+									<td>${phrase.foreign}</td>
+									<td class="pronunciation">${phrase.pronunciation}</td>
+								</tr>
+							`).join('')}
+						</table>
+					</div>
+					
+					<div id="german-phrases" class="phrases-section">
+						<h3>${phrasesData.german.title}</h3>
+						<table class="phrases-table">
+							<tr>
+								<th>Português</th>
+								<th>Alemão Suíço</th>
+								<th>Pronúncia</th>
+							</tr>
+							${phrasesData.german.phrases.map(phrase => `
+								<tr>
+									<td>${phrase.portuguese}</td>
+									<td>${phrase.foreign}</td>
+									<td class="pronunciation">${phrase.pronunciation}</td>
+								</tr>
+							`).join('')}
+						</table>
+					</div>
+					
+					<div id="dutch-phrases" class="phrases-section">
+						<h3>${phrasesData.dutch.title}</h3>
+						<table class="phrases-table">
+							<tr>
+								<th>Português</th>
+								<th>Holandês</th>
+								<th>Pronúncia</th>
+							</tr>
+							${phrasesData.dutch.phrases.map(phrase => `
+								<tr>
+									<td>${phrase.portuguese}</td>
+									<td>${phrase.foreign}</td>
+									<td class="pronunciation">${phrase.pronunciation}</td>
+								</tr>
+							`).join('')}
+						</table>
+					</div>
+					
+					<div id="portuguese-phrases" class="phrases-section">
+						<h3>${phrasesData.portuguese.title}</h3>
+						<table class="phrases-table">
+							<tr>
+								<th>Português do Brasil</th>
+								<th>Português de Portugal</th>
+								<th>Observações</th>
+							</tr>
+							${phrasesData.portuguese.phrases.map(phrase => `
+								<tr>
+									<td>${phrase.portuguese}</td>
+									<td>${phrase.foreign}</td>
+									<td class="pronunciation">${phrase.pronunciation}</td>
+								</tr>
+							`).join('')}
+						</table>
+					</div>
+					
+					<div id="currency-info" class="currency-section">
+						<h3>Cotação de Moedas</h3>
+						
+						<div class="currency-card">
+							<h4>${currencyData.euro.name} - ${currencyData.euro.countries}</h4>
+							${currencyData.euro.values.map(value => `
+								<div class="currency-row">
+									<span>${value.foreign} € (Euro)</span>
+									<span>≈ R$ ${value.brl.toFixed(2)}</span>
+								</div>
+							`).join('')}
+							
+							<div class="currency-examples">
+								<h4>Referências de preços em Euro:</h4>
+								${currencyData.euro.examples.map(example => `
+									<div class="currency-example-row">
+										<span>${example.item}</span>
+										<span>${example.price} (${example.brl})</span>
+									</div>
+								`).join('')}
+							</div>
+						</div>
+						
+						<div class="currency-card">
+							<h4>${currencyData.chf.name} - ${currencyData.chf.countries}</h4>
+							${currencyData.chf.values.map(value => `
+								<div class="currency-row">
+									<span>${value.foreign} CHF (Franco Suíço)</span>
+									<span>≈ R$ ${value.brl.toFixed(2)}</span>
+								</div>
+							`).join('')}
+							
+							<div class="currency-examples">
+								<h4>Referências de preços em Franco Suíço:</h4>
+								${currencyData.chf.examples.map(example => `
+									<div class="currency-example-row">
+										<span>${example.item}</span>
+										<span>${example.price} (${example.brl})</span>
+									</div>
+								`).join('')}
+							</div>
+						</div>
+						
+						<div class="currency-card">
+							<h4>Dicas para câmbio e pagamentos</h4>
+							<ul class="tips">
+								<li>Use cartões de crédito sempre que possível (taxas geralmente menores que casas de câmbio)</li>
+								<li>Avise seu banco sobre a viagem para evitar bloqueio por "atividade suspeita"</li>
+								<li>Tenha sempre algum dinheiro em espécie para pequenos estabelecimentos</li>
+								<li>Na Suíça, alguns estabelecimentos pequenos não aceitam cartão para valores baixos</li>
+								<li>Evite trocar dinheiro em aeroportos (taxas altas) - prefira bancos nas cidades</li>
+								<li>Ao pagar com cartão, escolha sempre a moeda local (não o Real) quando perguntado</li>
+								<li>ATMs/caixas eletrônicos geralmente oferecem taxas melhores que casas de câmbio</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			`);
+			
+			// Adicionar CSS para a nova aba
+			const styleTag = document.createElement('style');
+			styleTag.textContent = `
+				.phrases-section {
+					margin-bottom: 40px;
+					padding: 20px;
+					background-color: #f0f8ff;
+					border-radius: 8px;
+					border-left: 4px solid #9b59b6;
+				}
+				
+				.phrases-nav {
+					list-style-type: none;
+					display: flex;
+					flex-wrap: wrap;
+					gap: 10px;
+					margin-bottom: 20px;
+				}
+				
+				.phrases-nav li {
+					flex: 1;
+					min-width: 200px;
+				}
+				
+				.phrases-nav a {
+					display: block;
+					padding: 10px;
+					background-color: #eee;
+					text-align: center;
+					border-radius: 4px;
+					text-decoration: none;
+					color: #2c3e50;
+					transition: all 0.2s ease;
+				}
+				
+				.phrases-nav a:hover {
+					background-color: #3498db;
+					color: white;
+				}
+				
+				.phrases-table {
+					width: 100%;
+					border-collapse: collapse;
+					margin: 15px 0;
+				}
+				
+				.phrases-table th,
+				.phrases-table td {
+					padding: 10px;
+					text-align: left;
+					border: 1px solid #ddd;
+				}
+				
+				.phrases-table th {
+					background-color: #f2f2f2;
+				}
+				
+				.phrases-table tr:nth-child(even) {
+					background-color: #f9f9f9;
+				}
+				
+				.pronunciation {
+					font-style: italic;
+					color: #7f8c8d;
+					font-size: 0.9em;
+				}
+				
+				.currency-section {
+					margin-bottom: 40px;
+					padding: 20px;
+					background-color: #eafaf1;
+					border-radius: 8px;
+					border-left: 4px solid #27ae60;
+				}
+				
+				.currency-card {
+					padding: 15px;
+					background-color: #fff;
+					border-radius: 6px;
+					margin-bottom: 15px;
+					box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+				}
+				
+				.currency-card h4 {
+					border-bottom: 1px solid #eee;
+					padding-bottom: 10px;
+					margin-bottom: 15px;
+					color: #16a085;
+				}
+				
+				.currency-row {
+					display: flex;
+					justify-content: space-between;
+					margin-bottom: 10px;
+					padding: 5px 0;
+					border-bottom: 1px dashed #eee;
+				}
+				
+				.currency-examples {
+					margin-top: 15px;
+					padding: 10px;
+					background-color: #f9f9f9;
+					border-radius: 4px;
+				}
+				
+				.currency-example-row {
+					display: flex;
+					justify-content: space-between;
+					margin-bottom: 5px;
+				}
+				
+				.transport-details {
+					margin-top: 20px;
+					padding: 15px;
+					background-color: #f4f9ff;
+					border-radius: 8px;
+					border-left: 4px solid #3498db;
+				}
+				
+				.transport-option {
+					margin-bottom: 20px;
+					padding: 15px;
+					background-color: white;
+					border-radius: 6px;
+					box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+				}
+				
+				.transport-recommended {
+					border-left: 4px solid #2ecc71;
+				}
+				
+				.transport-details-grid {
+					display: grid;
+					grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+					gap: 10px;
+					margin-bottom: 15px;
+				}
+				
+				.transport-detail-item {
+					padding: 8px;
+					background-color: #f8f9fa;
+					border-radius: 4px;
+				}
+				
+				.transport-schedule, .transport-tips {
+					margin-top: 10px;
+					padding: 10px;
+					background-color: #f8f9fa;
+					border-radius: 4px;
+				}
+				
+				.transport-schedule h5, .transport-tips h5 {
+					margin-bottom: 8px;
+					color: #2c3e50;
+				}
+				
+				.transport-schedule ul, .transport-tips ul {
+					padding-left: 20px;
+				}
+				
+				.economy-badge, .comfort-badge, .time-badge, .flexibilidade-badge, .único-badge {
+					font-size: 12px;
+					padding: 3px 8px;
+					border-radius: 10px;
+					color: white;
+					margin-left: 10px;
+				}
+				
+				.economy-badge {
+					background-color: #2ecc71;
+				}
+				
+				.comfort-badge {
+					background-color: #9b59b6;
+				}
+				
+				.time-badge {
+					background-color: #f39c12;
+				}
+				
+				.flexibilidade-badge {
+					background-color: #3498db;
+				}
+				
+				.único-badge {
+					background-color: #e74c3c;
+				}
+			`;
+			document.head.appendChild(styleTag);
+			
+			// Modificar a função showTab para incluir a nova aba
+			const originalShowTab = showTab;
+			window.showTab = function(tabName) {
+				document.querySelectorAll('.tab-button').forEach(btn => {
+					btn.classList.remove('active');
+					if (btn.getAttribute('data-tab') === tabName) {
+						btn.classList.add('active');
+					}
+				});
+
+				const mapView = document.getElementById('mapView');
+				const fullItinerary = document.getElementById('fullItinerary');
+				const packingList = document.getElementById('packingList');
+				const romanticChallenges = document.getElementById('romanticChallenges');
+				const usefulPhrases = document.getElementById('usefulPhrases');
+
+				// Esconder todos os elementos
+				mapView.style.display = 'none';
+				fullItinerary.style.display = 'none';
+				packingList.style.display = 'none';
+				romanticChallenges.style.display = 'none';
+				if (usefulPhrases) usefulPhrases.style.display = 'none';
+
+				// Mostrar o elemento correto
+				switch(tabName) {
+					case 'map':
+						mapView.style.display = 'flex';
+						break;
+					case 'full-itinerary':
+						fullItinerary.style.display = 'block';
+						showFullItinerary();
+						break;
+					case 'summary':
+						fullItinerary.style.display = 'block';
+						showFinancialSummary();
+						break;
+					case 'packing':
+						packingList.style.display = 'block';
+						break;
+					case 'romantic':
+						romanticChallenges.style.display = 'block';
+						break;
+					case 'useful-phrases':
+						if (usefulPhrases) usefulPhrases.style.display = 'block';
+						break;
+				}
+			};
+		}
+
+		// Inicializar a nova aba quando a página carregar
+		document.addEventListener('DOMContentLoaded', function() {
+			// Se a função original já foi executada, modificar após ela
+			setTimeout(function() {
+				addUsefulPhrasesAndCurrencyTab();
+			}, 500);
+		});		
+		
+		// Add this function after the original addUsefulPhrasesAndCurrencyTab function
+		function enhanceCurrencySection() {
+			// Wait for currency section to be rendered
+			setTimeout(() => {
+				// Get the currency section
+				const currencySection = document.getElementById('currency-info');
+				if (currencySection) {
+					// 1. Add update button at the top of the section
+					const updateButton = document.createElement('button');
+					updateButton.textContent = 'Atualizar Taxas de Câmbio';
+					updateButton.className = 'booking-button';
+					updateButton.style.margin = '10px 0 20px';
+					updateButton.onclick = fetchExchangeRates;
+					
+					// Insert the button at the top of the section
+					currencySection.insertBefore(updateButton, currencySection.firstChild);
+					
+					// 2. Add info box about exchange rates if it doesn't exist yet
+					if (!document.getElementById('exchange-info')) {
+						const infoBox = document.createElement('div');
+						infoBox.id = 'exchange-info';
+						infoBox.className = 'currency-card';
+						infoBox.style.marginTop = '20px';
+						infoBox.style.marginBottom = '20px';
+						infoBox.innerHTML = `
+							<h4>Sobre as Taxas de Câmbio</h4>
+							<p>Estas são as taxas de câmbio estimadas para ${new Date().toLocaleDateString()}. Os valores podem variar diariamente.</p>
+							<p>Recomendamos verificar as taxas próximo à sua viagem usando aplicativos como:</p>
+							<ul>
+								<li>XE Currency</li>
+								<li>Wise (Transferwise)</li>
+								<li>Banco Central do Brasil</li>
+							</ul>
+							<p><strong>Dica:</strong> Para obter as melhores taxas, considere adquirir moeda estrangeira com pelo menos 30 dias de antecedência.</p>
+						`;
+						
+						// Append the info box to the currency section
+						currencySection.appendChild(infoBox);
+					}
+					
+					// 3. Call fetchExchangeRates to update with current rates
+					fetchExchangeRates();
+				}
+			}, 1000); // Give the original function time to render the UI
+		}
+
+		// Add this code to call enhanceCurrencySection when the tab is shown
+		document.addEventListener('DOMContentLoaded', function() {
+			setTimeout(() => {
+				const tabButtons = document.querySelectorAll('.tab-button');
+				tabButtons.forEach(button => {
+					if (button.getAttribute('data-tab') === 'useful-phrases') {
+						// Update currency rates when the tab is clicked
+						button.addEventListener('click', function() {
+							enhanceCurrencySection();
+						});
+					}
+				});
+				
+				// If the tab is already active on page load, enhance it
+				const activeTab = document.querySelector('.tab-button.active');
+				if (activeTab && activeTab.getAttribute('data-tab') === 'useful-phrases') {
+					enhanceCurrencySection();
+				}
+			}, 1000);
+		});		
     </script>
 </body>
 </html>
