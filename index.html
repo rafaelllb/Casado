@@ -388,68 +388,19 @@
     <script>
         const itineraryData = {
             cities: {
-                lisboa_inicio: {
-                    name: "Lisboa (Chegada)",
-                    coordinates: { lat: 38.7223, lng: -9.1393 },
-                    dates: "12/04",
-                    activities: [
-                        "Chegada a Lisboa",
-                        "Check-in no hotel",
-                        "Passeio pela cidade"
-                    ],
-                    accommodation: {
-                        name: "Hotel no centro de Lisboa",
-                        cost: 80,
-                        bookingUrl: "https://www.booking.com"
-                    }
-                },
                 albufeira: {
                     name: "Albufeira (Casamento)",
                     coordinates: { lat: 37.0891, lng: -8.2401 },
-                    dates: "13/04",
-                    transport: {
-                        from: "Lisboa",
-                        options: [
-                            {
-                                type: "trem",
-                                company: "Comboios de Portugal (CP)",
-                                duration: "3h-3h30",
-                                cost: 25,
-                                bookingUrl: "https://www.cp.pt",
-                                notes: "5-6 trens diários, com serviço de bar",
-                                recommended: false
-                            },
-                            {
-                                type: "onibus",
-                                company: "Rede Expressos",
-                                duration: "3h-3h40",
-                                cost: 20,
-                                bookingUrl: "https://www.rede-expressos.pt",
-                                notes: "Várias partidas diárias",
-                                recommended: true,
-                                badge: "economia"
-                            },
-                            {
-                                type: "carro",
-                                company: "Aluguel de carro",
-                                duration: "2h30",
-                                cost: 55,
-                                bookingUrl: "https://www.rentalcars.com",
-                                notes: "Flexibilidade para explorar o Algarve",
-                                recommended: false,
-                                badge: "tempo"
-                            }
-                        ]
-                    },
+                    dates: "12/04 - 14/04",
                     activities: [
-                        "Chegada a Albufeira",
-                        "Casamento",
-                        "Celebração"
+                        "Chegada a Albufeira (12/04)",
+                        "Casamento (13/04)",
+                        "Preparação para próximo destino (14/04)"
                     ],
                     accommodation: {
-                        name: "Hotel em Albufeira",
-                        cost: 90,
-                        bookingUrl: "https://www.booking.com"
+                        name: "Hospedagem já confirmada",
+                        cost: 0, // Já pago/reservado
+                        notes: "Hospedagem já confirmada para estas datas"
                     }
                 },
                 madrid: {
@@ -819,7 +770,7 @@
                     }
                 }
             },
-            order: ['lisboa_inicio', 'albufeira', 'madrid', 'valencia', 'geneva', 'zurich', 'amsterdam', 'porto', 'foztua', 'geres', 'lisboa_final']
+            order: ['albufeira', 'madrid', 'valencia', 'geneva', 'zurich', 'amsterdam', 'porto', 'foztua', 'geres', 'lisboa_final']
         };
 
         let map;
@@ -1089,6 +1040,8 @@
             // Calcular custos para o roteiro atual
             const costs = calculateTotalCosts();
             const totalBudget = 2000; // Orçamento definido
+            // Ajuste: remover custo da hospedagem em Albufeira que já está confirmada
+            costs.totalCost -= 0; // Antes era 90, agora é 0
             const budgetRemaining = totalBudget - costs.totalCost;
             const budgetPercentage = (costs.totalCost / totalBudget) * 100;
             
@@ -1164,6 +1117,7 @@
             itineraryData.order.forEach(cityId => {
                 const city = itineraryData.cities[cityId];
                 if (city.accommodation) {
+                    // Adicionar apenas hospedagens que precisam ser pagas
                     accommodationCost += city.accommodation.cost;
                 }
             });
