@@ -3,38 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
     <title>Roteiro Europa 2025</title>
     <style>
-		* {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-			font-family: Arial, sans-serif;
-		}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
 
-		body {
-			background-color: #f5f5f5;
-			padding: 20px;
-		}
+        body {
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
 
-		.container {
-			max-width: 1400px;
-			margin: 0 auto;
-			background-color: white;
-			padding: 20px;
-			border-radius: 8px;
-			box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-		}
-		
-        .route-buttons {
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        .content-wrapper {
+            display: flex;
+            gap: 20px;
+        }
+
+        .tab-buttons {
             display: flex;
             gap: 10px;
             margin-bottom: 20px;
         }
 
-        .route-button {
+        .tab-button {
             padding: 10px 20px;
             background-color: #f8f9fa;
             border: 1px solid #ddd;
@@ -45,245 +56,202 @@
             transition: all 0.3s ease;
         }
 
-        .route-button:hover {
+        .tab-button:hover {
             background-color: #e9ecef;
         }
 
-        .route-button.active {
+        .tab-button.active {
             background-color: #3498db;
             color: white;
             border-color: #2980b9;
         }
 
-		h1 {
-			text-align: center;
-			color: #2c3e50;
-			margin-bottom: 30px;
-		}
+        /* Estilos do Container do Mapa */
+        .map-container {
+            width: 70%;
+            position: relative;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #f8f9fa;
+            aspect-ratio: 4/3;
+        }
 
-		.content-wrapper {
-			display: flex;
-			gap: 20px;
-		}
+        #map {
+            width: 100%;
+            height: 100%;
+        }
 
-		.tab-buttons {
-			display: flex;
-			gap: 10px;
-			margin-bottom: 20px;
-		}
+        /* Estilos dos Marcadores e Popups do Leaflet */
+        .leaflet-popup-content {
+            font-size: 14px;
+            line-height: 1.4;
+            padding: 8px;
+        }
 
-		.tab-button {
-			padding: 10px 20px;
-			background-color: #f8f9fa;
-			border: 1px solid #ddd;
-			border-radius: 4px;
-			cursor: pointer;
-			flex: 1;
-			font-size: 16px;
-			transition: all 0.3s ease;
-		}
+        .leaflet-popup-content h3 {
+            margin: 0 0 5px 0;
+            color: #2c3e50;
+            font-size: 16px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 3px;
+        }
 
-		.tab-button:hover {
-			background-color: #e9ecef;
-		}
+        .custom-marker {
+            background-color: #e74c3c;
+            border: 2px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.3);
+            transition: all 0.3s ease;
+        }
 
-		.tab-button.active {
-			background-color: #3498db;
-			color: white;
-			border-color: #2980b9;
-		}
+        .custom-marker:hover {
+            background-color: #c0392b;
+            transform: scale(1.2);
+        }
 
-		/* Estilos do Container do Mapa */
-		.map-container {
-			width: 70%;
-			position: relative;
-			border: 1px solid #ddd;
-			border-radius: 8px;
-			overflow: hidden;
-			background-color: #f8f9fa;
-			aspect-ratio: 4/3;
-		}
+        .custom-marker.active {
+            background-color: #2ecc71;
+            box-shadow: 0 0 0 4px rgba(46, 204, 113, 0.3);
+        }
 
-		#map {
-			width: 100%;
-			height: 100%;
-		}
+        /* Painel de Informações */
+        .info-panel {
+            width: 30%;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            max-height: 800px;
+            overflow-y: auto;
+        }
 
-		/* Estilos dos Marcadores e Popups do Leaflet */
-		.leaflet-popup-content {
-			font-size: 14px;
-			line-height: 1.4;
-			padding: 8px;
-		}
+        .city-info {
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
 
-		.leaflet-popup-content h3 {
-			margin: 0 0 5px 0;
-			color: #2c3e50;
-			font-size: 16px;
-			border-bottom: 2px solid #3498db;
-			padding-bottom: 3px;
-		}
+        .city-info h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+        }
 
-		.custom-marker {
-			background-color: #e74c3c;
-			border: 2px solid white;
-			border-radius: 50%;
-			box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.3);
-			transition: all 0.3s ease;
-		}
+        .info-section {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
 
-		.custom-marker:hover {
-			background-color: #c0392b;
-			transform: scale(1.2);
-		}
+        .booking-button {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
 
-		.custom-marker.active {
-			background-color: #2ecc71;
-			box-shadow: 0 0 0 4px rgba(46, 204, 113, 0.3);
-		}
+        .booking-button:hover {
+            background-color: #2980b9;
+        }
 
-		/* Painel de Informações */
-		.info-panel {
-			width: 30%;
-			padding: 20px;
-			background-color: #f8f9fa;
-			border-radius: 8px;
-			border: 1px solid #ddd;
-			max-height: 800px;
-			overflow-y: auto;
-		}
+        /* Estilos do Itinerário */
+        .itinerary-day {
+            background-color: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
 
-		.city-info {
-			padding: 15px;
-			background-color: white;
-			border-radius: 8px;
-			margin-bottom: 15px;
-			box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-		}
+        .itinerary-day h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+        }
 
-		.city-info h3 {
-			color: #2c3e50;
-			margin-bottom: 10px;
-			border-bottom: 2px solid #3498db;
-			padding-bottom: 5px;
-		}
+        .full-itinerary {
+            display: none;
+            padding: 20px;
+        }
 
-		.info-section {
-			margin: 10px 0;
-			padding: 10px;
-			background-color: #f8f9fa;
-			border-radius: 4px;
-		}
+        /* Estilos do Resumo de Custos */
+        .cost-summary {
+            background-color: #f1f8ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
 
-		.booking-button {
-			display: inline-block;
-			padding: 8px 16px;
-			background-color: #3498db;
-			color: white;
-			text-decoration: none;
-			border-radius: 4px;
-			margin-top: 10px;
-			transition: background-color 0.3s ease;
-		}
+        .cost-summary h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
 
-		.booking-button:hover {
-			background-color: #2980b9;
-		}
+        .cost-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0;
+            padding: 5px 0;
+            border-bottom: 1px dashed #ccc;
+        }
 
-		/* Estilos do Itinerário */
-		.itinerary-day {
-			background-color: white;
-			padding: 15px;
-			margin-bottom: 15px;
-			border-radius: 8px;
-			box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-		}
+        .total-cost {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 2px solid #3498db;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
 
-		.itinerary-day h3 {
-			color: #2c3e50;
-			margin-bottom: 10px;
-			border-bottom: 2px solid #3498db;
-			padding-bottom: 5px;
-		}
+        /* Estilos adicionais para o Leaflet */
+        .leaflet-control-zoom {
+            border: none !important;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+        }
 
-		.full-itinerary {
-			display: none;
-			padding: 20px;
-		}
+        .leaflet-control-zoom a {
+            background-color: white !important;
+            color: #2c3e50 !important;
+            border: 1px solid #ddd !important;
+        }
 
-		/* Estilos do Resumo de Custos */
-		.cost-summary {
-			background-color: #f1f8ff;
-			padding: 15px;
-			border-radius: 8px;
-			margin-top: 20px;
-		}
+        .leaflet-control-zoom a:hover {
+            background-color: #f8f9fa !important;
+        }
 
-		.cost-summary h3 {
-			color: #2c3e50;
-			margin-bottom: 10px;
-		}
+        .leaflet-container {
+            font-family: Arial, sans-serif !important;
+        }
 
-		.cost-item {
-			display: flex;
-			justify-content: space-between;
-			margin: 5px 0;
-			padding: 5px 0;
-			border-bottom: 1px dashed #ccc;
-		}
-
-		.total-cost {
-			margin-top: 10px;
-			padding-top: 10px;
-			border-top: 2px solid #3498db;
-			font-weight: bold;
-			font-size: 1.2em;
-		}
-
-		/* Estilos adicionais para o Leaflet */
-		.leaflet-control-zoom {
-			border: none !important;
-			box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
-		}
-
-		.leaflet-control-zoom a {
-			background-color: white !important;
-			color: #2c3e50 !important;
-			border: 1px solid #ddd !important;
-		}
-
-		.leaflet-control-zoom a:hover {
-			background-color: #f8f9fa !important;
-		}
-
-		.leaflet-container {
-			font-family: Arial, sans-serif !important;
-		}
-
-		/* Responsividade */
-		@media (max-width: 1200px) {
-			.content-wrapper {
-				flex-direction: column;
-			}
-			
-			.map-container, .info-panel {
-				width: 100%;
-			}
-			
-			.map-container {
-				height: 400px;
-			}
-		}
+        /* Responsividade */
+        @media (max-width: 1200px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+            
+            .map-container, .info-panel {
+                width: 100%;
+            }
+            
+            .map-container {
+                height: 400px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Lua de Mel 2025</h1>
-		
-        <div class="route-buttons">
-            <button class="route-button active" onclick="selectRoute('route1')">Roteiro 1 - Original</button>
-            <button class="route-button" onclick="selectRoute('route2')">Roteiro 2 - Suíça</button>
-        </div>
         
         <div class="tab-buttons">
             <button class="tab-button active" data-tab="map" onclick="showTab('map')">Mapa</button>
@@ -292,9 +260,9 @@
         </div>
         
         <div class="content-wrapper" id="mapView">
-			<div class="map-container">
-				<div id="map"></div>
-			</div>
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
             <div class="info-panel" id="infoPanel">
                 <div id="cityInfo">
                     Selecione uma cidade no mapa para ver detalhes
@@ -306,507 +274,244 @@
     </div>
 
     <script>
-		const routes = {
-			route1: {
-				name: "Roteiro 1 - Original",
-				cities: {
-					albufeira: {
-						name: "Albufeira",
-						coordinates: { lat: 37.0891, lng: -8.2401 },
-						dates: "14/04",
-						transport: {
-							to: "Sevilha",
-							type: "Rede Expressos",
-							cost: 20,
-							duration: "4h30",
-							bookingUrl: "https://www.rede-expressos.pt"
-						},
-						activities: [
-							"Check-out do hotel",
-							"Saída: 14:30",
-							"Chegada Sevilha: 19:00"
-						]
-					},
-					sevilha: {
-						name: "Sevilha",
-						coordinates: { lat: 37.3891, lng: -5.9845 },
-						dates: "15/04",
-						transport: {
-							to: "Madrid",
-							type: "FlixBus",
-							cost: 19,
-							duration: "7h",
-							bookingUrl: "https://www.flixbus.pt"
-						},
-						activities: [
-							"Real Alcázar",
-							"Catedral de Sevilha",
-							"Plaza de España",
-							"Bairro Santa Cruz",
-							"Show de Flamenco"
-						],
-						accommodation: {
-							name: "La Banda Rooftop",
-							cost: 18,
-							bookingUrl: "https://www.hostelworld.com"
-						}
-					},
-					madrid: {
-						name: "Madrid",
-						coordinates: { lat: 40.4168, lng: -3.7038 },
-						dates: "16/04",
-						transport: {
-							to: "Geneva",
-							type: "FlixBus",
-							cost: 35,
-							duration: "14h",
-							bookingUrl: "https://www.flixbus.pt"
-						},
-						activities: [
-							"Plaza Mayor",
-							"Mercado San Miguel",
-							"Palácio Real",
-							"Museu do Prado",
-							"Parque Retiro"
-						]
-					},
-					marseille: {
-						name: "Marseille",
-						coordinates: { lat: 43.2965, lng: 5.3698 },
-						dates: "17/04",
-						transport: {
-							to: "Milano",
-							type: "FlixBus",
-							cost: 25,
-							duration: "10h",
-							bookingUrl: "https://www.flixbus.pt"
-						},
-						activities: [
-							"Vieux Port",
-							"Notre-Dame de la Garde",
-							"Le Panier",
-							"Catedral de Marseille"
-						]
-					},
-					milano: {
-						name: "Milano",
-						coordinates: { lat: 45.4642, lng: 9.1900 },
-						dates: "18/04",
-						transport: {
-							to: "Budapest",
-							type: "FlixBus",
-							cost: 25,
-							duration: "12h",
-							bookingUrl: "https://www.flixbus.pt"
-						},
-						activities: [
-							"Duomo di Milano",
-							"Galleria Vittorio Emanuele II",
-							"Castello Sforzesco",
-							"Piazza del Duomo"
-						]
-					},
-					budapest: {
-						name: "Budapest",
-						coordinates: { lat: 47.4979, lng: 19.0402 },
-						dates: "19/04 - 20/04",
-						transport: {
-							to: "Vienna",
-							type: "RegioJet",
-							cost: 15,
-							duration: "3h",
-							bookingUrl: "https://www.regiojet.com"
-						},
-						activities: [
-							"Parlamento",
-							"Banhos Széchenyi",
-							"Castelo de Buda",
-							"Bastião dos Pescadores",
-							"Cruzeiro Danúbio"
-						],
-						accommodation: {
-							name: "Wombats City",
-							cost: 40,
-							bookingUrl: "https://www.hostelworld.com"
-						}
-					},
-					vienna: {
-						name: "Vienna",
-						coordinates: { lat: 48.2082, lng: 16.3738 },
-						dates: "21/04 - 22/04",
-						transport: {
-							to: "Brussels",
-							type: "RegioJet",
-							cost: 20,
-							duration: "4h",
-							bookingUrl: "https://www.regiojet.com"
-						},
-						activities: [
-							"Palácio Schönbrunn",
-							"Centro Histórico",
-							"Prater",
-							"Museu Belvedere",
-							"Ópera de Viena"
-						],
-						accommodation: {
-							name: "Wombats Vienna",
-							cost: 44,
-							bookingUrl: "https://www.hostelworld.com"
-						}
-					},
-					brussels: {
-						name: "Brussels",
-						coordinates: { lat: 50.8503, lng: 4.3517 },
-						dates: "23/04 - 24/04",
-						transport: {
-							to: "Porto",
-							type: "Ryanair",
-							cost: 45,
-							duration: "2h30",
-							bookingUrl: "https://www.ryanair.com"
-						},
-						activities: [
-							"Grand Place",
-							"Atomium",
-							"Manneken Pis",
-							"Catedral de São Miguel",
-							"Mini-Europa",
-							"Degustação de chocolates belgas"
-						],
-						accommodation: {
-							name: "Meininger Brussels",
-							cost: 50,
-							bookingUrl: "https://www.hostelworld.com"
-						}
-					},
-					porto: {
-						name: "Porto",
-						coordinates: { lat: 41.1579, lng: -8.6291 },
-						dates: "25/04",
-						transport: {
-							to: "Gerês",
-							type: "GetBus",
-							cost: 15,
-							duration: "1h30",
-							bookingUrl: "https://www.getbus.eu"
-						},
-						activities: [
-							"Torre dos Clérigos",
-							"Livraria Lello",
-							"Ribeira",
-							"Ponte Dom Luís I",
-							"Caves do Vinho do Porto"
-						],
-						accommodation: {
-							name: "Yes! Porto Hostel",
-							cost: 20,
-							bookingUrl: "https://www.hostelworld.com"
-						}
-					},
-					geres: {
-						name: "Gerês",
-						coordinates: { lat: 41.7186, lng: -8.1668 },
-						dates: "26/04",
-						transport: {
-							to: "Lisboa",
-							type: "Rede Expressos",
-							cost: 25,
-							duration: "5h",
-							bookingUrl: "https://www.rede-expressos.pt"
-						},
-						activities: [
-							"Trilha Cascata do Arado",
-							"Ponte da Misarela",
-							"Miradouro da Pedra Bela",
-							"Mata da Albergaria",
-							"Vila do Gerês"
-						],
-						accommodation: {
-							name: "Gerês Green Park",
-							cost: 50,
-							bookingUrl: "https://www.booking.com"
-						}
-					},
-					lisboa: {
-						name: "Lisboa",
-						coordinates: { lat: 38.7223, lng: -9.1393 },
-						dates: "27/04",
-						transport: {
-							to: "São Paulo",
-							type: "Voo Internacional",
-							cost: null,
-							duration: "10h",
-							bookingUrl: null
-						},
-						activities: [
-							"Check-out do hotel",
-							"Transfer para aeroporto",
-							"Voo para São Paulo"
-						]
-					}
-				},
-				order: ['albufeira', 'sevilha', 'madrid', 'marseille', 'milano', 
-					   'budapest', 'vienna', 'brussels', 'porto', 'geres', 'lisboa']
-			},
-			route2: {
-				name: "Roteiro 2 - Suíça",
-				cities: {
-					albufeira: {
-						name: "Albufeira",
-						coordinates: { lat: 37.0891, lng: -8.2401 },
-						dates: "14/04",
-						transport: {
-							to: "Sevilha",
-							type: "Rede Expressos",
-							cost: 20,
-							duration: "4h30",
-							bookingUrl: "https://www.rede-expressos.pt"
-						},
-						activities: [
-							"Check-out do hotel",
-							"Saída: 14:30",
-							"Chegada Sevilha: 19:00"
-						]
-					},
-					sevilha: {
-						name: "Sevilha",
-						coordinates: { lat: 37.3891, lng: -5.9845 },
-						dates: "15/04",
-						transport: {
-							to: "Madrid",
-							type: "FlixBus",
-							cost: 19,
-							duration: "7h",
-							bookingUrl: "https://www.flixbus.pt"
-						},
-						activities: [
-							"Real Alcázar",
-							"Catedral de Sevilha",
-							"Plaza de España",
-							"Bairro Santa Cruz",
-							"Show de Flamenco"
-						],
-						accommodation: {
-							name: "La Banda Rooftop",
-							cost: 18,
-							bookingUrl: "https://www.hostelworld.com"
-						}
-					},
-					madrid: {
-						name: "Madrid",
-						coordinates: { lat: 40.4168, lng: -3.7038 },
-						dates: "16/04",
-						transport: {
-							to: "Geneva",
-							type: "FlixBus",
-							cost: 35,
-							duration: "14h",
-							bookingUrl: "https://www.flixbus.pt"
-						},
-						activities: [
-							"Plaza Mayor",
-							"Mercado San Miguel",
-							"Palácio Real",
-							"Museu do Prado",
-							"Parque Retiro"
-						]
-					},
-					geneva: {
-						name: "Geneva",
-						coordinates: { lat: 46.2044, lng: 6.1432 },
-						dates: "17/04 - 18/04",
-						transport: {
-							to: "Zurich",
-							type: "SBB",
-							cost: 30,
-							duration: "2h45",
-							bookingUrl: "https://www.sbb.ch"
-						},
-						activities: [
-							"Jet d'Eau",
-							"Catedral de São Pedro",
-							"CERN",
-							"Palácio das Nações",
-							"Lago Geneva"
-						],
-						accommodation: {
-							name: "Geneva Hostel",
-							cost: 45,
-							bookingUrl: "https://www.hostelworld.com"
-						}
-					},
-					zurich: {
-						name: "Zurich",
-						coordinates: { lat: 47.3769, lng: 8.5417 },
-						dates: "19/04 - 20/04",
-						transport: {
-							to: "Luxembourg",
-							type: "FlixBus",
-							cost: 35,
-							duration: "6h",
-							bookingUrl: "https://www.flixbus.pt"
-						},
-						activities: [
-							"Lago Zurich",
-							"Grossmünster",
-							"Bahnhofstrasse",
-							"Kunsthaus",
-							"Zoo de Zurich"
-						],
-						accommodation: {
-							name: "Youth Hostel Zurich",
-							cost: 48,
-							bookingUrl: "https://www.hostelworld.com"
-						}
-					},
-					luxembourg: {
-						name: "Luxembourg",
-						coordinates: { lat: 49.6116, lng: 6.1319 },
-						dates: "21/04 - 22/04",
-						transport: {
-							to: "Amsterdam",
-							type: "FlixBus",
-							cost: 25,
-							duration: "5h",
-							bookingUrl: "https://www.flixbus.pt"
-						},
-						activities: [
-							"Palácio Grão-Ducal",
-							"Catedral de Notre-Dame",
-							"Casemates du Bock",
-							"Place Guillaume II",
-							"Museu Nacional de História e Arte"
-						],
-						accommodation: {
-							name: "Youth Hostel Luxembourg",
-							cost: 42,
-							bookingUrl: "https://www.hostelworld.com"
-						}
-					},
-					amsterdam: {
-						name: "Amsterdam",
-						coordinates: { lat: 52.3676, lng: 4.9041 },
-						dates: "23/04 - 24/04",
-						transport: {
-							to: "Porto",
-							type: "Ryanair",
-							cost: 45,
-							duration: "2h30",
-							bookingUrl: "https://www.ryanair.com"
-						},
-						activities: [
-							"Museu Van Gogh",
-							"Casa de Anne Frank",
-							"Rijksmuseum",
-							"Passeio de barco pelos canais",
-							"Vondelpark"
-						],
-						accommodation: {
-							name: "Flying Pig Downtown",
-							cost: 40,
-							bookingUrl: "https://www.hostelworld.com"
-						}
-					},
-					porto: {
-						name: "Porto",
-						coordinates: { lat: 41.1579, lng: -8.6291 },
-						dates: "25/04",
-						transport: {
-							to: "Gerês",
-							type: "GetBus",
-							cost: 15,
-							duration: "1h30",
-							bookingUrl: "https://www.getbus.eu"
-						},
-						activities: [
-							"Torre dos Clérigos",
-							"Livraria Lello",
-							"Ribeira",
-							"Ponte Dom Luís I",
-							"Caves do Vinho do Porto"
-						],
-						accommodation: {
-							name: "Yes! Porto Hostel",
-							cost: 20,
-							bookingUrl: "https://www.hostelworld.com"
-						}
-					},
-					geres: {
-						name: "Gerês",
-						coordinates: { lat: 41.7186, lng: -8.1668 },
-						dates: "26/04",
-						transport: {
-							to: "Lisboa",
-							type: "Rede Expressos",
-							cost: 25,
-							duration: "5h",
-							bookingUrl: "https://www.rede-expressos.pt"
-						},
-						activities: [
-							"Trilha Cascata do Arado",
-							"Ponte da Misarela",
-							"Miradouro da Pedra Bela",
-							"Mata da Albergaria",
-							"Vila do Gerês"
-						],
-						accommodation: {
-							name: "Gerês Green Park",
-							cost: 50,
-							bookingUrl: "https://www.booking.com"
-						}
-					},
-					lisboa: {
-						name: "Lisboa",
-						coordinates: { lat: 38.7223, lng: -9.1393 },
-						dates: "27/04",
-						transport: {
-							to: "São Paulo",
-							type: "Voo Internacional",
-							cost: null,
-							duration: "10h",
-							bookingUrl: null
-						},
-						activities: [
-							"Check-out do hotel",
-							"Transfer para aeroporto",
-							"Voo para São Paulo"
-						]
-					}
-				},
-				order: ['albufeira', 'sevilha', 'madrid', 'geneva', 'zurich', 
-					   'luxembourg', 'amsterdam', 'porto', 'geres', 'lisboa']
-			}
-		};
-		
-        let currentRoute = 'route1';
+        const routes = {
+            route: {
+                name: "Roteiro",
+                cities: {
+                    albufeira: {
+                        name: "Albufeira",
+                        coordinates: { lat: 37.0891, lng: -8.2401 },
+                        dates: "14/04",
+                        transport: {
+                            to: "Sevilha",
+                            type: "Rede Expressos",
+                            cost: 20,
+                            duration: "4h30",
+                            bookingUrl: "https://www.rede-expressos.pt"
+                        },
+                        activities: [
+                            "Check-out do hotel",
+                            "Saída: 14:30",
+                            "Chegada Sevilha: 19:00"
+                        ]
+                    },
+                    sevilha: {
+                        name: "Sevilha",
+                        coordinates: { lat: 37.3891, lng: -5.9845 },
+                        dates: "15/04",
+                        transport: {
+                            to: "Madrid",
+                            type: "FlixBus",
+                            cost: 19,
+                            duration: "7h",
+                            bookingUrl: "https://www.flixbus.pt"
+                        },
+                        activities: [
+                            "Real Alcázar",
+                            "Catedral de Sevilha",
+                            "Plaza de España",
+                            "Bairro Santa Cruz",
+                            "Show de Flamenco",
+                            "Visita ao Oceanógrafo (L'Oceanogràfic)"
+                        ],
+                        accommodation: {
+                            name: "La Banda Rooftop",
+                            cost: 18,
+                            bookingUrl: "https://www.hostelworld.com"
+                        }
+                    },
+                    madrid: {
+                        name: "Madrid",
+                        coordinates: { lat: 40.4168, lng: -3.7038 },
+                        dates: "16/04",
+                        transport: {
+                            to: "Geneva",
+                            type: "FlixBus",
+                            cost: 35,
+                            duration: "14h",
+                            bookingUrl: "https://www.flixbus.pt"
+                        },
+                        activities: [
+                            "Plaza Mayor",
+                            "Mercado San Miguel",
+                            "Palácio Real",
+                            "Museu do Prado",
+                            "Parque Retiro",
+                            "Excursão de um dia a Valencia para o Oceanográfico"
+                        ]
+                    },
+                    geneva: {
+                        name: "Geneva",
+                        coordinates: { lat: 46.2044, lng: 6.1432 },
+                        dates: "17/04 - 18/04",
+                        transport: {
+                            to: "Zurich",
+                            type: "SBB",
+                            cost: 30,
+                            duration: "2h45",
+                            bookingUrl: "https://www.sbb.ch"
+                        },
+                        activities: [
+                            "Jet d'Eau",
+                            "Catedral de São Pedro",
+                            "CERN",
+                            "Palácio das Nações",
+                            "Lago Geneva"
+                        ],
+                        accommodation: {
+                            name: "Geneva Hostel",
+                            cost: 45,
+                            bookingUrl: "https://www.hostelworld.com"
+                        }
+                    },
+                    zurich: {
+                        name: "Zurich",
+                        coordinates: { lat: 47.3769, lng: 8.5417 },
+                        dates: "19/04 - 20/04",
+                        transport: {
+                            to: "Luxembourg",
+                            type: "FlixBus",
+                            cost: 35,
+                            duration: "6h",
+                            bookingUrl: "https://www.flixbus.pt"
+                        },
+                        activities: [
+                            "Lago Zurich",
+                            "Grossmünster",
+                            "Bahnhofstrasse",
+                            "Kunsthaus",
+                            "Zoo de Zurich"
+                        ],
+                        accommodation: {
+                            name: "Youth Hostel Zurich",
+                            cost: 48,
+                            bookingUrl: "https://www.hostelworld.com"
+                        }
+                    },
+                    luxembourg: {
+                        name: "Luxembourg",
+                        coordinates: { lat: 49.6116, lng: 6.1319 },
+                        dates: "21/04 - 22/04",
+                        transport: {
+                            to: "Amsterdam",
+                            type: "FlixBus",
+                            cost: 25,
+                            duration: "5h",
+                            bookingUrl: "https://www.flixbus.pt"
+                        },
+                        activities: [
+                            "Palácio Grão-Ducal",
+                            "Catedral de Notre-Dame",
+                            "Casemates du Bock",
+                            "Place Guillaume II",
+                            "Museu Nacional de História e Arte"
+                        ],
+                        accommodation: {
+                            name: "Youth Hostel Luxembourg",
+                            cost: 42,
+                            bookingUrl: "https://www.hostelworld.com"
+                        }
+                    },
+                    amsterdam: {
+                        name: "Amsterdam",
+                        coordinates: { lat: 52.3676, lng: 4.9041 },
+                        dates: "23/04 - 24/04",
+                        transport: {
+                            to: "Porto",
+                            type: "Ryanair",
+                            cost: 45,
+                            duration: "2h30",
+                            bookingUrl: "https://www.ryanair.com"
+                        },
+                        activities: [
+                            "Museu Van Gogh",
+                            "Casa de Anne Frank",
+                            "Rijksmuseum",
+                            "Passeio de barco pelos canais",
+                            "Vondelpark"
+                        ],
+                        accommodation: {
+                            name: "Flying Pig Downtown",
+                            cost: 40,
+                            bookingUrl: "https://www.hostelworld.com"
+                        }
+                    },
+                    porto: {
+                        name: "Porto",
+                        coordinates: { lat: 41.1579, lng: -8.6291 },
+                        dates: "25/04",
+                        transport: {
+                            to: "Gerês",
+                            type: "GetBus",
+                            cost: 15,
+                            duration: "1h30",
+                            bookingUrl: "https://www.getbus.eu"
+                        },
+                        activities: [
+                            "Torre dos Clérigos",
+                            "Livraria Lello",
+                            "Ribeira",
+                            "Ponte Dom Luís I",
+                            "Caves do Vinho do Porto"
+                        ],
+                        accommodation: {
+                            name: "Yes! Porto Hostel",
+                            cost: 20,
+                            bookingUrl: "https://www.hostelworld.com"
+                        }
+                    },
+                    geres: {
+                        name: "Gerês",
+                        coordinates: { lat: 41.7186, lng: -8.1668 },
+                        dates: "26/04",
+                        transport: {
+                            to: "Lisboa",
+                            type: "Rede Expressos",
+                            cost: 25,
+                            duration: "5h",
+                            bookingUrl: "https://www.rede-expressos.pt"
+                        },
+                        activities: [
+                            "Trilha Cascata do Arado",
+                            "Ponte da Misarela",
+                            "Miradouro da Pedra Bela",
+                            "Mata da Albergaria",
+                            "Vila do Gerês"
+                        ],
+                        accommodation: {
+                            name: "Gerês Green Park",
+                            cost: 50,
+                            bookingUrl: "https://www.booking.com"
+                        }
+                    },
+                    lisboa: {
+                        name: "Lisboa",
+                        coordinates: { lat: 38.7223, lng: -9.1393 },
+                        dates: "27/04",
+                        transport: {
+                            to: "São Paulo",
+                            type: "Voo Internacional",
+                            cost: null,
+                            duration: "10h",
+                            bookingUrl: null
+                        },
+                        activities: [
+                            "Check-out do hotel",
+                            "Transfer para aeroporto",
+                            "Voo para São Paulo"
+                        ]
+                    }
+                },
+                order: ['albufeira', 'sevilha', 'madrid', 'geneva', 'zurich', 
+                       'luxembourg', 'amsterdam', 'porto', 'geres', 'lisboa']
+            }
+        };
+
         let map;
         let activeMarker;
         let markers = {};
         let polylines = [];
-
-		function selectRoute(routeId) {
-			// Atualizar o roteiro atual
-			currentRoute = routeId;
-			
-			// Atualizar botões de seleção de roteiro
-			document.querySelectorAll('.route-button').forEach(btn => {
-				btn.classList.remove('active');
-				if ((routeId === 'route1' && btn.textContent.includes('Original')) ||
-					(routeId === 'route2' && btn.textContent.includes('Suíça'))) {
-					btn.classList.add('active');
-				}
-			});
-
-			// Atualizar visualização atual
-			const activeTab = document.querySelector('.tab-button.active');
-			if (activeTab) {
-				// Reexecutar a função da aba atual com o novo roteiro
-				showTab(activeTab.getAttribute('data-tab'));
-			} else {
-				// Se nenhuma aba estiver ativa, mostrar o mapa por padrão
-				showTab('map');
-			}
-		}
+        const currentRoute = 'route';
 
         function updateMap() {
             // Limpar marcadores e linhas existentes
@@ -838,7 +543,7 @@
                     }
                     marker.getElement().classList.add('active');
                     activeMarker = marker;
-                    showCityInfo(cityId, currentRoute);
+                    showCityInfo(cityId);
                 });
 
                 markers[cityId] = marker;
@@ -871,353 +576,279 @@
             polylines = [];
         }
 
-        const fullItineraryData = [
-            {
-                day: "Dia 1 - 16/04",
-                title: "Albufeira → Sevilha",
-                details: [
-                    "14:30 - Saída de Albufeira",
-                    "19:00 - Chegada em Sevilha",
-                    "Transporte: Rede Expressos (€20)",
-                    "Hospedagem: La Banda Rooftop (€18)"
-                ]
-            },
-            // Continuar com todos os dias do roteiro
-        ];
+        function showCityInfo(cityId) {
+            const city = routes[currentRoute].cities[cityId];
+            if (!city) return;
 
-		function initializeMap() {
-			// Inicializar o mapa
-			map = L.map('map').setView([45.0, 10.0], 5);
+            const infoHtml = `
+                <div class="city-info">
+                    <h3>${city.name}</h3>
+                    <div class="info-section">
+                        <p><strong>Datas:</strong> ${city.dates}</p>
+                        <h4>Transporte:</h4>
+                        <p>Destino: ${city.transport.to}</p>
+                        <p>Meio: ${city.transport.type}</p>
+                        <p>Custo: ${city.transport.cost ? `€${city.transport.cost}` : 'N/A'}</p>
+                        <p>Duração: ${city.transport.duration}</p>
+                        ${city.transport.bookingUrl ? 
+                            `<a href="${city.transport.bookingUrl}" target="_blank" class="booking-button">Reservar Transporte</a>`
+                            : ''}
+                    </div>
+                    
+                    <div class="info-section">
+                        <h4>Atividades:</h4>
+                        <ul>
+                            ${city.activities.map(activity => `<li>${activity}</li>`).join('')}
+                        </ul>
+                    </div>
+                    
+                    ${city.accommodation ? `
+                        <div class="info-section">
+                            <h4>Hospedagem:</h4>
+                            <p>${city.accommodation.name}</p>
+                            <p>Custo: €${city.accommodation.cost}</p>
+                            <a href="${city.accommodation.bookingUrl}" target="_blank" class="booking-button">Reservar Hospedagem</a>
+                        </div>
+                    ` : ''}
+                </div>
+            `;
 
-			// Adicionar camada do OpenStreetMap
-			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-				maxZoom: 19,
-				attribution: '© OpenStreetMap contributors'
-			}).addTo(map);
+            document.getElementById('cityInfo').innerHTML = infoHtml;
+        }
 
-			// Ordem das cidades
-			const routeOrder = [
-				'albufeira', 'sevilha', 'madrid', 'marseille', 'milano',
-				'budapest', 'vienna', 'brussels', 'porto', 'geres', 'lisboa'
-			];
+        function showTab(tabName) {
+            // Atualizar estado das abas
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-tab') === tabName) {
+                    btn.classList.add('active');
+                }
+            });
 
-			// Adicionar marcadores e conectar com linhas
-			const routeCoordinates = [];
-			
-			routeOrder.forEach((cityId, index) => {
-				const city = cityData[cityId];
-				const coords = city.coordinates;
-				
-				// Criar marcador personalizado
-				const marker = L.marker([coords.lat, coords.lng], {
-					icon: L.divIcon({
-						className: 'custom-marker',
-						iconSize: [12, 12]
-					})
-				}).addTo(map);
+            const mapView = document.getElementById('mapView');
+            const fullItinerary = document.getElementById('fullItinerary');
 
-				// Adicionar popup com informações básicas
-				marker.bindPopup(`
-					<h3>${city.name}</h3>
-					<p>Data: ${city.dates}</p>
-				`);
+            // Atualizar visibilidade das seções
+            switch(tabName) {
+                case 'map':
+                    mapView.style.display = 'flex';
+                    fullItinerary.style.display = 'none';
+                    break;
+                    
+                case 'full-itinerary':
+                    mapView.style.display = 'none';
+                    fullItinerary.style.display = 'block';
+                    showFullItinerary(); // Mostrar roteiro completo
+                    break;
+                    
+                case 'summary':
+                    mapView.style.display = 'flex';
+                    fullItinerary.style.display = 'none';
+                    showFinancialSummary(); // Mostrar resumo financeiro
+                    break;
+            }
+        }
 
-				// Adicionar evento de clique
-				marker.on('click', () => {
-					if (activeMarker) {
-						activeMarker.getElement().classList.remove('active');
-					}
-					marker.getElement().classList.add('active');
-					activeMarker = marker;
-					showCityInfo(cityId);
-				});
+        function showFullItinerary() {
+            const route = routes[currentRoute];
+            const itineraryHtml = route.order.map(cityId => {
+                const city = route.cities[cityId];
+                return `
+                    <div class="itinerary-day">
+                        <h3>${city.name} - ${city.dates}</h3>
+                        <div class="info-section">
+                            <h4>Transporte para ${city.transport.to}:</h4>
+                            <p>Meio: ${city.transport.type}</p>
+                            <p>Custo: ${city.transport.cost ? `€${city.transport.cost}` : 'N/A'}</p>
+                            <p>Duração: ${city.transport.duration}</p>
+                            ${city.transport.bookingUrl ? 
+                                `<a href="${city.transport.bookingUrl}" target="_blank" class="booking-button">Reservar</a>` : ''}
+                        </div>
+                        
+                        <div class="info-section">
+                            <h4>Atividades:</h4>
+                            <ul>
+                                ${city.activities.map(activity => `<li>${activity}</li>`).join('')}
+                            </ul>
+                        </div>
+                        
+                        ${city.accommodation ? `
+                            <div class="info-section">
+                                <h4>Hospedagem:</h4>
+                                <p>${city.accommodation.name} - €${city.accommodation.cost}</p>
+                                <a href="${city.accommodation.bookingUrl}" target="_blank" class="booking-button">Reservar</a>
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            }).join('');
 
-				markers[cityId] = marker;
-				routeCoordinates.push([coords.lat, coords.lng]);
+            // Calcular custos para o roteiro atual
+            let totalTransport = 0;
+            let totalAccommodation = 0;
 
-				// Conectar com a próxima cidade
-				if (index < routeOrder.length - 1) {
-					const nextCity = cityData[routeOrder[index + 1]].coordinates;
-					L.polyline([
-						[coords.lat, coords.lng],
-						[nextCity.lat, nextCity.lng]
-					], {
-						color: '#3498db',
-						weight: 2,
-						opacity: 0.7,
-						dashArray: '5, 10'
-					}).addTo(map);
-				}
-			});
+            route.order.forEach(cityId => {
+                const city = route.cities[cityId];
+                if (city.transport.cost) totalTransport += city.transport.cost;
+                if (city.accommodation) totalAccommodation += city.accommodation.cost;
+            });
 
-			// Ajustar o zoom para mostrar toda a rota
-			map.fitBounds(L.latLngBounds(routeCoordinates));
-		}
-		
-		function showCityInfo(cityId) {
-			const city = routes[currentRoute].cities[cityId];
-			if (!city) return;
+            const totalDays = route.order.length;
+            const totalFood = totalDays * 35;
+            const totalAttractions = totalDays * 20;
+            const totalExtras = totalDays * 10;
+            const grandTotal = totalTransport + totalAccommodation + totalFood + totalAttractions + totalExtras;
 
-			const infoHtml = `
-				<div class="city-info">
-					<h3>${city.name}</h3>
-					<div class="info-section">
-						<p><strong>Datas:</strong> ${city.dates}</p>
-						<h4>Transporte:</h4>
-						<p>Destino: ${city.transport.to}</p>
-						<p>Meio: ${city.transport.type}</p>
-						<p>Custo: €${city.transport.cost || 'N/A'}</p>
-						<p>Duração: ${city.transport.duration}</p>
-						${city.transport.bookingUrl ? 
-							`<a href="${city.transport.bookingUrl}" target="_blank" class="booking-button">Reservar Transporte</a>`
-							: ''}
-					</div>
-					
-					<div class="info-section">
-						<h4>Atividades:</h4>
-						<ul>
-							${city.activities.map(activity => `<li>${activity}</li>`).join('')}
-						</ul>
-					</div>
-					
-					${city.accommodation ? `
-						<div class="info-section">
-							<h4>Hospedagem:</h4>
-							<p>${city.accommodation.name}</p>
-							<p>Custo: €${city.accommodation.cost}</p>
-							<a href="${city.accommodation.bookingUrl}" target="_blank" class="booking-button">Reservar Hospedagem</a>
-						</div>
-					` : ''}
-				</div>
-			`;
+            document.getElementById('fullItinerary').innerHTML = `
+                <h2 style="text-align: center; margin-bottom: 20px;">${route.name}</h2>
+                ${itineraryHtml}
+                <div class="cost-summary">
+                    <h3>Resumo Financeiro</h3>
+                    <div class="cost-item">
+                        <span>Transportes:</span>
+                        <span>€${totalTransport}</span>
+                    </div>
+                    <div class="cost-item">
+                        <span>Hospedagem:</span>
+                        <span>€${totalAccommodation}</span>
+                    </div>
+                    <div class="cost-item">
+                        <span>Alimentação:</span>
+                        <span>€${totalFood}</span>
+                    </div>
+                    <div class="cost-item">
+                        <span>Atrações:</span>
+                        <span>€${totalAttractions}</span>
+                    </div>
+                    <div class="cost-item">
+                        <span>Extras:</span>
+                        <span>€${totalExtras}</span>
+                    </div>
+                    <div class="total-cost">
+                        <span>Total:</span>
+                        <span>€${grandTotal}/pessoa</span>
+                    </div>
+                </div>
+            `;
+        }
 
-			document.getElementById('cityInfo').innerHTML = infoHtml;
-		}
+        function showFinancialSummary() {
+            const route = routes[currentRoute];
+            let totalTransport = 0;
+            let totalAccommodation = 0;
+            
+            // HTML para o resumo por cidade
+            const citySummaries = route.order.map(cityId => {
+                const city = route.cities[cityId];
+                const transportCost = city.transport.cost || 0;
+                const accommodationCost = city.accommodation ? city.accommodation.cost : 0;
+                const foodCost = 35; // Média por dia
+                const attractionsCost = 20; // Média por dia
+                const extrasCost = 10; // Média por dia
+                
+                totalTransport += transportCost;
+                totalAccommodation += accommodationCost;
+                
+                const cityTotal = transportCost + accommodationCost + foodCost + attractionsCost + extrasCost;
+                
+                return `
+                    <div class="city-info">
+                        <h3>${city.name} - ${city.dates}</h3>
+                        <div class="cost-item">
+                            <span>Transporte (${city.transport.type}):</span>
+                            <span>€${transportCost}</span>
+                        </div>
+                        ${city.accommodation ? `
+                            <div class="cost-item">
+                                <span>Hospedagem (${city.accommodation.name}):</span>
+                                <span>€${accommodationCost}</span>
+                            </div>
+                        ` : ''}
+                        <div class="cost-item">
+                            <span>Alimentação (estimativa):</span>
+                            <span>€${foodCost}</span>
+                        </div>
+                        <div class="cost-item">
+                            <span>Atrações (estimativa):</span>
+                            <span>€${attractionsCost}</span>
+                        </div>
+                        <div class="cost-item">
+                            <span>Extras (estimativa):</span>
+                            <span>€${extrasCost}</span>
+                        </div>
+                        <div class="total-cost">
+                            <span>Total para ${city.name}:</span>
+                            <span>€${cityTotal}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
 
-		function showTab(tabName) {
-			// Atualizar estado das abas
-			document.querySelectorAll('.tab-button').forEach(btn => {
-				btn.classList.remove('active');
-				if (btn.getAttribute('data-tab') === tabName) {
-					btn.classList.add('active');
-				}
-			});
+            // Calcular totais gerais
+            const totalDays = route.order.length;
+            const totalFood = totalDays * 35;
+            const totalAttractions = totalDays * 20;
+            const totalExtras = totalDays * 10;
+            const grandTotal = totalTransport + totalAccommodation + totalFood + totalAttractions + totalExtras;
 
-			const mapView = document.getElementById('mapView');
-			const fullItinerary = document.getElementById('fullItinerary');
+            document.getElementById('cityInfo').innerHTML = `
+                <div class="cost-summary">
+                    <h2 style="text-align: center; margin-bottom: 20px;">${route.name}</h2>
+                    <h3>Resumo por Cidade</h3>
+                    ${citySummaries}
+                    
+                    <div class="city-info">
+                        <h3>Resumo Geral da Viagem</h3>
+                        <div class="cost-item">
+                            <span>Total Transportes:</span>
+                            <span>€${totalTransport}</span>
+                            <small>(Não inclui voo internacional)</small>
+                        </div>
+                        <div class="cost-item">
+                            <span>Total Hospedagem:</span>
+                            <span>€${totalAccommodation}</span>
+                        </div>
+                        <div class="cost-item">
+                            <span>Total Alimentação (€35/dia):</span>
+                            <span>€${totalFood}</span>
+                        </div>
+                        <div class="cost-item">
+                            <span>Total Atrações (€20/dia):</span>
+                            <span>€${totalAttractions}</span>
+                        </div>
+                        <div class="cost-item">
+                            <span>Total Extras (€10/dia):</span>
+                            <span>€${totalExtras}</span>
+                        </div>
+                        <div class="total-cost">
+                            <span>Total da Viagem:</span>
+                            <span>€${grandTotal}/pessoa</span>
+                            <small>(Não inclui voo internacional)</small>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
 
-			// Atualizar visibilidade das seções
-			switch(tabName) {
-				case 'map':
-					mapView.style.display = 'flex';
-					fullItinerary.style.display = 'none';
-					updateMap(); // Atualizar mapa com o roteiro atual
-					break;
-					
-				case 'full-itinerary':
-					mapView.style.display = 'none';
-					fullItinerary.style.display = 'block';
-					showFullItinerary(); // Mostrar roteiro completo
-					break;
-					
-				case 'summary':
-					mapView.style.display = 'flex';
-					fullItinerary.style.display = 'none';
-					showFinancialSummary(); // Mostrar resumo financeiro
-					break;
-			}
-		}
-
-		function showFullItinerary() {
-			const route = routes[currentRoute];
-			const itineraryHtml = route.order.map(cityId => {
-				const city = route.cities[cityId];
-				return `
-					<div class="itinerary-day">
-						<h3>${city.name} - ${city.dates}</h3>
-						<div class="info-section">
-							<h4>Transporte para ${city.transport.to}:</h4>
-							<p>Meio: ${city.transport.type}</p>
-							<p>Custo: ${city.transport.cost ? `€${city.transport.cost}` : 'N/A'}</p>
-							<p>Duração: ${city.transport.duration}</p>
-							${city.transport.bookingUrl ? 
-								`<a href="${city.transport.bookingUrl}" target="_blank" class="booking-button">Reservar</a>` : ''}
-						</div>
-						
-						<div class="info-section">
-							<h4>Atividades:</h4>
-							<ul>
-								${city.activities.map(activity => `<li>${activity}</li>`).join('')}
-							</ul>
-						</div>
-						
-						${city.accommodation ? `
-							<div class="info-section">
-								<h4>Hospedagem:</h4>
-								<p>${city.accommodation.name} - €${city.accommodation.cost}</p>
-								<a href="${city.accommodation.bookingUrl}" target="_blank" class="booking-button">Reservar</a>
-							</div>
-						` : ''}
-					</div>
-				`;
-			}).join('');
-
-			// Calcular custos para o roteiro atual
-			let totalTransport = 0;
-			let totalAccommodation = 0;
-
-			route.order.forEach(cityId => {
-				const city = route.cities[cityId];
-				if (city.transport.cost) totalTransport += city.transport.cost;
-				if (city.accommodation) totalAccommodation += city.accommodation.cost;
-			});
-
-			const totalDays = route.order.length;
-			const totalFood = totalDays * 35;
-			const totalAttractions = totalDays * 20;
-			const totalExtras = totalDays * 10;
-			const grandTotal = totalTransport + totalAccommodation + totalFood + totalAttractions + totalExtras;
-
-			document.getElementById('fullItinerary').innerHTML = `
-				<h2 class="text-center mb-4">${route.name}</h2>
-				${itineraryHtml}
-				<div class="cost-summary">
-					<h3>Resumo Financeiro</h3>
-					<div class="cost-item">
-						<span>Transportes:</span>
-						<span>€${totalTransport}</span>
-					</div>
-					<div class="cost-item">
-						<span>Hospedagem:</span>
-						<span>€${totalAccommodation}</span>
-					</div>
-					<div class="cost-item">
-						<span>Alimentação:</span>
-						<span>€${totalFood}</span>
-					</div>
-					<div class="cost-item">
-						<span>Atrações:</span>
-						<span>€${totalAttractions}</span>
-					</div>
-					<div class="cost-item">
-						<span>Extras:</span>
-						<span>€${totalExtras}</span>
-					</div>
-					<div class="total-cost">
-						<span>Total:</span>
-						<span>€${grandTotal}/pessoa</span>
-					</div>
-				</div>
-			`;
-		}
-
-		function showFinancialSummary() {
-			const route = routes[currentRoute];
-			let totalTransport = 0;
-			let totalAccommodation = 0;
-			
-			// HTML para o resumo por cidade
-			const citySummaries = route.order.map(cityId => {
-				const city = route.cities[cityId];
-				const transportCost = city.transport.cost || 0;
-				const accommodationCost = city.accommodation ? city.accommodation.cost : 0;
-				const foodCost = 35; // Média por dia
-				const attractionsCost = 20; // Média por dia
-				const extrasCost = 10; // Média por dia
-				
-				totalTransport += transportCost;
-				totalAccommodation += accommodationCost;
-				
-				const cityTotal = transportCost + accommodationCost + foodCost + attractionsCost + extrasCost;
-				
-				return `
-					<div class="city-info">
-						<h3>${city.name} - ${city.dates}</h3>
-						<div class="cost-item">
-							<span>Transporte (${city.transport.type}):</span>
-							<span>€${transportCost}</span>
-						</div>
-						${city.accommodation ? `
-							<div class="cost-item">
-								<span>Hospedagem (${city.accommodation.name}):</span>
-								<span>€${accommodationCost}</span>
-							</div>
-						` : ''}
-						<div class="cost-item">
-							<span>Alimentação (estimativa):</span>
-							<span>€${foodCost}</span>
-						</div>
-						<div class="cost-item">
-							<span>Atrações (estimativa):</span>
-							<span>€${attractionsCost}</span>
-						</div>
-						<div class="cost-item">
-							<span>Extras (estimativa):</span>
-							<span>€${extrasCost}</span>
-						</div>
-						<div class="total-cost">
-							<span>Total para ${city.name}:</span>
-							<span>€${cityTotal}</span>
-						</div>
-					</div>
-				`;
-			}).join('');
-
-			// Calcular totais gerais
-			const totalDays = route.order.length;
-			const totalFood = totalDays * 35;
-			const totalAttractions = totalDays * 20;
-			const totalExtras = totalDays * 10;
-			const grandTotal = totalTransport + totalAccommodation + totalFood + totalAttractions + totalExtras;
-
-			document.getElementById('cityInfo').innerHTML = `
-				<div class="cost-summary">
-					<h2>${route.name}</h2>
-					<h3>Resumo por Cidade</h3>
-					${citySummaries}
-					
-					<div class="city-info">
-						<h3>Resumo Geral da Viagem</h3>
-						<div class="cost-item">
-							<span>Total Transportes:</span>
-							<span>€${totalTransport}</span>
-							<small>(Não inclui voo internacional)</small>
-						</div>
-						<div class="cost-item">
-							<span>Total Hospedagem:</span>
-							<span>€${totalAccommodation}</span>
-						</div>
-						<div class="cost-item">
-							<span>Total Alimentação (€35/dia):</span>
-							<span>€${totalFood}</span>
-						</div>
-						<div class="cost-item">
-							<span>Total Atrações (€20/dia):</span>
-							<span>€${totalAttractions}</span>
-						</div>
-						<div class="cost-item">
-							<span>Total Extras (€10/dia):</span>
-							<span>€${totalExtras}</span>
-						</div>
-						<div class="total-cost">
-							<span>Total da Viagem:</span>
-							<span>€${grandTotal}/pessoa</span>
-							<small>(Não inclui voo internacional)</small>
-						</div>
-					</div>
-				</div>
-			`;
-		}
-
-		// Inicializar o mapa quando a página carregar
-		window.onload = function() {
-            map = L.map('map').setView([45.0, 10.0], 5);
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 19,
-                attribution: '© OpenStreetMap contributors'
-            }).addTo(map);
-            updateMap();
-        };
-	</script>
+        // Inicializar o mapa quando a página carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verificar se a biblioteca Leaflet foi carregada
+            function initMap() {
+                if (typeof L !== 'undefined') {
+                    map = L.map('map').setView([45.0, 10.0], 5);
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        maxZoom: 19,
+                        attribution: '© OpenStreetMap contributors'
+                    }).addTo(map);
+                    updateMap();
+                } else {
+                    // Se o Leaflet ainda não estiver carregado, tente novamente em 100ms
+                    setTimeout(initMap, 100);
+                }
+            }
+            
+            initMap();
+        });
+    </script>
 </body>
 </html>
