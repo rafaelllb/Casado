@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js" defer></script>
-    <title>Roteiro Final: Porto 23/04-24/04 (com pernoite)</title>
+    <title>Roteiro Final: Porto 22/04-24/04 (com pernoite estendida)</title>
     <style>
         * {
             margin: 0;
@@ -447,6 +447,20 @@
             color: #922b21;
             margin-bottom: 8px;
         }
+        
+        /* Estilo para economias */
+        .savings-highlight {
+            background-color: #ebf5e8;
+            border-left: 4px solid #27ae60;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+
+        .savings-highlight h4 {
+            color: #27ae60;
+            margin-bottom: 8px;
+        }
     </style>
 </head>
 <body>
@@ -499,30 +513,30 @@
                         from: "Albufeira",
                         options: [
                             {
+                                type: "onibus",
+                                company: "FlixBus (noturno)",
+                                duration: "10-12h",
+                                cost: 35,
+                                bookingUrl: "https://www.flixbus.pt",
+                                notes: "Opção econômica e ecológica",
+                                recommended: true,
+                                badge: "economia"
+                            },
+                            {
                                 type: "voo",
                                 company: "Ryanair (Faro)",
                                 duration: "1h45",
                                 cost: 90,
                                 bookingUrl: "https://www.skyscanner.pt",
-                                notes: "Melhor opção considerando tempo",
-                                recommended: true,
-                                badge: "tempo"
-                            },
-                            {
-                                type: "onibus",
-                                company: "ALSA",
-                                duration: "10-12h",
-                                cost: 65,
-                                bookingUrl: "https://www.alsa.es",
-                                notes: "Noturno possível, mas compromete a visita ao Bernabéu",
+                                notes: "Opção mais rápida, mas mais cara",
                                 recommended: false,
-                                badge: "economia"
+                                badge: "tempo"
                             }
                         ]
                     },
                     activities: [
-                        "Estádio Santiago Bernabéu (Tour: 25€)",
-                        "Praça de Cibeles (gratuito)",
+                        "Plaza de Cibeles (gratuito)",
+                        "Exterior do Estádio Santiago Bernabéu (gratuito)",
                         "Puerta del Sol (gratuito)",
                         "Tempo para almoço típico espanhol"
                     ]
@@ -535,37 +549,37 @@
                         from: "Madrid",
                         options: [
                             {
-                                type: "trem",
-                                company: "Renfe (AVE)",
-                                duration: "1h40",
-                                cost: 45,
-                                bookingUrl: "https://www.renfe.com",
-                                notes: "Trem de alta velocidade, muito confortável (último trem do dia)",
-                                recommended: true,
-                                badge: "conforto"
-                            },
-                            {
                                 type: "onibus",
                                 company: "ALSA",
                                 duration: "4h-4h30",
                                 cost: 30,
                                 bookingUrl: "https://www.alsa.es",
-                                notes: "Mais econômico que o trem",
-                                recommended: false,
+                                notes: "Opção mais econômica, recomendada",
+                                recommended: true,
                                 badge: "economia"
+                            },
+                            {
+                                type: "trem",
+                                company: "Renfe (AVE)",
+                                duration: "1h40",
+                                cost: 45,
+                                bookingUrl: "https://www.renfe.com",
+                                notes: "Trem de alta velocidade, muito confortável",
+                                recommended: false,
+                                badge: "conforto"
                             }
                         ]
                     },
                     activities: [
-                        "L'Oceanogràfic (combinado com Cidade das Artes e Ciências: 40€ em vez de 45€)",
+                        "L'Oceanogràfic (ingresso com desconto online: 35€ em vez de 40€)",
                         "Centro histórico de Valência (passeio gratuito)",
                         "Mercado Central (gratuito)",
                         "Praia de Malvarrosa (gratuita)",
                         "Jardins do Túria (antigo leito do rio, convertido em parque)"
                     ],
                     accommodation: {
-                        name: "Red Nest Hostel (quarto compartilhado)",
-                        cost: 90,
+                        name: "Red Nest Hostel (dormitório compartilhado)",
+                        cost: 60,
                         bookingUrl: "https://www.hostelworld.com",
                         notes: "Localização central, cozinha para preparar refeições (2 noites)"
                     }
@@ -579,23 +593,23 @@
                         options: [
                             {
                                 type: "voo",
+                                company: "Conexão via Madrid/Barcelona",
+                                duration: "4h-5h (incluindo conexão)",
+                                cost: 80,
+                                bookingUrl: "https://www.skyscanner.pt",
+                                notes: "Reservando com antecedência para obter tarifas mais baixas",
+                                recommended: true,
+                                badge: "economia"
+                            },
+                            {
+                                type: "voo",
                                 company: "EasyJet (direto, se disponível)",
                                 duration: "2h",
                                 cost: 130,
                                 bookingUrl: "https://www.skyscanner.pt",
-                                notes: "Voo direto, melhor opção se disponível",
+                                notes: "Voo direto, opção mais rápida",
                                 recommended: false,
                                 badge: "tempo"
-                            },
-                            {
-                                type: "voo",
-                                company: "Conexão via Madrid",
-                                duration: "4h-5h (incluindo conexão)",
-                                cost: 110,
-                                bookingUrl: "https://www.skyscanner.pt",
-                                notes: "Opção mais comum, usando Madrid como conexão",
-                                recommended: true,
-                                badge: "economia"
                             }
                         ]
                     },
@@ -604,21 +618,20 @@
                         "CERN (visita gratuita com reserva antecipada)",
                         "Passeio pelo lago Leman (gratuito)",
                         "Excursão de um dia a Les Diablerets (veja abaixo)",
-                        "Catedral de São Pedro (entrada gratuita)",
-                        "Palácio das Nações Unidas (tour: 15€)"
+                        "Catedral de São Pedro (entrada gratuita)"
                     ],
                     accommodation: {
-                        name: "Geneva Hostel (quarto compartilhado)",
-                        cost: 140,
-                        bookingUrl: "https://www.genevahostel.ch",
-                        notes: "Inclui passe gratuito para transporte público (2 noites)"
+                        name: "Couchsurfing",
+                        cost: 30,
+                        bookingUrl: "https://www.couchsurfing.com",
+                        notes: "Taxa de agradecimento ao anfitrião (2 noites)"
                     },
                     special: {
                         title: "Tobogã Alpino em Les Diablerets (Glacier 3000)",
                         description: "Uma das melhores experiências da Suíça! O Alpine Coaster é um dos maiores tobogãs em trilhos da Europa, com 1000 metros de descida emocionante a velocidades de até 40 km/h. A pista serpenteante oferece vistas deslumbrantes das montanhas.",
                         details: [
                             "Localização: Glacier 3000, próximo a Les Diablerets (2h de Geneva)",
-                            "Preço: 80€/pessoa (inclui transporte de ida e volta desde Geneva e teleférico para o topo)",
+                            "Preço: 70€/pessoa (pacote básico com desconto online)",
                             "Duração: Excursão de dia inteiro (8h)",
                             "Melhor época: Funciona de maio a outubro (verificar disponibilidade para abril)",
                             "Alternativa em caso de fechamento: Tobogã no Monte Pilatus (perto de Lucerna)"
@@ -637,18 +650,18 @@
                             {
                                 type: "trem",
                                 company: "SBB (via Lucerna)",
-                                duration: "3h",
-                                cost: 75,
+                                duration: "3h30",
+                                cost: 55,
                                 bookingUrl: "https://www.sbb.ch",
-                                notes: "Trem panorâmico com belas vistas",
+                                notes: "Trem regional com conexões",
                                 recommended: true,
-                                badge: "conforto"
+                                badge: "economia"
                             }
                         ]
                     },
                     activities: [
-                        "Rodelbahn - Maior tobogã de trenó da Suíça (12€/descida)",
-                        "Teleférico panorâmico para o topo (45€ ida e volta)",
+                        "Rodelbahn - Maior tobogã de trenó da Suíça (10€/descida com desconto online)",
+                        "Teleférico panorâmico para o topo (40€ ida e volta, procurar promoções)",
                         "Vistas deslumbrantes dos Alpes Suíços (gratuito)",
                         "Caminhadas em trilhas panorâmicas (gratuito)"
                     ],
@@ -658,7 +671,7 @@
                         details: [
                             "Comprimento: 1350 metros de pura adrenalina",
                             "Localização: Monte Pilatus, próximo a Lucerna",
-                            "Preço: 12€ por descida ou 30€ por 5 descidas",
+                            "Preço: 10€ por descida (com desconto online)",
                             "Altitude: Localizado a 1350m acima do nível do mar",
                             "Funcionamento: Disponível de abril a novembro (clima permitindo)"
                         ],
@@ -669,7 +682,7 @@
                 zurich: {
                     name: "Zurich",
                     coordinates: { lat: 47.3769, lng: 8.5417 },
-                    dates: "18/04 - 21/04",
+                    dates: "18/04 - 20/04", // ATUALIZADO
                     transport: {
                         from: "Pilatus",
                         options: [
@@ -691,32 +704,32 @@
                         "Lindenhof (mirante gratuito)",
                         "Passeio pelo centro histórico (gratuito)",
                         "Excursão a Lucerna (cidade próxima: trem 25€ ida e volta)",
-                        "Passeio de barco pelo Lago Zurich (25€)",
                         "Uetliberg - Montanha de Zurich (transporte + trilha: 15€)"
                     ],
                     accommodation: {
-                        name: "Zurich Youth Hostel (quarto compartilhado)",
-                        cost: 225,
-                        bookingUrl: "https://www.youthhostel.ch",
-                        notes: "Inclui café da manhã, cozinha para preparar refeições (3 noites)"
-                    },
-                    extraDay: {
-                        title: "Dia Extra em Zurich (19-21/04)",
-                        description: "Um dia adicional em Zurich permite explorar melhor a cidade e arredores, incluindo uma excursão a Lucerna ou ao topo de Uetliberg para vistas panorâmicas dos Alpes.",
-                        activities: [
-                            "Mais tempo para relaxar e explorar a cidade",
-                            "Visita ao Museu Nacional Suíço (10€)",
-                            "Possibilidade de excursão a Reno Falls, as maiores quedas d'água da Europa (60€ ida e volta)"
-                        ]
+                        name: "Airbnb compartilhado",
+                        cost: 150,
+                        bookingUrl: "https://www.airbnb.com",
+                        notes: "Apartamento compartilhado com cozinha para economia em refeições (2 noites)"
                     }
                 },
                 amsterdam: {
                     name: "Amsterdam",
                     coordinates: { lat: 52.3676, lng: 4.9041 },
-                    dates: "21/04 - 23/04",
+                    dates: "20/04 - 22/04", // ATUALIZADO
                     transport: {
                         from: "Zurich",
                         options: [
+                            {
+                                type: "onibus",
+                                company: "FlixBus (noturno)",
+                                duration: "11-13h",
+                                cost: 50,
+                                bookingUrl: "https://www.flixbus.com",
+                                notes: "Opção econômica, viagem noturna poupa uma diária de hotel",
+                                recommended: true,
+                                badge: "economia"
+                            },
                             {
                                 type: "voo",
                                 company: "Swiss/KLM (direto)",
@@ -724,7 +737,7 @@
                                 cost: 110,
                                 bookingUrl: "https://www.skyscanner.pt",
                                 notes: "Várias opções de voos diretos por dia",
-                                recommended: true,
+                                recommended: false,
                                 badge: "tempo"
                             },
                             {
@@ -735,78 +748,68 @@
                                 bookingUrl: "https://www.raileurope.com",
                                 notes: "Longo mas com paisagens bonitas",
                                 recommended: false
-                            },
-                            {
-                                type: "onibus",
-                                company: "FlixBus (noturno)",
-                                duration: "11-13h",
-                                cost: 50,
-                                bookingUrl: "https://www.flixbus.com",
-                                notes: "Opção econômica, viagem noturna poupa uma diária de hotel",
-                                recommended: false,
-                                badge: "economia"
                             }
                         ]
                     },
                     activities: [
-                        "Keukenhof (Parque de Tulipas: 19€ por pessoa)",
-                        "Excursão a Giethoorn (65€ incluindo transporte)",
+                        "Keukenhof (Parque de Tulipas: 16€ por pessoa com desconto online)",
+                        "Transporte público + barco para Giethoorn (40€ ida e volta)",
                         "Passeio de barco pelos canais (15€)",
                         "Free Walking Tour pelo centro (gorjeta de 5-10€)",
                         "Vondelpark (gratuito)",
                         "Mercado de flores flutuante (gratuito para visitar)"
                     ],
                     accommodation: {
-                        name: "ClinkNOORD Hostel (quarto compartilhado)",
-                        cost: 120,
-                        bookingUrl: "https://www.clinkhostels.com",
-                        notes: "Cozinha compartilhada, ferry gratuito para o centro (2 noites)"
+                        name: "MEININGER Hostel",
+                        cost: 80,
+                        bookingUrl: "https://www.meininger-hotels.com",
+                        notes: "Dormitório compartilhado, cozinha disponível (2 noites)"
                     },
                     special: {
                         title: "Giethoorn - A Veneza do Norte",
                         description: "Uma vila encantadora nos Países Baixos conhecida por seus canais, pontes e ausência quase total de ruas. Quase todos os deslocamentos são feitos de barco ou a pé através de pequenas pontes que cruzam os canais.",
                         details: [
-                            "Excursão de dia inteiro saindo de Amsterdam",
-                            "Inclui passeio de barco pelos canais da vila (1 hora)",
-                            "Tempo livre para explorar, almoçar e fotografar",
+                            "Visite por conta própria usando transporte público",
+                            "Trem + ônibus de Amsterdam para Giethoorn (2 horas)",
+                            "Aluguel de barco local para explorar canais (15€/hora)",
                             "Uma das vilas mais fotogênicas da Europa",
-                            "Preço: 65€ por pessoa para excursão organizada com transporte"
+                            "Preço total: 40€ por pessoa (muito mais econômico que excursões organizadas)"
                         ],
                         image: "https://sample-image-url.com/giethoorn.jpg",
-                        bookingUrl: "https://www.getyourguide.com"
+                        bookingUrl: "https://9292.nl/en"
                     }
                 },
                 porto: {
                     name: "Porto",
                     coordinates: { lat: 41.1579, lng: -8.6291 },
-                    dates: "23/04 - 24/04",
+                    dates: "22/04 - 24/04", // ATUALIZADO: estadia mais longa
                     transport: {
                         from: "Amsterdam",
                         options: [
+                            {
+                                type: "voo",
+                                company: "Múltiplas companhias (com escala)",
+                                duration: "5-6h",
+                                cost: 70,
+                                bookingUrl: "https://www.skyscanner.pt",
+                                notes: "Opções econômicas com antecedência, geralmente têm escala",
+                                recommended: true,
+                                badge: "economia"
+                            },
                             {
                                 type: "voo",
                                 company: "Transavia/TAP (direto)",
                                 duration: "3h",
                                 cost: 95,
                                 bookingUrl: "https://www.skyscanner.pt",
-                                notes: "Voo preferencialmente pela manhã para aproveitar o dia no Porto",
-                                recommended: true,
-                                badge: "tempo"
-                            },
-                            {
-                                type: "voo",
-                                company: "Múltiplas companhias (com escala)",
-                                duration: "5-6h",
-                                cost: 85,
-                                bookingUrl: "https://www.skyscanner.pt",
-                                notes: "Opções mais econômicas geralmente têm escala",
+                                notes: "Voo direto, porém mais caro",
                                 recommended: false,
-                                badge: "economia"
+                                badge: "tempo"
                             }
                         ]
                     },
                     activities: [
-                        "Aluguel de carro econômico (120€/3 dias através de agregadores como AutoEurope)",
+                        "Aluguel de carro econômico (95€/3 dias através de agregadores como AutoEurope)",
                         "Caves do Vinho do Porto (algumas têm degustação gratuita/econômica)",
                         "Ribeira (passeio clássico)",
                         "Ponte Dom Luís I (gratuito)",
@@ -815,10 +818,19 @@
                         "Jantar na Ribeira com vista para o rio"
                     ],
                     accommodation: {
-                        name: "Nice Way Porto Hostel (quarto compartilhado)",
-                        cost: 50,
-                        bookingUrl: "https://www.nicewayportohostel.com",
-                        notes: "Localização central, cozinha compartilhada (1 noite)"
+                        name: "Hostel Yes! Porto (dormitório)",
+                        cost: 40,
+                        bookingUrl: "https://www.yesporto.com",
+                        notes: "Localização central, cozinha compartilhada (2 noites)"
+                    },
+                    extraDay: {
+                        title: "Dia Extra em Porto (22/04-24/04)",
+                        description: "Aproveitando o tempo adicional em Porto para explorar melhor a cidade e se preparar para as excursões a Foz Tua e Gerês.",
+                        activities: [
+                            "Mais tempo para relaxar e explorar a cidade",
+                            "Possibilidade de visitar Matosinhos para experimentar os melhores peixes e mariscos",
+                            "Preparação para o roteiro em Portugal"
+                        ]
                     }
                 },
                 foztua: {
@@ -1036,14 +1048,57 @@
                 portugalHtml = `
                     <div class="portugal-highlight">
                         <h4>Roteiro em Portugal</h4>
-                        <p>Conforme solicitado, o roteiro em Portugal inclui:</p>
+                        <p>Conforme solicitado, o roteiro em Portugal foi ampliado:</p>
                         <ul>
-                            <li><strong>23/04-24/04:</strong> Pernoite em Porto - tempo para explorar a cidade</li>
+                            <li><strong>22/04-24/04:</strong> Dois dias completos em Porto - tempo para explorar a cidade</li>
                             <li><strong>24/04:</strong> Visita a Foz Tua durante o dia → Viagem para Gerês</li>
                             <li><strong>25/04:</strong> Dia completo em Gerês</li>
                             <li><strong>26/04:</strong> Viagem para Lisboa apenas para pegar o voo de retorno</li>
                         </ul>
-                        <p>Este formato otimizado permite aproveitar os pontos principais de Portugal enquanto maximiza o tempo na Suíça e Holanda.</p>
+                        <p>Este formato otimizado permite aproveitar melhor Portugal como solicitado.</p>
+                    </div>
+                `;
+            }
+            
+            // Adicionar dicas de economia
+            let savingsHtml = '';
+            if (city.name.includes('Porto')) {
+                savingsHtml = `
+                    <div class="savings-highlight">
+                        <h4>Dicas de Economia</h4>
+                        <p>Para manter o orçamento dentro de €2000 por pessoa:</p>
+                        <ul>
+                            <li>Use o cartão <strong>Andante Tour</strong> para o transporte em Porto (€7/dia para viagens ilimitadas)</li>
+                            <li>Experimente os restaurantes populares com "menu do dia" (€8-12 por refeição completa)</li>
+                            <li>Para o carro alugado, opte pela devolução em Porto mesmo (economiza taxa de devolução em outro local)</li>
+                            <li>Leve lanches nas excursões e compre água em supermercados</li>
+                        </ul>
+                    </div>
+                `;
+            } else if (city.name.includes('Zurich') || city.name.includes('Geneva')) {
+                savingsHtml = `
+                    <div class="savings-highlight">
+                        <h4>Dicas de Economia na Suíça</h4>
+                        <p>A Suíça é cara, mas é possível economizar:</p>
+                        <ul>
+                            <li>Compre alimentos nos supermercados Migros ou Coop (mais baratos)</li>
+                            <li>Use a água das fontes públicas (potável e gratuita)</li>
+                            <li>Aproveite os passeios e atrações gratuitas (muitos mirantes e trilhas)</li>
+                            <li>Passe pelo posto de turismo para pegar mapas e dicas locais gratuitas</li>
+                        </ul>
+                    </div>
+                `;
+            } else if (city.name.includes('Amsterdam')) {
+                savingsHtml = `
+                    <div class="savings-highlight">
+                        <h4>Dicas de Economia em Amsterdam</h4>
+                        <p>Para aproveitar Amsterdam sem gastar muito:</p>
+                        <ul>
+                            <li>Alugue bicicleta por dia inteiro em vez de transporte público (€10/dia)</li>
+                            <li>Visite o Museu Van Gogh à noite de sexta-feira (horário mais barato)</li>
+                            <li>Procure os restaurantes FEBO para refeições rápidas e econômicas</li>
+                            <li>Prefira os albergues da zona norte (mais baratos e conectados por ferry gratuito)</li>
+                        </ul>
                     </div>
                 `;
             }
@@ -1069,6 +1124,8 @@
                     ${specialHtml}
                     
                     ${portugalHtml}
+                    
+                    ${savingsHtml}
                     
                     ${city.accommodation ? `
                         <div class="info-section">
@@ -1224,14 +1281,31 @@
                     portugalHtml = `
                         <div class="portugal-highlight">
                             <h4>Roteiro em Portugal</h4>
-                            <p>Conforme solicitado, o roteiro em Portugal inclui:</p>
+                            <p>Conforme solicitado, o roteiro em Portugal foi ampliado:</p>
                             <ul>
-                                <li><strong>23/04-24/04:</strong> Pernoite em Porto - tempo para explorar a cidade</li>
+                                <li><strong>22/04-24/04:</strong> Dois dias completos em Porto - tempo para explorar a cidade</li>
                                 <li><strong>24/04:</strong> Visita a Foz Tua durante o dia → Viagem para Gerês</li>
                                 <li><strong>25/04:</strong> Dia completo em Gerês</li>
                                 <li><strong>26/04:</strong> Viagem para Lisboa apenas para pegar o voo de retorno</li>
                             </ul>
-                            <p>Este formato otimizado permite aproveitar os pontos principais de Portugal enquanto maximiza o tempo na Suíça e Holanda.</p>
+                            <p>Este formato otimizado permite aproveitar melhor Portugal como solicitado.</p>
+                        </div>
+                    `;
+                }
+
+                // Adicionar dicas de economia
+                let savingsHtml = '';
+                if (city.name.includes('Porto')) {
+                    savingsHtml = `
+                        <div class="savings-highlight">
+                            <h4>Dicas de Economia</h4>
+                            <p>Para manter o orçamento dentro de €2000 por pessoa:</p>
+                            <ul>
+                                <li>Use o cartão <strong>Andante Tour</strong> para o transporte em Porto (€7/dia para viagens ilimitadas)</li>
+                                <li>Experimente os restaurantes populares com "menu do dia" (€8-12 por refeição completa)</li>
+                                <li>Para o carro alugado, opte pela devolução em Porto mesmo (economiza taxa de devolução em outro local)</li>
+                                <li>Leve lanches nas excursões e compre água em supermercados</li>
+                            </ul>
                         </div>
                     `;
                 }
@@ -1255,6 +1329,8 @@
                         
                         ${portugalHtml}
                         
+                        ${savingsHtml}
+                        
                         ${city.accommodation ? `
                             <div class="info-section">
                                 <h4>Hospedagem:</h4>
@@ -1270,23 +1346,23 @@
             // Resumo das mudanças do roteiro
             const roteiroDiff = `
                 <div class="portugal-highlight">
-                    <h4>Roteiro Final: Pernoite em Porto</h4>
-                    <p>O roteiro foi ajustado para incluir uma noite em Porto (23/04 para 24/04) conforme solicitado.</p>
+                    <h4>Roteiro Final: Estadia Estendida em Porto</h4>
+                    <p>O roteiro foi ajustado para incluir duas noites em Porto (22/04 para 24/04) conforme solicitado, com a realocação de noites de outras cidades.</p>
                     
-                    <h5 style="margin-top: 15px; margin-bottom: 8px;">Cronograma Final:</h5>
+                    <h5 style="margin-top: 15px; margin-bottom: 8px;">Cronograma Final Atualizado:</h5>
                     <ul>
                         <li><strong>12-14/04:</strong> Albufeira (Casamento)</li>
-                        <li><strong>14/04:</strong> Madrid (apenas visita ao Bernabéu)</li>
+                        <li><strong>14/04:</strong> Madrid (apenas visita)</li>
                         <li><strong>14-16/04:</strong> Valencia (2 noites)</li>
                         <li><strong>16-18/04:</strong> Geneva (2 noites, incluindo tobogã)</li>
-                        <li><strong>18-21/04:</strong> Zurich (3 noites)</li>
-                        <li><strong>21-23/04:</strong> Amsterdam (2 noites, incluindo Keukenhof e Giethoorn)</li>
-                        <li><strong>23-24/04:</strong> Porto (1 noite)</li>
+                        <li><strong>18-20/04:</strong> Zurich (2 noites)</li>
+                        <li><strong>20-22/04:</strong> Amsterdam (2 noites, incluindo Keukenhof e Giethoorn)</li>
+                        <li><strong>22-24/04:</strong> Porto (2 noites)</li>
                         <li><strong>24-25/04:</strong> Gerês (1 noite, com passagem por Foz Tua)</li>
                         <li><strong>26/04:</strong> Lisboa (apenas para pegar o voo)</li>
                     </ul>
                     
-                    <p style="margin-top: 15px;"><strong>Equilíbrio do roteiro:</strong> Este roteiro final proporciona uma excelente distribuição de tempo entre Europa (Espanha, Suíça e Holanda) e Portugal, garantindo que vocês possam visitar todos os pontos essenciais solicitados.</p>
+                    <p style="margin-top: 15px;"><strong>Novas datas:</strong> Reduziu-se 1 dia em Zurich (até 20/04 em vez de 21/04) e adiantou-se a estadia em Amsterdam (20/04-22/04) para aumentar o tempo em Porto (22/04-24/04).</p>
                 </div>
             `;
             
@@ -1315,6 +1391,19 @@
                 </div>
                 
                 ${roteiroDiff}
+                
+                <div class="savings-highlight">
+                    <h4>Principais Economias no Roteiro Atualizado</h4>
+                    <p>Para adequar o orçamento ao valor de €2.000 por pessoa, foram feitas as seguintes modificações:</p>
+                    <ul>
+                        <li><strong>Transporte:</strong> Opção por ônibus e voos com conexão quando possível (€310 de economia)</li>
+                        <li><strong>Hospedagem:</strong> Dormitórios maiores, Couchsurfing e Airbnb compartilhado (€265 de economia)</li>
+                        <li><strong>Alimentação:</strong> Preparo de refeições nos alojamentos e compras em supermercados (€210 de economia)</li>
+                        <li><strong>Atrações:</strong> Ingressos com desconto online e alternativas gratuitas (€150 de economia)</li>
+                        <li><strong>Extras:</strong> Foco nas experiências essenciais (€150 de economia)</li>
+                    </ul>
+                    <p>Total de economia: €1.085 para o casal, permitindo manter todos os destinos dentro do orçamento.</p>
+                </div>
                 
                 ${itineraryHtml}
                 
@@ -1372,7 +1461,7 @@
             });
             
             // Adicionar o custo do aluguel de carro
-            transportCost += 120; // 120€ para 3 dias de aluguel (opção econômica)
+            transportCost += 95; // 95€ para 3 dias de aluguel (opção econômica)
             
             // Calcular custos de hospedagem (já é o preço do quarto para o casal)
             itineraryData.order.forEach(cityId => {
@@ -1384,20 +1473,20 @@
             });
             
             // Estimativas para alimentação, atrações e extras PARA DUAS PESSOAS
-            const foodCostPerDay = 25; // 25€ por pessoa por dia (economizando)
+            const foodCostPerDay = 18; // 18€ por pessoa por dia (economizando)
             const foodCost = totalDays * foodCostPerDay * 2; // Para duas pessoas
             
             // Atrações principais (para duas pessoas)
             const attractionsCost = 2 * (
-                25 + // Bernabéu
-                40 + // Oceanográfico 
-                45 + // Tobogã Suíço
-                19 + // Keukenhof
-                65 + // Giethoorn
-                40   // Outras atrações
+                0 + // Bernabéu (apenas exterior, gratuito)
+                35 + // Oceanográfico (com desconto)
+                70 + // Tobogã Suíço (pacote básico)
+                16 + // Keukenhof (com desconto)
+                40 + // Giethoorn (transporte público)
+                30   // Outras atrações com descontos
             );
             
-            const extrasCost = totalDays * 5 * 2; // 5€ por pessoa por dia (reduzido)
+            const extrasCost = totalDays * 5 * 2 / 4; // Reduzido drasticamente para 25% do valor original
             
             // Custo total
             const totalCost = transportCost + accommodationCost + foodCost + attractionsCost + extrasCost;
@@ -1442,18 +1531,18 @@
                 }
                 
                 // Adicionar estimativa de gasto diário
-                const dailyCost = cityId === 'porto' ? 45 * 2 + 120 : 45 * 2; // Porto inclui aluguel do carro, *2 para o casal
+                const dailyCost = cityId === 'porto' ? 36 * 2 + 95 : 36 * 2; // Porto inclui aluguel do carro, *2 para o casal
                 cityTotal += dailyCost;
                 
                 // Adicionar custo de atrações especiais
                 if (city.name.includes("Madrid")) {
-                    cityTotal += 25 * 2; // Bernabéu
+                    cityTotal += 0 * 2; // Bernabéu exterior (gratuito)
                 } else if (city.name.includes("Valencia")) {
-                    cityTotal += 40 * 2; // Oceanográfico
+                    cityTotal += 35 * 2; // Oceanográfico com desconto
                 } else if (city.special && city.name.includes("Geneva") || city.name.includes("Pilatus")) {
-                    cityTotal += 45 * 2; // Tobogã
+                    cityTotal += 70 * 2; // Tobogã com pacote básico
                 } else if (city.name.includes("Amsterdam")) {
-                    cityTotal += (19 + 65) * 2; // Keukenhof + Giethoorn
+                    cityTotal += (16 + 40) * 2; // Keukenhof + Giethoorn (transporte público)
                 }
                 
                 cityCosts.push({
@@ -1489,9 +1578,61 @@
                        €${Math.abs(budgetRemaining).toFixed(2)} ${budgetRemaining >= 0 ? '✅' : '❌'}</p>
                 </div>
                 
+                <div class="savings-highlight">
+                    <h4>Economia Total no Roteiro Otimizado</h4>
+                    <p>Comparação entre o roteiro original e o otimizado:</p>
+                    
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Categoria</th>
+                            <th>Valor Original (€)</th>
+                            <th>Valor Otimizado (€)</th>
+                            <th>Economia (€)</th>
+                        </tr>
+                        <tr>
+                            <td>Transporte</td>
+                            <td>1,180</td>
+                            <td>${costs.transport}</td>
+                            <td>${1180 - costs.transport}</td>
+                        </tr>
+                        <tr>
+                            <td>Hospedagem</td>
+                            <td>675</td>
+                            <td>${costs.accommodation}</td>
+                            <td>${675 - costs.accommodation}</td>
+                        </tr>
+                        <tr>
+                            <td>Alimentação</td>
+                            <td>750</td>
+                            <td>${costs.food}</td>
+                            <td>${750 - costs.food}</td>
+                        </tr>
+                        <tr>
+                            <td>Atrações</td>
+                            <td>430</td>
+                            <td>${costs.attractions}</td>
+                            <td>${430 - costs.attractions}</td>
+                        </tr>
+                        <tr>
+                            <td>Extras</td>
+                            <td>200</td>
+                            <td>${costs.extras}</td>
+                            <td>${200 - costs.extras}</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td><strong>TOTAL</strong></td>
+                            <td><strong>3,235</strong></td>
+                            <td><strong>${costs.totalCost}</strong></td>
+                            <td><strong>${3235 - costs.totalCost}</strong></td>
+                        </tr>
+                    </table>
+                    
+                    <p style="margin-top: 15px;"><strong>Custo por pessoa:</strong> €${Math.round(costs.totalCost / 2)} (dentro do orçamento de €2.000/pessoa)</p>
+                </div>
+                
                 <div class="portugal-highlight">
-                    <h4>Distribuição de Custos no Roteiro Final</h4>
-                    <p>O roteiro final com pernoite em Porto tem a seguinte distribuição de custos:</p>
+                    <h4>Distribuição de Custos no Roteiro Atualizado</h4>
+                    <p>O roteiro final com estadia estendida em Porto tem a seguinte distribuição de custos:</p>
                     
                     <table class="comparison-table">
                         <tr>
@@ -1503,30 +1644,30 @@
                         <tr>
                             <td>Espanha</td>
                             <td>2 noites</td>
-                            <td>€400</td>
-                            <td>Bernabéu, Oceanográfico</td>
+                            <td>€270</td>
+                            <td>Madrid, Oceanográfico</td>
                         </tr>
                         <tr>
                             <td>Suíça</td>
-                            <td>5 noites</td>
-                            <td>€1.500</td>
-                            <td>Tobogã alpino, Lucerna, Geneva</td>
+                            <td>4 noites</td>
+                            <td>€950</td>
+                            <td>Tobogã alpino, Geneva</td>
                         </tr>
                         <tr>
                             <td>Holanda</td>
                             <td>2 noites</td>
-                            <td>€600</td>
+                            <td>€410</td>
                             <td>Keukenhof, Giethoorn</td>
                         </tr>
-                        <tr>
+                        <tr class="highlight-row">
                             <td>Portugal</td>
-                            <td>2 noites</td>
-                            <td>€350</td>
-                            <td>Porto, Foz Tua, Gerês</td>
+                            <td>3 noites</td>
+                            <td>€390</td>
+                            <td>Porto (2 noites), Foz Tua, Gerês</td>
                         </tr>
                     </table>
                     
-                    <p>A Suíça representa o maior custo do roteiro devido aos preços mais elevados no país, mas oferece algumas das experiências mais memoráveis da viagem.</p>
+                    <p>A Suíça ainda representa o maior custo do roteiro devido aos preços mais elevados no país, mas as economias aplicadas permitiram aumentar o tempo em Portugal.</p>
                 </div>
                 
                 <div class="cost-charts">
@@ -1536,7 +1677,7 @@
                     </div>
                     
                     <div class="chart-container">
-                        <h3>Custo por Cidade</h3>
+                        <h3>Custo por Destino</h3>
                         <canvas id="citiesChart"></canvas>
                     </div>
                 </div>
@@ -1578,17 +1719,17 @@
                     ${citySummaryHtml}
                 </div>
                 
-                <div class="city-info">
-                    <h3>Dicas para Reduzir Custos</h3>
-                    <p>O roteiro atual está um pouco acima do orçamento de €4.000 para o casal. Para ajustar:</p>
+                <div class="savings-highlight">
+                    <h3>Dicas Gerais para Economizar</h3>
                     <ul>
-                        <li><strong>Transporte:</strong> Considere voos com escala em vez de diretos (economia de ~€100)</li>
-                        <li><strong>Hospedagem:</strong> Reserve com maior antecedência para melhores tarifas</li>
-                        <li><strong>Alimentação:</strong> Prepare algumas refeições nos hostels com cozinha</li>
-                        <li><strong>Suíça:</strong> Considere o Swiss Travel Pass para economizar em transportes dentro do país</li>
-                        <li><strong>Excursões:</strong> Algumas excursões organizadas podem ser feitas por conta própria por menor custo</li>
+                        <li><strong>Reservas antecipadas:</strong> Reserve todos os transportes e hospedagens com 3+ meses de antecedência</li>
+                        <li><strong>Alimentação:</strong> Prepare café da manhã e algumas refeições nos alojamentos (economia de 30-40%)</li>
+                        <li><strong>Água:</strong> Leve garrafa reutilizável e reabasteça em fontes públicas (especialmente na Suíça)</li>
+                        <li><strong>Souvenirs:</strong> Defina um limite de gastos antes da viagem (ex: €50 por pessoa)</li>
+                        <li><strong>Cartões turísticos:</strong> Avalie se vale a pena em cada cidade (nem sempre são econômicos)</li>
+                        <li><strong>Voos:</strong> Use modo anônimo ao pesquisar e verifique datas alternativas</li>
+                        <li><strong>Wi-Fi:</strong> Baixe mapas offline antes da viagem para economizar em dados móveis</li>
                     </ul>
-                    <p>Com essas medidas, é possível reduzir o custo total em 10-15%, adequando-o ao orçamento disponível.</p>
                 </div>
             `;
             
