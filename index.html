@@ -412,7 +412,7 @@
                         options: [
                             {
                                 type: "voo",
-                                company: "Iberia/Ryanair (Faro)",
+                                company: "Ryanair (Faro)",
                                 duration: "1h45",
                                 cost: 90,
                                 bookingUrl: "https://www.skyscanner.pt",
@@ -426,8 +426,9 @@
                                 duration: "10-12h",
                                 cost: 65,
                                 bookingUrl: "https://www.alsa.es",
-                                notes: "Muito longo, não recomendado",
-                                recommended: false
+                                notes: "Longo, mas possível com viagem noturna para economizar uma noite de hospedagem",
+                                recommended: false,
+                                badge: "economia"
                             },
                             {
                                 type: "trem",
@@ -442,15 +443,16 @@
                     },
                     activities: [
                         "Estádio Santiago Bernabéu (Tour: 25€)",
-                        "Plaza Mayor",
-                        "Museu do Prado",
-                        "Parque Retiro",
-                        "Palácio Real"
+                        "Plaza Mayor (gratuito)",
+                        "Parque Retiro (gratuito)",
+                        "Mercado San Miguel (apenas consumo)",
+                        "Palácio Real (visita exterior gratuita)"
                     ],
                     accommodation: {
-                        name: "Hostel Madrid Motion",
-                        cost: 60,
-                        bookingUrl: "https://www.hostelworld.com"
+                        name: "Hostel Madrid Motion (quarto compartilhado)",
+                        cost: 50,
+                        bookingUrl: "https://www.hostelworld.com",
+                        notes: "Café da manhã incluído, cozinha comunitária disponível"
                     }
                 },
                 valencia: {
@@ -467,7 +469,7 @@
                                 cost: 45,
                                 bookingUrl: "https://www.renfe.com",
                                 notes: "Trem de alta velocidade, muito confortável",
-                                recommended: true,
+                                recommended: false,
                                 badge: "conforto"
                             },
                             {
@@ -477,7 +479,7 @@
                                 cost: 30,
                                 bookingUrl: "https://www.alsa.es",
                                 notes: "Mais econômico que o trem",
-                                recommended: false,
+                                recommended: true,
                                 badge: "economia"
                             },
                             {
@@ -492,15 +494,16 @@
                         ]
                     },
                     activities: [
-                        "L'Oceanogràfic (Maior oceanário da Europa: 35€)",
-                        "Cidade das Artes e Ciências",
-                        "Centro histórico de Valência",
-                        "Praia de Malvarrosa"
+                        "L'Oceanogràfic (combinado com Cidade das Artes e Ciências: 40€ em vez de 45€)",
+                        "Centro histórico de Valência (passeio gratuito)",
+                        "Mercado Central (gratuito)",
+                        "Praia de Malvarrosa (gratuita)"
                     ],
                     accommodation: {
-                        name: "Hostel Valencia Lounge",
-                        cost: 64,
-                        bookingUrl: "https://www.hostelworld.com"
+                        name: "Red Nest Hostel (quarto compartilhado)",
+                        cost: 45,
+                        bookingUrl: "https://www.hostelworld.com",
+                        notes: "Localização central, cozinha para preparar refeições"
                     }
                 },
                 geneva: {
@@ -512,11 +515,11 @@
                         options: [
                             {
                                 type: "voo",
-                                company: "EasyJet/Swiss",
+                                company: "EasyJet (buscando com antecedência)",
                                 duration: "2h",
-                                cost: 150,
+                                cost: 120,
                                 bookingUrl: "https://www.skyscanner.pt",
-                                notes: "Única opção viável para esta distância",
+                                notes: "Busque voos com 3-4 meses de antecedência para melhores preços",
                                 recommended: true,
                                 badge: "tempo"
                             },
@@ -541,16 +544,17 @@
                         ]
                     },
                     activities: [
-                        "Jet d'Eau",
-                        "CERN (visita gratuita com reserva)",
-                        "Passeio pelo lago Leman",
-                        "Catedral de São Pedro",
-                        "Palácio das Nações"
+                        "Jet d'Eau (gratuito)",
+                        "CERN (visita gratuita com reserva antecipada)",
+                        "Passeio pelo lago Leman (gratuito)",
+                        "Parques públicos e Jardim Botânico (gratuito)",
+                        "Catedral de São Pedro (entrada gratuita)"
                     ],
                     accommodation: {
-                        name: "Geneva Hostel",
-                        cost: 180,
-                        bookingUrl: "https://www.genevahostel.ch"
+                        name: "Geneva Hostel (quarto compartilhado)",
+                        cost: 140,
+                        bookingUrl: "https://www.genevahostel.ch",
+                        notes: "Inclui passe gratuito para transporte público"
                     }
                 },
                 zurich: {
@@ -566,7 +570,7 @@
                                 duration: "2h45-3h",
                                 cost: 60,
                                 bookingUrl: "https://www.sbb.ch",
-                                notes: "Excelente, vistas panorâmicas",
+                                notes: "Excelente, vistas panorâmicas (conforme solicitado)",
                                 recommended: true,
                                 badge: "conforto"
                             },
@@ -592,16 +596,17 @@
                         ]
                     },
                     activities: [
-                        "Lago Zurich",
-                        "Bahnhofstrasse (rua de compras)",
-                        "Museu Nacional Suíço",
-                        "Grossmünster",
-                        "Passeio pelo distrito financeiro"
+                        "Lago Zurich (passeio gratuito)",
+                        "Bahnhofstrasse (vitrine-shopping gratuito)",
+                        "Lindenhof (mirante gratuito)",
+                        "Passeio pelo centro histórico (gratuito)",
+                        "Explorar margens do rio Limmat (gratuito)"
                     ],
                     accommodation: {
-                        name: "Youth Hostel Zurich",
-                        cost: 200,
-                        bookingUrl: "https://www.youthhostel.ch"
+                        name: "Zurich Youth Hostel (quarto compartilhado)",
+                        cost: 150,
+                        bookingUrl: "https://www.youthhostel.ch",
+                        notes: "Inclui café da manhã, cozinha para preparar refeições"
                     }
                 },
                 amsterdam: {
@@ -613,12 +618,12 @@
                         options: [
                             {
                                 type: "voo",
-                                company: "KLM/Swiss/EasyJet",
+                                company: "EasyJet (reserve com antecedência)",
                                 duration: "1h40",
-                                cost: 100,
+                                cost: 90,
                                 bookingUrl: "https://www.skyscanner.pt",
                                 notes: "Melhor opção considerando distância",
-                                recommended: true,
+                                recommended: false,
                                 badge: "tempo"
                             },
                             {
@@ -632,27 +637,28 @@
                             },
                             {
                                 type: "onibus",
-                                company: "FlixBus",
+                                company: "FlixBus (noturno)",
                                 duration: "11-13h",
-                                cost: 60,
+                                cost: 50,
                                 bookingUrl: "https://www.flixbus.com",
-                                notes: "Opção noturna possível",
-                                recommended: false,
+                                notes: "Opção noturna economiza uma noite de hospedagem",
+                                recommended: true,
                                 badge: "economia"
                             }
                         ]
                     },
                     activities: [
-                        "Keukenhof (Jardim de Tulipas: 19€)",
-                        "Passeio de barco pelos canais",
-                        "Museu Van Gogh",
-                        "Casa de Anne Frank",
-                        "Vondelpark"
+                        "Keukenhof (Jardim de Tulipas: 19€ - reserve online com antecedência)",
+                        "Free Walking Tour pelo centro (gorjeta de 5-10€)",
+                        "Vondelpark (gratuito)",
+                        "Albert Cuyp Market (gratuito para visitar)",
+                        "NDSM Wharf - distrito artístico (gratuito)"
                     ],
                     accommodation: {
-                        name: "Flying Pig Downtown",
-                        cost: 160,
-                        bookingUrl: "https://www.flyingpig.nl"
+                        name: "ClinkNOORD Hostel (quarto compartilhado)",
+                        cost: 120,
+                        bookingUrl: "https://www.clinkhostels.com",
+                        notes: "Cozinha compartilhada, ferry gratuito para o centro"
                     }
                 },
                 porto: {
@@ -664,11 +670,11 @@
                         options: [
                             {
                                 type: "voo",
-                                company: "TAP/Transavia/Ryanair",
+                                company: "Ryanair/Transavia (com antecedência)",
                                 duration: "3h",
-                                cost: 120,
+                                cost: 85,
                                 bookingUrl: "https://www.skyscanner.pt",
-                                notes: "Única opção viável para esta distância",
+                                notes: "Reservando com 3-4 meses de antecedência para melhores preços",
                                 recommended: true,
                                 badge: "tempo"
                             },
@@ -684,16 +690,17 @@
                         ]
                     },
                     activities: [
-                        "Retirada de carro alugado (150€/3 dias)",
-                        "Caves do Vinho do Porto",
-                        "Livraria Lello",
-                        "Torre dos Clérigos",
-                        "Ribeira"
+                        "Aluguel de carro econômico (120€/3 dias através de agregadores como AutoEurope)",
+                        "Caves do Vinho do Porto (algumas têm degustação gratuita/econômica)",
+                        "Ribeira (passeio gratuito)",
+                        "Ponte Dom Luís I (gratuito)",
+                        "Miradouros da cidade (gratuitos)"
                     ],
                     accommodation: {
-                        name: "Yes! Porto Hostel",
-                        cost: 30,
-                        bookingUrl: "https://www.yesporto.com"
+                        name: "Nice Way Porto Hostel (quarto compartilhado)",
+                        cost: 25,
+                        bookingUrl: "https://www.nicewayportohostel.com",
+                        notes: "Localização central, cozinha compartilhada"
                     }
                 },
                 foztua: {
@@ -714,15 +721,17 @@
                     coordinates: { lat: 41.7186, lng: -8.1668 },
                     dates: "24/04 - 25/04",
                     activities: [
-                        "Trilha Cascata do Arado",
-                        "Ponte da Misarela",
-                        "Miradouro da Pedra Bela",
-                        "Lagoas naturais"
+                        "Trilha Cascata do Arado (gratuita)",
+                        "Ponte da Misarela (gratuita)",
+                        "Miradouro da Pedra Bela (gratuito)",
+                        "Lagoas naturais (gratuitas)",
+                        "Piquenique na natureza (economia em refeições)"
                     ],
                     accommodation: {
-                        name: "Casa da Lage Guest House",
-                        cost: 75,
-                        bookingUrl: "https://www.booking.com"
+                        name: "Albergue de Campo (tipo rural)",
+                        cost: 50,
+                        bookingUrl: "https://www.booking.com",
+                        notes: "Opção com cozinha para preparar refeições"
                     },
                     transport: {
                         special: "Continuação com carro alugado"
@@ -758,15 +767,17 @@
                         ]
                     },
                     activities: [
-                        "Passeio final por Lisboa",
-                        "Jantar de despedida",
-                        "Preparação para o voo",
+                        "Torre de Belém (gratuito para visualizar exterior)",
+                        "Miradouros da cidade (gratuitos)",
+                        "Alfama (passeio gratuito)",
+                        "Jantar de despedida (reservar com antecedência para melhores preços)",
                         "Retorno ao Brasil (26/04)"
                     ],
                     accommodation: {
-                        name: "Hotel Lisboa Plaza",
-                        cost: 90,
-                        bookingUrl: "https://www.lisbonplazahotel.com"
+                        name: "Lisbon Destination Hostel",
+                        cost: 60,
+                        bookingUrl: "https://www.lisbondestinationhostel.com",
+                        notes: "Localizado na estação de trem Rossio, excelente localização"
                     }
                 }
             },
@@ -1102,18 +1113,28 @@
             itineraryData.order.forEach(cityId => {
                 const city = itineraryData.cities[cityId];
                 if (city.transport && city.transport.options) {
-                    // Encontrar a opção recomendada
-                    const recommendedOption = city.transport.options.find(option => option.recommended);
-                    if (recommendedOption) {
-                        transportCost += recommendedOption.cost;
+                    // Encontrar a opção mais econômica para cada trecho (exceto Geneva-Zurich que usa trem)
+                    let cheapestOption;
+                    
+                    if (city.name === "Zurich") {
+                        // Para Zurich, usar especificamente o trem (conforme solicitado)
+                        cheapestOption = city.transport.options.find(option => option.type === "trem");
+                    } else {
+                        // Ordenar as opções por custo
+                        const sortedOptions = [...city.transport.options].sort((a, b) => a.cost - b.cost);
+                        cheapestOption = sortedOptions[0]; // Pegar a mais barata
+                    }
+                    
+                    if (cheapestOption) {
+                        transportCost += cheapestOption.cost;
                     }
                 }
             });
             
-            // Adicionar o custo do aluguel de carro (já presente nas atividades do Porto)
-            transportCost += 150; // 150€ para 3 dias de aluguel
+            // Adicionar o custo do aluguel de carro (já reduzido)
+            transportCost += 120; // 120€ para 3 dias de aluguel (opção econômica)
             
-            // Calcular custos de hospedagem
+            // Calcular custos de hospedagem (já é o preço do quarto para o casal)
             itineraryData.order.forEach(cityId => {
                 const city = itineraryData.cities[cityId];
                 if (city.accommodation) {
@@ -1122,21 +1143,30 @@
                 }
             });
             
-            // Estimativas para alimentação, atrações e extras
-            const foodCost = totalDays * 35; // 35€ por dia
-            const attractionsCost = 250; // Oceanográfico, Bernabéu, Keukenhof, etc.
-            const extrasCost = totalDays * 10; // 10€ por dia
+            // Estimativas para alimentação, atrações e extras PARA DUAS PESSOAS
+            const foodCostPerDay = 25; // 25€ por pessoa por dia (economizando)
+            const foodCost = totalDays * foodCostPerDay * 2; // Para duas pessoas
+            
+            // Atrações principais (para duas pessoas)
+            const attractionsCost = 2 * (
+                25 + // Bernabéu
+                40 + // Oceanográfico 
+                19 + // Keukenhof
+                20   // Outras atrações pequenas
+            );
+            
+            const extrasCost = totalDays * 5 * 2; // 5€ por pessoa por dia (reduzido)
             
             // Custo total
             const totalCost = transportCost + accommodationCost + foodCost + attractionsCost + extrasCost;
             
             return {
-                transport: transportCost,
-                accommodation: accommodationCost,
-                food: foodCost,
-                attractions: attractionsCost,
-                extras: extrasCost,
-                totalCost: totalCost
+                transport: Math.round(transportCost),
+                accommodation: Math.round(accommodationCost),
+                food: Math.round(foodCost),
+                attractions: Math.round(attractionsCost),
+                extras: Math.round(extrasCost),
+                totalCost: Math.round(totalCost)
             };
         }
 
