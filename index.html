@@ -42,6 +42,7 @@
 
         .tab-buttons {
             display: flex;
+            flex-wrap: wrap;
             gap: 10px;
             margin-bottom: 20px;
         }
@@ -461,16 +462,191 @@
             color: #27ae60;
             margin-bottom: 8px;
         }
+
+        /* NOVOS ESTILOS PARA AS MELHORIAS */
+        .info-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .info-tab {
+            padding: 8px 15px;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-bottom: none;
+            border-radius: 4px 4px 0 0;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .info-tab.active {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .info-content {
+            display: none;
+            padding: 15px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-top: none;
+            margin-bottom: 15px;
+        }
+
+        .info-content.active {
+            display: block;
+        }
+
+        .phrase-box {
+            background-color: #f1f8ff;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+
+        .phrase-item {
+            margin: 5px 0;
+        }
+
+        .phrase-item strong {
+            color: #3498db;
+        }
+
+        .cultural-item {
+            background-color: #f5f9f8;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+
+        .cultural-title {
+            color: #16a085;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .checklist-container {
+            background-color: #f9f9f9;
+            padding: 12px;
+            border-radius: 6px;
+        }
+
+        .checklist-category {
+            margin-top: 10px;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            margin: 4px 0;
+        }
+
+        .checklist-item input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        .challenges-list {
+            background-color: #fef9e7;
+            padding: 12px;
+            border-radius: 6px;
+        }
+
+        .challenge-item {
+            padding: 6px 0;
+            border-bottom: 1px dashed #f1c40f;
+        }
+
+        .challenge-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .info-block {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            border-left: 3px solid #3498db;
+        }
+
+        .info-block h4 {
+            color: #3498db;
+            margin-bottom: 5px;
+        }
+
+        .currency-box {
+            background-color: #e8f6f3;
+            padding: 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .countdown-container {
+            background-color: #3498db;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .countdown-value {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .countdown-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .practical-info {
+            background-color: #f0f4f8;
+            padding: 12px;
+            border-radius: 6px;
+            margin-top: 10px;
+        }
+
+        .practical-title {
+            color: #2980b9;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Roteiro Final Lua de Mel 2025</h1>
         
+        <!-- Contador regressivo para a viagem -->
+        <div class="countdown-container">
+            <div class="countdown-value" id="countdown">---</div>
+            <div class="countdown-label">dias para sua lua de mel</div>
+        </div>
+        
         <div class="tab-buttons">
             <button class="tab-button active" data-tab="map" onclick="showTab('map')">Mapa</button>
             <button class="tab-button" data-tab="full-itinerary" onclick="showTab('full-itinerary')">Roteiro Completo</button>
             <button class="tab-button" data-tab="summary" onclick="showTab('summary')">Resumo Financeiro</button>
+            <button class="tab-button" data-tab="packing" onclick="showTab('packing')">Checklist de Viagem</button>
+            <button class="tab-button" data-tab="romantic" onclick="showTab('romantic')">Desafios Românticos</button>
         </div>
         
         <div class="content-wrapper" id="mapView">
@@ -485,6 +661,114 @@
         </div>
 
         <div class="full-itinerary" id="fullItinerary"></div>
+        
+        <!-- Nova seção para checklist de viagem -->
+        <div class="full-itinerary" id="packingList" style="display: none;">
+            <h2 style="text-align: center; margin-bottom: 20px;">Checklist de Viagem</h2>
+            
+            <div class="checklist-container">
+                <h3>Documentos Essenciais</h3>
+                <div class="checklist-category">Documentos</div>
+                <div class="checklist-item"><input type="checkbox" id="passport"><label for="passport">Passaportes (validade mínima 6 meses)</label></div>
+                <div class="checklist-item"><input type="checkbox" id="tickets"><label for="tickets">Bilhetes/reservas de voos</label></div>
+                <div class="checklist-item"><input type="checkbox" id="insurance"><label for="insurance">Seguro viagem (imprimir apólice)</label></div>
+                <div class="checklist-item"><input type="checkbox" id="license"><label for="license">Carteira de motorista internacional</label></div>
+                <div class="checklist-item"><input type="checkbox" id="copies"><label for="copies">Cópias digitais de todos os documentos</label></div>
+                <div class="checklist-item"><input type="checkbox" id="cards"><label for="cards">Cartões de crédito/débito internacionais</label></div>
+                <div class="checklist-item"><input type="checkbox" id="visa-card"><label for="visa-card">Informar banco sobre viagem internacional</label></div>
+                
+                <div class="checklist-category">Roupas (Primavera Europeia)</div>
+                <div class="checklist-item"><input type="checkbox" id="tshirts"><label for="tshirts">Camisetas leves (5-7)</label></div>
+                <div class="checklist-item"><input type="checkbox" id="pants"><label for="pants">Calças/jeans (2-3)</label></div>
+                <div class="checklist-item"><input type="checkbox" id="jacket"><label for="jacket">Casaco impermeável leve</label></div>
+                <div class="checklist-item"><input type="checkbox" id="sweater"><label for="sweater">Suéter/moletom (2-3 para camadas)</label></div>
+                <div class="checklist-item"><input type="checkbox" id="shoes"><label for="shoes">Sapatos confortáveis para caminhada</label></div>
+                <div class="checklist-item"><input type="checkbox" id="smartclothes"><label for="smartclothes">Roupa social básica para restaurantes</label></div>
+                <div class="checklist-item"><input type="checkbox" id="socks"><label for="socks">Meias (7+ pares)</label></div>
+                <div class="checklist-item"><input type="checkbox" id="swimwear"><label for="swimwear">Roupa de banho (para spa na Suíça)</label></div>
+                
+                <div class="checklist-category">Tecnologia</div>
+                <div class="checklist-item"><input type="checkbox" id="adapter"><label for="adapter">Adaptadores de tomada (Tipo C para Europa e Tipo J para Suíça)</label></div>
+                <div class="checklist-item"><input type="checkbox" id="chargers"><label for="chargers">Carregadores de celular/câmera</label></div>
+                <div class="checklist-item"><input type="checkbox" id="powerbank"><label for="powerbank">Powerbank (carregador portátil)</label></div>
+                <div class="checklist-item"><input type="checkbox" id="camera"><label for="camera">Câmera com cartão de memória extra</label></div>
+                <div class="checklist-item"><input type="checkbox" id="earphones"><label for="earphones">Fones de ouvido</label></div>
+                
+                <div class="checklist-category">Higiene e Saúde</div>
+                <div class="checklist-item"><input type="checkbox" id="medications"><label for="medications">Medicamentos de uso contínuo</label></div>
+                <div class="checklist-item"><input type="checkbox" id="firstaid"><label for="firstaid">Kit básico de primeiros socorros</label></div>
+                <div class="checklist-item"><input type="checkbox" id="sunscreen"><label for="sunscreen">Protetor solar</label></div>
+                <div class="checklist-item"><input type="checkbox" id="toiletries"><label for="toiletries">Produtos básicos de higiene</label></div>
+                <div class="checklist-item"><input type="checkbox" id="mask"><label for="mask">Máscaras (opcional para ambientes fechados)</label></div>
+                <div class="checklist-item"><input type="checkbox" id="sanitizer"><label for="sanitizer">Álcool gel</label></div>
+                
+                <div class="checklist-category">Extras específicos para seu roteiro</div>
+                <div class="checklist-item"><input type="checkbox" id="backpack"><label for="backpack">Mochila pequena para passeios diários</label></div>
+                <div class="checklist-item"><input type="checkbox" id="notebook"><label for="notebook">Caderninho para anotações da viagem</label></div>
+                <div class="checklist-item"><input type="checkbox" id="waterproof"><label for="waterproof">Capa impermeável para celular/câmera (Gerês e passeios aquáticos)</label></div>
+                <div class="checklist-item"><input type="checkbox" id="hikingshoes"><label for="hikingshoes">Calçados adequados para trilhas em Gerês</label></div>
+                <div class="checklist-item"><input type="checkbox" id="waterbottle"><label for="waterbottle">Garrafa de água reutilizável (economia e sustentabilidade)</label></div>
+            </div>
+        </div>
+        
+        <!-- Nova seção para desafios românticos -->
+        <div class="full-itinerary" id="romanticChallenges" style="display: none;">
+            <h2 style="text-align: center; margin-bottom: 20px;">Desafios Românticos para a Lua de Mel</h2>
+            
+            <p style="text-align: center; margin-bottom: 30px;">Completem estes desafios durante a viagem para criar memórias inesquecíveis juntos!</p>
+            
+            <div class="challenges-list">
+                <div class="challenge-item">
+                    <h4>Desafio #1: Álbum de Momentos</h4>
+                    <p>Tirem uma selfie romântica em cada cidade visitada, sempre no mesmo horário do dia. Ao final, terão um álbum com a evolução da viagem.</p>
+                </div>
+                
+                <div class="challenge-item">
+                    <h4>Desafio #2: Brinde Cultural</h4>
+                    <p>Façam um brinde com uma bebida típica de cada país (vinho do porto em Portugal, cerveja na Holanda, etc.) e anotem suas impressões.</p>
+                </div>
+                
+                <div class="challenge-item">
+                    <h4>Desafio #3: Postais do Futuro</h4>
+                    <p>Em cada cidade, escrevam um cartão postal para vocês mesmos com planos para o futuro. Enderecem para sua casa e leiam quando voltarem.</p>
+                </div>
+                
+                <div class="challenge-item">
+                    <h4>Desafio #4: Pontes de Amor</h4>
+                    <p>Porto tem a Ponte Dom Luís I, Amsterdam tem os canais. Beijem-se em cada ponte famosa que encontrarem no caminho.</p>
+                </div>
+                
+                <div class="challenge-item">
+                    <h4>Desafio #5: Tesouros Secretos</h4>
+                    <p>Em cada cidade, comprem uma pequena lembrança que simbolize aquele momento da viagem. No aniversário de casamento, troquem esses presentes.</p>
+                </div>
+                
+                <div class="challenge-item">
+                    <h4>Desafio #6: Piquenique Romântico</h4>
+                    <p>Façam um piquenique romântico em Gerês, no Vondelpark em Amsterdam ou em algum parque em Zurich.</p>
+                </div>
+                
+                <div class="challenge-item">
+                    <h4>Desafio #7: Estrelas da Suíça</h4>
+                    <p>Na Suíça, dediquem uma noite para observar as estrelas juntos nas montanhas, longe da poluição luminosa.</p>
+                </div>
+                
+                <div class="challenge-item">
+                    <h4>Desafio #8: Miniaturas do Destino</h4>
+                    <p>Façam desenhos miniatura (mesmo que simples) de algo que viram em cada cidade. Guardem no diário de viagem.</p>
+                </div>
+                
+                <div class="challenge-item">
+                    <h4>Desafio #9: Gastronomia Criativa</h4>
+                    <p>Em cada país, experimentem algo que nunca provaram antes. Tirem foto para registrar as reações!</p>
+                </div>
+                
+                <div class="challenge-item">
+                    <h4>Desafio #10: A Carta Secreta</h4>
+                    <p>Cada um escreve uma carta romântica antes da viagem. Abram as cartas em um momento especial em Gerês, em meio à natureza.</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -503,6 +787,33 @@
                         name: "Hospedagem já confirmada",
                         cost: 0, // Já pago/reservado
                         notes: "Hospedagem já confirmada para estas datas"
+                    },
+                    // Novas informações locais
+                    localInfo: {
+                        weather: "Em abril: 15-22°C, possibilidade de alguns dias nublados com chuvas leves.",
+                        language: [
+                            { phrase: "Olá", pronunciation: "o-LA" },
+                            { phrase: "Obrigado/a", pronunciation: "o-bri-GA-do/da" },
+                            { phrase: "Por favor", pronunciation: "por fa-VOR" },
+                            { phrase: "Onde fica...?", pronunciation: "ON-de FI-ca" }
+                        ],
+                        currency: "Euro (€1 ≈ R$5,50)",
+                        timezone: "UTC+1 (4 horas a mais que Brasília)",
+                        emergency: "Número de emergência: 112",
+                        powerPlug: "Tomadas tipo C e F (adaptador necessário para tomadas brasileiras)"
+                    },
+                    // Informações de transporte
+                    transportInfo: {
+                        publicTransport: "Rede de ônibus urbanos Eva Transportes. Não há cartão específico, compre bilhetes avulsos.",
+                        offlineMap: "Baixe o mapa de Albufeira no Maps.me ou Google Maps antes da viagem.",
+                        internetAccess: "SIM cards pré-pagos disponíveis nas lojas MEO, Vodafone ou NOS nos shoppings.",
+                        cityTransfers: "Estação central de ônibus para Sevilha fica a 10 minutos de taxi do centro (€8-10)."
+                    },
+                    // Informações culturais
+                    culturalInfo: {
+                        festivals: "Festival Internacional de Esculturas de Areia (iniciando final de abril).",
+                        food: "Experimente o peixe grelhado, cataplana de frutos do mar e o vinho do Algarve.",
+                        freeActivities: "Free Walking Tour Albufeira sai da praça central às 10h (gorjeta sugerida: €10)."
                     }
                 },
                 madrid: {
@@ -539,7 +850,34 @@
                         "Exterior do Estádio Santiago Bernabéu (gratuito)",
                         "Puerta del Sol (gratuito)",
                         "Tempo para almoço típico espanhol"
-                    ]
+                    ],
+                    // Novas informações locais
+                    localInfo: {
+                        weather: "Em abril: 12-20°C, primavera com dias ensolarados e algumas chuvas ocasionais.",
+                        language: [
+                            { phrase: "Hola", pronunciation: "O-la" },
+                            { phrase: "Gracias", pronunciation: "GRA-ssi-as" },
+                            { phrase: "Por favor", pronunciation: "por fa-VOR" },
+                            { phrase: "¿Dónde está...?", pronunciation: "DON-de es-TA" }
+                        ],
+                        currency: "Euro (€1 ≈ R$5,50)",
+                        timezone: "UTC+2 (5 horas a mais que Brasília)",
+                        emergency: "Número de emergência: 112",
+                        powerPlug: "Tomadas tipo C e F (adaptador necessário para tomadas brasileiras)"
+                    },
+                    // Informações de transporte
+                    transportInfo: {
+                        publicTransport: "Metro de Madrid e EMT (ônibus). Cartão Multi recarregável (€2,50) válido para todos transportes.",
+                        offlineMap: "Madrid Metro offline disponível no app 'Metro Madrid Oficial'.",
+                        internetAccess: "SIM cards nas lojas Movistar, Orange ou Vodafone (desde €10).",
+                        cityTransfers: "Do centro ao terminal de ônibus Estación Sur: 30 min de metrô (linha 6)."
+                    },
+                    // Informações culturais
+                    culturalInfo: {
+                        festivals: "Semana Santa (dependendo das datas) com procissões tradicionais.",
+                        food: "Não perca o chocolate com churros no San Ginés, o Cocido madrileño e as tapas do Mercado San Miguel.",
+                        freeActivities: "Free Walking Tour Madrid sai da Plaza Mayor às 11h e 15h (gorjeta sugerida: €12)."
+                    }
                 },
                 valencia: {
                     name: "Valencia",
@@ -582,6 +920,33 @@
                         cost: 60,
                         bookingUrl: "https://www.hostelworld.com",
                         notes: "Localização central, cozinha para preparar refeições (2 noites)"
+                    },
+                    // Novas informações locais
+                    localInfo: {
+                        weather: "Em abril: 13-23°C, clima temperado mediterrâneo, dias agradáveis.",
+                        language: [
+                            { phrase: "Hola", pronunciation: "O-la" },
+                            { phrase: "Gracias", pronunciation: "GRA-ssi-as" },
+                            { phrase: "Por favor", pronunciation: "por fa-VOR" },
+                            { phrase: "¿Dónde está...?", pronunciation: "DON-de es-TA" }
+                        ],
+                        currency: "Euro (€1 ≈ R$5,50)",
+                        timezone: "UTC+2 (5 horas a mais que Brasília)",
+                        emergency: "Número de emergência: 112",
+                        powerPlug: "Tomadas tipo C e F (adaptador necessário para tomadas brasileiras)"
+                    },
+                    // Informações de transporte
+                    transportInfo: {
+                        publicTransport: "Metrovalencia (metrô) e EMT (ônibus). Cartão Móbilis (€2) + recarga.",
+                        offlineMap: "App 'Valencia Guía' com mapas offline da cidade e transporte.",
+                        internetAccess: "SIM cards pré-pagos nas lojas Yoigo, Orange ou Movistar.",
+                        cityTransfers: "L'Oceanogràfic: 20 min de ônibus do centro (linhas 15, 35, 95)."
+                    },
+                    // Informações culturais
+                    culturalInfo: {
+                        festivals: "Eventos pós-Fallas (principais festas em março).",
+                        food: "Berços da paella - experimente a autêntica Paella Valenciana e a horchata com fartons.",
+                        freeActivities: "Free Walking Tour Valencia sai da Plaza de la Virgen às 10:30h (gorjeta sugerida: €10)."
                     }
                 },
                 geneva: {
@@ -638,6 +1003,39 @@
                         ],
                         image: "https://sample-image-url.com/toboga-suica.jpg",
                         bookingUrl: "https://www.glacier3000.ch"
+                    },
+                    // Novas informações locais
+                    localInfo: {
+                        weather: "Em abril: 6-15°C, clima temperado, possibilidade de chuvas e ventos frios.",
+                        language: [
+                            { phrase: "Bonjour", pronunciation: "bõ-ZHUR" },
+                            { phrase: "Merci", pronunciation: "mer-SI" },
+                            { phrase: "S'il vous plaît", pronunciation: "sil vu PLE" },
+                            { phrase: "Où est...?", pronunciation: "u E" }
+                        ],
+                        currency: "Franco Suíço (1 CHF ≈ R$6,20)",
+                        timezone: "UTC+2 (5 horas a mais que Brasília)",
+                        emergency: "Número de emergência: 112",
+                        powerPlug: "Tomadas tipo J (adaptador específico para a Suíça é necessário)"
+                    },
+                    // Informações de transporte
+                    transportInfo: {
+                        publicTransport: "TPG (transporte público). Visitantes recebem cartão Geneva Transport Card GRATUITO no hotel.",
+                        offlineMap: "Mapa offline no app 'Geneva Public Transport'.",
+                        internetAccess: "SIM cards Swisscom ou Salt disponíveis no aeroporto (mais caros que média europeia).",
+                        cityTransfers: "CERN: 40 min do centro via bonde 18 + ônibus 68."
+                    },
+                    // Informações culturais
+                    culturalInfo: {
+                        festivals: "Festival de Música de Genebra pode ocorrer em abril (verificar datas).",
+                        food: "Experimente a fondue de queijo, raclette e filets de perche (peixe local).",
+                        freeActivities: "Tour gratuito do CERN (reservar com antecedência online) e passeio no lago Léman."
+                    },
+                    // Informações práticas específicas
+                    practicalInfo: {
+                        trainPass: "Swiss Travel Pass (3 dias): CHF 232 por pessoa. Economicamente viável se usar trens diariamente.",
+                        tobogganInfo: "Alpine Coaster Glacier 3000: Funciona das 9h às 16:30h, fechado com vento forte ou chuva.",
+                        romanticSpots: "Jantar fondue romântico no restaurante Les Armures na cidade velha (reservar com antecedência)."
                     }
                 },
                 pilatus: {
@@ -677,6 +1075,38 @@
                         ],
                         image: "https://sample-image-url.com/toboga-pilatus.jpg",
                         bookingUrl: "https://www.pilatus.ch"
+                    },
+                    // Novas informações locais
+                    localInfo: {
+                        weather: "Em abril: 5-12°C, clima de montanha, mais frio e instável que nas cidades.",
+                        language: [
+                            { phrase: "Grüezi", pronunciation: "GRU-e-tsi" },
+                            { phrase: "Danke", pronunciation: "DAN-ke" },
+                            { phrase: "Bitte", pronunciation: "BI-te" },
+                            { phrase: "Wo ist...?", pronunciation: "vo IST" }
+                        ],
+                        currency: "Franco Suíço (1 CHF ≈ R$6,20)",
+                        timezone: "UTC+2 (5 horas a mais que Brasília)",
+                        emergency: "Número de emergência: 112",
+                        powerPlug: "Tomadas tipo J (adaptador específico para a Suíça é necessário)"
+                    },
+                    // Informações de transporte
+                    transportInfo: {
+                        publicTransport: "Trem SBB até Lucerna, depois opções de ônibus, barco ou trem cremalheira.",
+                        offlineMap: "App 'SBB Mobile' com mapas e horários offline.",
+                        internetAccess: "Cobertura irregular nas áreas montanhosas. Baixe mapas antes.",
+                        cityTransfers: "Da estação de Lucerna até a estação de trem cremalheira do Pilatus: 10 min a pé."
+                    },
+                    // Informações culturais
+                    culturalInfo: {
+                        festivals: "Possíveis eventos locais de primavera em Lucerna (verificar datas).",
+                        food: "Experimente o Älplermagronen (macarrão dos Alpes) em restaurantes de montanha.",
+                        freeActivities: "Trilhas gratuitas no entorno da montanha com vistas panorâmicas."
+                    },
+                    // Informações práticas específicas
+                    practicalInfo: {
+                        weatherAlert: "Clima montanhoso muito imprevisível. Antes de subir, verifique as condições no centro de visitantes. Leve roupas quentes mesmo em dias aparentemente ensolarados.",
+                        bestPhoto: "O melhor horário para fotos é pela manhã (9-11h), quando o céu costuma estar mais limpo."
                     }
                 },
                 zurich: {
@@ -711,6 +1141,39 @@
                         cost: 150,
                         bookingUrl: "https://www.airbnb.com",
                         notes: "Apartamento compartilhado com cozinha para economia em refeições (2 noites)"
+                    },
+                    // Novas informações locais
+                    localInfo: {
+                        weather: "Em abril: 5-15°C, início da primavera, possibilidade de chuvas e alguns dias ensolarados.",
+                        language: [
+                            { phrase: "Grüezi", pronunciation: "GRU-e-tsi" },
+                            { phrase: "Danke", pronunciation: "DAN-ke" },
+                            { phrase: "Bitte", pronunciation: "BI-te" },
+                            { phrase: "Wo ist...?", pronunciation: "vo IST" }
+                        ],
+                        currency: "Franco Suíço (1 CHF ≈ R$6,20)",
+                        timezone: "UTC+2 (5 horas a mais que Brasília)",
+                        emergency: "Número de emergência: 112",
+                        powerPlug: "Tomadas tipo J (adaptador específico para a Suíça é necessário)"
+                    },
+                    // Informações de transporte
+                    transportInfo: {
+                        publicTransport: "ZVV (transporte integrado). ZVV Day Pass (24h) custa CHF 17,20.",
+                        offlineMap: "App 'ZVV' com mapas e horários offline.",
+                        internetAccess: "SIM cards Swisscom, Sunrise ou Salt (desde CHF 20).",
+                        cityTransfers: "Uetliberg: 25 min do centro via trem S10 da estação principal."
+                    },
+                    // Informações culturais
+                    culturalInfo: {
+                        festivals: "Sechseläuten (festival tradicional de primavera, verificar datas).",
+                        food: "Prove o Zürcher Geschnetzeltes (carne em tiras com molho cremoso), fondue e os chocolates Sprüngli.",
+                        freeActivities: "Free Walking Tour Zurich sai do Paradeplatz às 11h (gorjeta sugerida: CHF 15)."
+                    },
+                    // Informações práticas específicas
+                    practicalInfo: {
+                        trainPass: "Swiss Travel Pass também válido. Trem para Lucerna: CHF 25 (ida) por pessoa.",
+                        mountainInfo: "Uetliberg: Acessível todo o ano. Vista panorâmica de Zurich. Restaurante no topo.",
+                        romanticSpots: "Pôr do sol em Lindenhof com vista para o rio Limmat e aperitivo no Frau Gerolds Garten."
                     }
                 },
                 amsterdam: {
@@ -777,6 +1240,39 @@
                         ],
                         image: "https://sample-image-url.com/giethoorn.jpg",
                         bookingUrl: "https://9292.nl/en"
+                    },
+                    // Novas informações locais
+                    localInfo: {
+                        weather: "Em abril: 6-14°C, início da primavera, clima variável com possibilidade de chuvas.",
+                        language: [
+                            { phrase: "Hallo", pronunciation: "HA-lo" },
+                            { phrase: "Dank je wel", pronunciation: "dank iê VEL" },
+                            { phrase: "Alstublieft", pronunciation: "ALS-tu-blift" },
+                            { phrase: "Waar is...?", pronunciation: "vaar IS" }
+                        ],
+                        currency: "Euro (€1 ≈ R$5,50)",
+                        timezone: "UTC+2 (5 horas a mais que Brasília)",
+                        emergency: "Número de emergência: 112",
+                        powerPlug: "Tomadas tipo C e F (adaptador necessário para tomadas brasileiras)"
+                    },
+                    // Informações de transporte
+                    transportInfo: {
+                        publicTransport: "GVB (metrô, bonde, ônibus). GVB Day Ticket (24h): €8,50.",
+                        offlineMap: "App 'GVB' com funcionalidade offline para rotas.",
+                        internetAccess: "SIM cards Lebara, Vodafone ou KPN nas lojas ou supermercados.",
+                        cityTransfers: "Keukenhof: ônibus Keukenhof Express (linha 852) da Estação Central (€5,50 + entrada)."
+                    },
+                    // Informações culturais
+                    culturalInfo: {
+                        festivals: "Keukenhof em plena floração e celebrações do Dia do Rei (27 de abril - verificar se coincide).",
+                        food: "Experimente o arenque cru (haring), stroopwafels, bitterballen e queijos locais.",
+                        freeActivities: "Free Walking Tour Amsterdam sai da Dam Square às 11h e 14h (gorjeta sugerida: €15)."
+                    },
+                    // Informações práticas específicas
+                    practicalInfo: {
+                        bikeRental: "Aluguel de bicicletas: MacBike perto da estação central (€12/dia com desconto online).",
+                        flowerInfo: "Keukenhof: Aberto 08:00-19:30. Comprar ingressos online para evitar filas (€19/pessoa).",
+                        romanticSpots: "Passeio de barco ao pôr do sol pelos canais com serviço de queijos e vinho (€30/pessoa)."
                     }
                 },
                 porto: {
@@ -831,6 +1327,39 @@
                             "Possibilidade de visitar Matosinhos para experimentar os melhores peixes e mariscos",
                             "Preparação para o roteiro em Portugal"
                         ]
+                    },
+                    // Novas informações locais
+                    localInfo: {
+                        weather: "Em abril: 10-18°C, primavera com possibilidade de chuvas ocasionais.",
+                        language: [
+                            { phrase: "Olá", pronunciation: "o-LA" },
+                            { phrase: "Obrigado/a", pronunciation: "o-bri-GA-do/da" },
+                            { phrase: "Por favor", pronunciation: "por fa-VOR" },
+                            { phrase: "Onde fica...?", pronunciation: "ON-de FI-ca" }
+                        ],
+                        currency: "Euro (€1 ≈ R$5,50)",
+                        timezone: "UTC+1 (4 horas a mais que Brasília)",
+                        emergency: "Número de emergência: 112",
+                        powerPlug: "Tomadas tipo C e F (mesmas da Europa Continental)"
+                    },
+                    // Informações de transporte
+                    transportInfo: {
+                        publicTransport: "Metro do Porto e STCP (ônibus). Cartão Andante Tour 1 (24h): €7.",
+                        offlineMap: "App 'Porto Offline City Map' com pontos turísticos.",
+                        internetAccess: "SIM cards MEO, NOS ou Vodafone desde €10.",
+                        cityTransfers: "Caves do Vinho: 10 min a pé da Ribeira, atravessando a Ponte Dom Luís I."
+                    },
+                    // Informações culturais
+                    culturalInfo: {
+                        festivals: "Feira Medieval de Santa Maria da Feira (proximidades, verificar datas).",
+                        food: "Imperdíveis: Francesinha, Bacalhau à Gomes de Sá, Tripas à Moda do Porto e Vinho do Porto.",
+                        freeActivities: "Free Walking Tour Porto sai da Praça da Liberdade às 10:30h (gorjeta sugerida: €10)."
+                    },
+                    // Informações práticas específicas
+                    practicalInfo: {
+                        wineInfo: "Tours nas caves: Taylor's (€15), Sandeman (€13), Cálem (€14). Reservar slots matinais para menor lotação.",
+                        carRental: "Levantamento do carro: preferir locadoras no centro vs. aeroporto (economiza taxa aeroportuária).",
+                        romanticSpots: "Jantar com vista no Restaurante Bacalhau na margem do Douro (€50/casal com vinho)."
                     }
                 },
                 foztua: {
@@ -845,6 +1374,39 @@
                     ],
                     transport: {
                         special: "Parte do percurso com carro alugado (2h de carro do Porto)"
+                    },
+                    // Novas informações locais
+                    localInfo: {
+                        weather: "Em abril: 9-17°C, clima mais seco que no Porto, típico do interior do país.",
+                        language: [
+                            { phrase: "Olá", pronunciation: "o-LA" },
+                            { phrase: "Obrigado/a", pronunciation: "o-bri-GA-do/da" },
+                            { phrase: "Por favor", pronunciation: "por fa-VOR" },
+                            { phrase: "Onde fica...?", pronunciation: "ON-de FI-ca" }
+                        ],
+                        currency: "Euro (€1 ≈ R$5,50)",
+                        timezone: "UTC+1 (4 horas a mais que Brasília)",
+                        emergency: "Número de emergência: 112 (cobertura de celular pode ser limitada em certas áreas do Vale do Douro)",
+                        powerPlug: "Tomadas tipo C e F (mesmas da Europa Continental)"
+                    },
+                    // Informações de transporte
+                    transportInfo: {
+                        publicTransport: "Transporte público limitado. O carro alugado é a melhor opção.",
+                        offlineMap: "Baixe mapa offline da região do Douro no Google Maps pois sinal pode ser fraco.",
+                        internetAccess: "Cobertura 4G intermitente nas áreas rurais e montanhosas.",
+                        cityTransfers: "Barragem de Foz Tua: acessível apenas por carro ou trem histórico do Douro (verificar horários)."
+                    },
+                    // Informações culturais
+                    culturalInfo: {
+                        festivals: "Possíveis festas locais em aldeias vinícolas (verificar ao chegar).",
+                        food: "Experimente o cabrito assado, bôla de carne e vinho do Porto da região (Quinta local).",
+                        freeActivities: "Mirantes gratuitos com vistas para os vinhedos em terraços e o rio Douro."
+                    },
+                    // Informações práticas específicas
+                    practicalInfo: {
+                        bestView: "Miradouro de Casal de Loivos: uma das melhores vistas do Vale do Douro (indicado pelo Guia Michelin).",
+                        foodTip: "Leve um lanche/piquenique pois restaurantes são esparsos na região.",
+                        drivingTip: "Estradas sinuosas: se for dirigir, considere tomar medicamento para enjoo."
                     }
                 },
                 geres: {
@@ -866,6 +1428,39 @@
                     },
                     transport: {
                         special: "Continuação com carro alugado (2h a partir de Foz Tua)"
+                    },
+                    // Novas informações locais
+                    localInfo: {
+                        weather: "Em abril: 8-16°C, clima de montanha, mais frio e úmido que nas cidades costeiras.",
+                        language: [
+                            { phrase: "Olá", pronunciation: "o-LA" },
+                            { phrase: "Obrigado/a", pronunciation: "o-bri-GA-do/da" },
+                            { phrase: "Por favor", pronunciation: "por fa-VOR" },
+                            { phrase: "Onde fica...?", pronunciation: "ON-de FI-ca" }
+                        ],
+                        currency: "Euro (€1 ≈ R$5,50)",
+                        timezone: "UTC+1 (4 horas a mais que Brasília)",
+                        emergency: "Número de emergência: 112 (cobertura de celular pode ser limitada em áreas remotas)",
+                        powerPlug: "Tomadas tipo C e F (mesmas da Europa Continental)"
+                    },
+                    // Informações de transporte
+                    transportInfo: {
+                        publicTransport: "Transporte público limitado. Recomenda-se o carro alugado.",
+                        offlineMap: "Baixe mapas de trilhas no app 'Wikiloc' antes da viagem.",
+                        internetAccess: "Cobertura de internet limitada em áreas remotas, baixe mapas antecipadamente.",
+                        cityTransfers: "Cascata do Arado: 25 min de carro de Vila do Gerês."
+                    },
+                    // Informações culturais
+                    culturalInfo: {
+                        festivals: "Possíveis festas locais em aldeias próximas (verificar ao chegar).",
+                        food: "Pratos regionais: Cozido à Portuguesa, queijo da serra e Broa caseira.",
+                        freeActivities: "Trilhas gratuitas autoguiadas - pegar mapas no centro de visitantes."
+                    },
+                    // Informações práticas específicas
+                    practicalInfo: {
+                        hikingInfo: "Trilha Cascata do Arado: dificuldade média, 5km ida e volta, 2-3 horas totais, levar água e lanche.",
+                        weatherAlert: "Clima montanhoso imprevisível. Levar casaco impermeável mesmo em dias aparentemente ensolarados.",
+                        romanticSpots: "Pôr do sol no Miradouro Pedra Bela. Levar cobertor e garrafa de vinho verde (acesso de carro)."
                     }
                 },
                 lisboa_final: {
@@ -891,11 +1486,84 @@
                         "Aeroporto de Lisboa para devolução do carro alugado",
                         "Tempo livre dependendo do horário do voo",
                         "Retorno ao Brasil (26/04)"
-                    ]
+                    ],
+                    // Novas informações locais
+                    localInfo: {
+                        weather: "Em abril: 12-20°C, primavera agradável com possibilidade de chuvas leves.",
+                        language: [
+                            { phrase: "Olá", pronunciation: "o-LA" },
+                            { phrase: "Obrigado/a", pronunciation: "o-bri-GA-do/da" },
+                            { phrase: "Por favor", pronunciation: "por fa-VOR" },
+                            { phrase: "Onde fica...?", pronunciation: "ON-de FI-ca" }
+                        ],
+                        currency: "Euro (€1 ≈ R$5,50)",
+                        timezone: "UTC+1 (4 horas a mais que Brasília)",
+                        emergency: "Número de emergência: 112",
+                        powerPlug: "Tomadas tipo C e F (mesmas da Europa Continental)"
+                    },
+                    // Informações de transporte
+                    transportInfo: {
+                        publicTransport: "Metro, ônibus e elétricos. Cartão Viva Viagem (€0,50) + carregamento.",
+                        offlineMap: "App 'Citymapper' funciona bem em Lisboa, com opção offline.",
+                        internetAccess: "Wi-Fi disponível no aeroporto e em muitos cafés.",
+                        cityTransfers: "Aeroporto para centro: 20-30 min via metro (linha vermelha)."
+                    },
+                    // Informações culturais
+                    culturalInfo: {
+                        festivals: "Possíveis eventos de primavera (verificar agenda cultural).",
+                        food: "Se tiver tempo: pastéis de nata, bacalhau à brás, ginjinha (licor de cereja).",
+                        freeActivities: "Miradouros com vista panorâmica da cidade (gratuitos)."
+                    },
+                    // Informações práticas específicas
+                    practicalInfo: {
+                        airportTip: "Chegar com 3h de antecedência para voos intercontinentais. O aeroporto pode ter filas longas.",
+                        taxRefund: "Se fez compras com Tax Free, faça o reembolso de impostos no aeroporto.",
+                        lastMinute: "Se tiver 2-3 horas livres, visite o Parque das Nações próximo ao aeroporto."
+                    }
                 }
             },
             order: ['albufeira', 'madrid', 'valencia', 'geneva', 'pilatus', 'zurich', 'amsterdam', 'porto', 'foztua', 'geres', 'lisboa_final']
         };
+
+        // Dados do checklist de viagem
+        const packingList = {
+            documents: [
+                "Passaporte (validade mínima 6 meses)",
+                "Cartões de crédito/débito",
+                "Carteira de habilitação internacional",
+                "Seguro viagem",
+                "Cópias digitais dos documentos"
+            ],
+            clothing: [
+                "Roupas leves",
+                "Casaco impermeável",
+                "Suéter/moletom",
+                "Calçados confortáveis",
+                "Roupa social básica para restaurantes"
+            ],
+            tech: [
+                "Adaptadores de tomada (tipo C + tipo J para Suíça)",
+                "Carregadores",
+                "Powerbank",
+                "Câmera"
+            ],
+            toiletries: [
+                "Medicamentos pessoais",
+                "Protetor solar",
+                "Produtos básicos de higiene"
+            ]
+        };
+
+        // Dados dos desafios românticos
+        const romanticChallenges = [
+            "Tirar uma foto romântica na Ponte Dom Luís I em Porto",
+            "Fazer um brinde com vinho local em cada país visitado",
+            "Escrever um cartão postal em cada cidade e enviá-lo para vocês mesmos",
+            "Tirar uma foto beijando em frente a cada atração principal",
+            "Comprar uma pequena lembrança romântica em cada país",
+            "Fazer um piquenique no Vondelpark em Amsterdam",
+            "Assistir ao pôr do sol juntos em Gerês"
+        ];
 
         let map;
         let activeMarker;
@@ -1103,12 +1771,132 @@
                 `;
             }
 
+            // Adicionar informações locais
+            let localInfoHtml = '';
+            if (city.localInfo) {
+                localInfoHtml = `
+                    <div class="info-section">
+                        <h4>Informações Locais</h4>
+                        <div class="info-tabs">
+                            <div class="info-tab active" onclick="showInfoTab('${cityId}-local-info', this)">Básico</div>
+                            <div class="info-tab" onclick="showInfoTab('${cityId}-language', this)">Frases Úteis</div>
+                            <div class="info-tab" onclick="showInfoTab('${cityId}-transport', this)">Transporte</div>
+                            <div class="info-tab" onclick="showInfoTab('${cityId}-cultural', this)">Cultura</div>
+                            ${city.practicalInfo ? `<div class="info-tab" onclick="showInfoTab('${cityId}-practical', this)">Dicas Práticas</div>` : ''}
+                        </div>
+                        
+                        <div id="${cityId}-local-info" class="info-content active">
+                            <div class="info-grid">
+                                <div class="info-block">
+                                    <h4>Clima</h4>
+                                    <p>${city.localInfo.weather}</p>
+                                </div>
+                                <div class="info-block">
+                                    <h4>Moeda</h4>
+                                    <p><span class="currency-box">${city.localInfo.currency}</span></p>
+                                </div>
+                                <div class="info-block">
+                                    <h4>Fuso Horário</h4>
+                                    <p>${city.localInfo.timezone}</p>
+                                </div>
+                                <div class="info-block">
+                                    <h4>Emergência e Utilities</h4>
+                                    <p>${city.localInfo.emergency}</p>
+                                    <p>${city.localInfo.powerPlug}</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="${cityId}-language" class="info-content">
+                            <h4>Frases Úteis em ${city.name === "Zurich" || city.name === "Pilatus" ? "Alemão Suíço" : 
+                                                  city.name === "Geneva" ? "Francês" :
+                                                  city.name === "Amsterdam" ? "Holandês" :
+                                                  city.name.includes("Madrid") || city.name.includes("Valencia") ? "Espanhol" : "Português"}
+                                               (com pronúncia para brasileiros)</h4>
+                            <div class="phrase-box">
+                                ${city.localInfo.language.map(phrase => `
+                                    <div class="phrase-item">
+                                        <strong>${phrase.phrase}:</strong> ${phrase.pronunciation}
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                        
+                        <div id="${cityId}-transport" class="info-content">
+                            <div class="info-grid">
+                                <div class="info-block">
+                                    <h4>Transporte Público</h4>
+                                    <p>${city.transportInfo.publicTransport}</p>
+                                </div>
+                                <div class="info-block">
+                                    <h4>Mapas Offline</h4>
+                                    <p>${city.transportInfo.offlineMap}</p>
+                                </div>
+                                <div class="info-block">
+                                    <h4>Internet</h4>
+                                    <p>${city.transportInfo.internetAccess}</p>
+                                </div>
+                                <div class="info-block">
+                                    <h4>Deslocamentos</h4>
+                                    <p>${city.transportInfo.cityTransfers}</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="${cityId}-cultural" class="info-content">
+                            <div class="cultural-item">
+                                <div class="cultural-title">Festivais e Eventos</div>
+                                <p>${city.culturalInfo.festivals}</p>
+                            </div>
+                            <div class="cultural-item">
+                                <div class="cultural-title">Gastronomia Local</div>
+                                <p>${city.culturalInfo.food}</p>
+                            </div>
+                            <div class="cultural-item">
+                                <div class="cultural-title">Experiências Gratuitas</div>
+                                <p>${city.culturalInfo.freeActivities}</p>
+                            </div>
+                        </div>
+                        
+                        ${city.practicalInfo ? `
+                            <div id="${cityId}-practical" class="info-content">
+                                <div class="practical-info">
+                                    ${Object.entries(city.practicalInfo).map(([key, value]) => `
+                                        <div class="practical-title">${
+                                            key === 'trainPass' ? 'Passes de Trem' : 
+                                            key === 'tobogganInfo' || key === 'mountainInfo' ? 'Informações sobre Atrações' :
+                                            key === 'romanticSpots' ? 'Locais Românticos' :
+                                            key === 'wineInfo' ? 'Degustação de Vinhos' :
+                                            key === 'carRental' ? 'Aluguel de Carro' :
+                                            key === 'bikeRental' ? 'Aluguel de Bicicletas' :
+                                            key === 'flowerInfo' ? 'Informações Keukenhof' :
+                                            key === 'hikingInfo' ? 'Informações de Trilhas' :
+                                            key === 'weatherAlert' ? 'Alerta de Clima' :
+                                            key === 'bestPhoto' ? 'Melhores Fotos' :
+                                            key === 'bestView' ? 'Melhor Vista' :
+                                            key === 'foodTip' ? 'Dica Gastronômica' :
+                                            key === 'drivingTip' ? 'Dica de Condução' :
+                                            key === 'airportTip' ? 'Dica de Aeroporto' :
+                                            key === 'taxRefund' ? 'Reembolso de Impostos' :
+                                            key === 'lastMinute' ? 'Última Hora' : key
+                                        }</div>
+                                        <p>${value}</p>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            }
+
             const infoHtml = `
                 <div class="city-info">
                     <h3>${city.name}</h3>
                     <div class="info-section">
                         <p><strong>Datas:</strong> ${city.dates}</p>
                     </div>
+                    
+                    ${localInfoHtml}
                     
                     ${transportHtml}
                     
@@ -1159,6 +1947,25 @@
             }
         }
 
+        // Função para mostrar as abas de informações locais
+        function showInfoTab(tabId, button) {
+            // Remover a classe active de todas as abas
+            const tabContainer = button.parentElement;
+            const allTabs = tabContainer.querySelectorAll('.info-tab');
+            allTabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Adicionar a classe active à aba clicada
+            button.classList.add('active');
+            
+            // Esconder todos os conteúdos
+            const parentSection = tabContainer.parentElement;
+            const allContents = parentSection.querySelectorAll('.info-content');
+            allContents.forEach(content => content.classList.remove('active'));
+            
+            // Mostrar o conteúdo correspondente à aba clicada
+            document.getElementById(tabId).classList.add('active');
+        }
+
         function showTab(tabName) {
             // Atualizar estado das abas
             document.querySelectorAll('.tab-button').forEach(btn => {
@@ -1170,24 +1977,37 @@
 
             const mapView = document.getElementById('mapView');
             const fullItinerary = document.getElementById('fullItinerary');
+            const packingList = document.getElementById('packingList');
+            const romanticChallenges = document.getElementById('romanticChallenges');
+
+            // Esconder todos os elementos
+            mapView.style.display = 'none';
+            fullItinerary.style.display = 'none';
+            packingList.style.display = 'none';
+            romanticChallenges.style.display = 'none';
 
             // Atualizar visibilidade das seções
             switch(tabName) {
                 case 'map':
                     mapView.style.display = 'flex';
-                    fullItinerary.style.display = 'none';
                     break;
                     
                 case 'full-itinerary':
-                    mapView.style.display = 'none';
                     fullItinerary.style.display = 'block';
                     showFullItinerary(); // Mostrar roteiro completo
                     break;
                     
                 case 'summary':
-                    mapView.style.display = 'none';
                     fullItinerary.style.display = 'block';
                     showFinancialSummary(); // Mostrar resumo financeiro
+                    break;
+                    
+                case 'packing':
+                    packingList.style.display = 'block'; // Mostrar checklist de viagem
+                    break;
+                    
+                case 'romantic':
+                    romanticChallenges.style.display = 'block'; // Mostrar desafios românticos
                     break;
             }
         }
@@ -1293,6 +2113,39 @@
                     `;
                 }
 
+                // Adicionar informações locais no roteiro completo
+                let localInfoHtml = '';
+                if (city.localInfo) {
+                    localInfoHtml = `
+                        <div class="info-section">
+                            <h4>Informações Essenciais: ${city.name}</h4>
+                            <div class="info-grid">
+                                <div class="info-block">
+                                    <h4>Clima</h4>
+                                    <p>${city.localInfo.weather}</p>
+                                </div>
+                                <div class="info-block">
+                                    <h4>Frases Úteis</h4>
+                                    <p>${city.localInfo.language[0].phrase}: ${city.localInfo.language[0].pronunciation}</p>
+                                    <p>${city.localInfo.language[1].phrase}: ${city.localInfo.language[1].pronunciation}</p>
+                                </div>
+                            </div>
+                            
+                            <div class="cultural-item">
+                                <div class="cultural-title">Gastronomia Imperdível</div>
+                                <p>${city.culturalInfo.food}</p>
+                            </div>
+                            
+                            ${city.practicalInfo ? `
+                                <div class="practical-info">
+                                    <div class="practical-title">Dica Especial</div>
+                                    <p>${Object.values(city.practicalInfo)[0]}</p>
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                }
+
                 // Adicionar dicas de economia
                 let savingsHtml = '';
                 if (city.name.includes('Porto')) {
@@ -1313,6 +2166,8 @@
                 itineraryHtml += `
                     <div class="itinerary-day">
                         <h3>${city.name} - ${city.dates}</h3>
+                        
+                        ${localInfoHtml}
                         
                         ${transportHtml}
                         
@@ -1820,8 +2675,28 @@
             });
         }
 
+        // Contador regressivo para a lua de mel
+        function updateCountdown() {
+            const departureDate = new Date('2025-04-12T00:00:00');
+            const now = new Date();
+            const diff = departureDate - now;
+            
+            // Calcular dias restantes
+            const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+            
+            // Atualizar o contador
+            const countdownElement = document.getElementById('countdown');
+            if (countdownElement) {
+                countdownElement.textContent = days > 0 ? days : 0;
+            }
+        }
+
         // Inicializar o mapa quando a página carregar
         document.addEventListener('DOMContentLoaded', function() {
+            // Atualizar o contador regressivo
+            updateCountdown();
+            setInterval(updateCountdown, 86400000); // Atualizar uma vez por dia
+            
             // Verificar se a biblioteca Leaflet foi carregada
             function initMap() {
                 if (typeof L !== 'undefined') {
