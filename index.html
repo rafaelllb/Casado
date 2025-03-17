@@ -910,8 +910,8 @@
                 <div class="checklist-category">Extras específicos para seu roteiro</div>
                 <div class="checklist-item"><input type="checkbox" id="backpack"><label for="backpack">Mochila pequena para passeios diários</label></div>
                 <div class="checklist-item"><input type="checkbox" id="notebook"><label for="notebook">Caderninho para anotações da viagem</label></div>
-                <div class="checklist-item"><input type="checkbox" id="waterproof"><label for="waterproof">Capa impermeável para celular/câmera (Gerês e passeios aquáticos)</label></div>
-                <div class="checklist-item"><input type="checkbox" id="hikingshoes"><label for="hikingshoes">Calçados adequados para trilhas em Gerês</label></div>
+                <div class="checklist-item"><input type="checkbox" id="waterproof"><label for="waterproof">Capa impermeável para celular/câmera (passeios aquáticos)</label></div>
+                <div class="checklist-item"><input type="checkbox" id="hikingshoes"><label for="hikingshoes">Calçados adequados para trilhas</label></div>
                 <div class="checklist-item"><input type="checkbox" id="waterbottle"><label for="waterbottle">Garrafa de água reutilizável (economia e sustentabilidade)</label></div>
             </div>
         </div>
@@ -950,7 +950,7 @@
                 
                 <div class="challenge-item">
                     <h4>Desafio #6: Piquenique Romântico</h4>
-                    <p>Façam um piquenique romântico em Gerês, no Vondelpark em Amsterdam ou em algum parque em Zurich.</p>
+                    <p>Façam um piquenique romântico no Vondelpark em Amsterdam ou em algum parque em Zurich.</p>
                 </div>
                 
                 <div class="challenge-item">
@@ -970,7 +970,7 @@
                 
                 <div class="challenge-item">
                     <h4>Desafio #10: A Carta Secreta</h4>
-                    <p>Cada um escreve uma carta romântica antes da viagem. Abram as cartas em um momento especial em Gerês, em meio à natureza.</p>
+                    <p>Cada um escreve uma carta romântica antes da viagem. Abram as cartas em um momento especial em meio à natureza.</p>
                 </div>
             </div>
         </div>
@@ -1171,7 +1171,7 @@
 			</div>
 			
 			<div id="portuguese-phrases" class="phrases-section">
-				<h3>Português de Portugal (Porto, Gerês, Lisboa)</h3>
+				<h3>Português de Portugal (Porto, Lisboa)</h3>
 				<table class="phrases-table">
 					<tr>
 						<th>Português do Brasil</th>
@@ -1718,7 +1718,7 @@
                 amsterdam: {
                     name: "Amsterdam",
                     coordinates: { lat: 52.3676, lng: 4.9041 },
-                    dates: "20/04 - 22/04", // ATUALIZADO
+                    dates: "20/04 - 22/04",
                     transport: {
                         from: "Zurich",
                         options: [
@@ -1814,93 +1814,164 @@
                         romanticSpots: "Passeio de barco ao pôr do sol pelos canais com serviço de queijos e vinho (€30/pessoa)."
                     }
                 },
+				brussels: {
+					name: "Bruxelas",
+					coordinates: { lat: 50.8503, lng: 4.3517 },
+					dates: "22/04",
+					transport: {
+						from: "Amsterdam",
+						options: [
+							{
+								type: "trem",
+								company: "Thalys/Eurostar",
+								duration: "2h",
+								cost: 35,
+								bookingUrl: "https://www.thalys.com",
+								notes: "Várias opções de horários durante o dia",
+								recommended: true,
+								badge: "tempo"
+							},
+							{
+								type: "onibus",
+								company: "FlixBus",
+								duration: "3h30",
+								cost: 22,
+								bookingUrl: "https://www.flixbus.com",
+								notes: "Opção mais econômica",
+								recommended: false,
+								badge: "economia"
+							}
+						]
+					},
+					activities: [
+						"Grand Place (gratuito)",
+						"Manneken Pis (gratuito)",
+						"Atomium (exterior: gratuito, interior: 15€)",
+						"Catedral de São Miguel (gratuito)",
+						"Degustação de chocolates belgas (15€)",
+						"Parque do Cinquentenário (gratuito)"
+					],
+					accommodation: {
+						name: "Brussels 2Go4 Quality Hostel",
+						cost: 36,
+						bookingUrl: "https://www.hostelworld.com",
+						notes: "Localização central, próximo à Grand Place (1 noite)"
+					},
+					// Novas informações locais
+					localInfo: {
+						weather: "Em abril: 7-16°C, primavera com possibilidade de chuvas leves.",
+						language: [
+							{ phrase: "Bonjour/Goedendag", pronunciation: "bon-ZHUR/ru-den-DAG" },
+							{ phrase: "Merci/Dank u", pronunciation: "mer-SI/dank-U" },
+							{ phrase: "S'il vous plaît/Alstublieft", pronunciation: "sil vu PLE/als-tu-BLEEFT" },
+							{ phrase: "Où est.../Waar is...?", pronunciation: "u E/vaar IS" }
+						],
+						currency: "Euro (€1 ≈ R$5,50)",
+						timezone: "UTC+2 (5 horas a mais que Brasília)",
+						emergency: "Número de emergência: 112",
+						powerPlug: "Tomadas tipo E e F (compatíveis com adaptadores europeus padrão)"
+					},
+					// Informações de transporte
+					transportInfo: {
+						publicTransport: "STIB/MIVB (metrô, bonde, ônibus). Brussels Card: €28 (24h).",
+						offlineMap: "App 'STIB Mobile' com funcionalidade offline.",
+						internetAccess: "SIM cards Orange, Proximus ou BASE desde €10.",
+						cityTransfers: "Grande Place ao Atomium: 30 min via metrô (linhas 6, depois 1)."
+					},
+					// Informações culturais
+					culturalInfo: {
+						festivals: "Abril pode coincidir com festivais de cerveja ou chocolates (verificar agenda local).",
+						food: "Imperdíveis: waffles belgas, chocolates, frites (batatas fritas) com diferentes molhos e cervejas artesanais.",
+						freeActivities: "Free Walking Tour sai da Grand Place às 10:00 e 14:00 (gorjeta sugerida: €10-15)."
+					}
+				},
                 porto: {
-                    name: "Porto",
-                    coordinates: { lat: 41.1579, lng: -8.6291 },
-                    dates: "22/04 - 24/04", // ATUALIZADO: estadia mais longa
-                    transport: {
-                        from: "Amsterdam",
-                        options: [
-                            {
-                                type: "voo",
-                                company: "Múltiplas companhias (com escala)",
-                                duration: "5-6h",
-                                cost: 70,
-                                bookingUrl: "https://www.skyscanner.pt",
-                                notes: "Opções econômicas com antecedência, geralmente têm escala",
-                                recommended: true,
-                                badge: "economia"
-                            },
-                            {
-                                type: "voo",
-                                company: "Transavia/TAP (direto)",
-                                duration: "3h",
-                                cost: 95,
-                                bookingUrl: "https://www.skyscanner.pt",
-                                notes: "Voo direto, porém mais caro",
-                                recommended: false,
-                                badge: "tempo"
-                            }
-                        ]
-                    },
-                    activities: [
-                        "Aluguel de carro econômico (95€/3 dias através de agregadores como AutoEurope)",
-                        "Caves do Vinho do Porto (algumas têm degustação gratuita/econômica)",
-                        "Ribeira (passeio clássico)",
-                        "Ponte Dom Luís I (gratuito)",
-                        "Livraria Lello (entrada: 5€, dedutível na compra de livros)",
-                        "Torre dos Clérigos (subida: 6€)",
-                        "Jantar na Ribeira com vista para o rio"
-                    ],
-                    accommodation: {
-                        name: "Hostel Yes! Porto (dormitório)",
-                        cost: 40,
-                        bookingUrl: "https://www.yesporto.com",
-                        notes: "Localização central, cozinha compartilhada (2 noites)"
-                    },
-                    extraDay: {
-                        title: "Dia Extra em Porto (22/04-24/04)",
-                        description: "Aproveitando o tempo adicional em Porto para explorar melhor a cidade e se preparar para as excursões a Foz Tua e Gerês.",
-                        activities: [
-                            "Mais tempo para relaxar e explorar a cidade",
-                            "Possibilidade de visitar Matosinhos para experimentar os melhores peixes e mariscos",
-                            "Preparação para o roteiro em Portugal"
-                        ]
-                    },
-                    // Novas informações locais
-                    localInfo: {
-                        weather: "Em abril: 10-18°C, primavera com possibilidade de chuvas ocasionais.",
-                        language: [
-                            { phrase: "Olá", pronunciation: "o-LA" },
-                            { phrase: "Obrigado/a", pronunciation: "o-bri-GA-do/da" },
-                            { phrase: "Por favor", pronunciation: "por fa-VOR" },
-                            { phrase: "Onde fica...?", pronunciation: "ON-de FI-ca" }
-                        ],
-                        currency: "Euro (€1 ≈ R$5,50)",
-                        timezone: "UTC+1 (4 horas a mais que Brasília)",
-                        emergency: "Número de emergência: 112",
-                        powerPlug: "Tomadas tipo C e F (mesmas da Europa Continental)"
-                    },
-                    // Informações de transporte
-                    transportInfo: {
-                        publicTransport: "Metro do Porto e STCP (ônibus). Cartão Andante Tour 1 (24h): €7.",
-                        offlineMap: "App 'Porto Offline City Map' com pontos turísticos.",
-                        internetAccess: "SIM cards MEO, NOS ou Vodafone desde €10.",
-                        cityTransfers: "Caves do Vinho: 10 min a pé da Ribeira, atravessando a Ponte Dom Luís I."
-                    },
-                    // Informações culturais
-                    culturalInfo: {
-                        festivals: "Feira Medieval de Santa Maria da Feira (proximidades, verificar datas).",
-                        food: "Imperdíveis: Francesinha, Bacalhau à Gomes de Sá, Tripas à Moda do Porto e Vinho do Porto.",
-                        freeActivities: "Free Walking Tour Porto sai da Praça da Liberdade às 10:30h (gorjeta sugerida: €10)."
-                    },
-                    // Informações práticas específicas
-                    practicalInfo: {
-                        wineInfo: "Tours nas caves: Taylor's (€15), Sandeman (€13), Cálem (€14). Reservar slots matinais para menor lotação.",
-                        carRental: "Levantamento do carro: preferir locadoras no centro vs. aeroporto (economiza taxa aeroportuária).",
-                        romanticSpots: "Jantar com vista no Restaurante Bacalhau na margem do Douro (€50/casal com vinho)."
-                    }
-                },
+					name: "Porto",
+					coordinates: { lat: 41.1579, lng: -8.6291 },
+					dates: "23/04 - 25/04", // ATUALIZADO: Agora 2 noites completas
+					transport: {
+						from: "Bruxelas",
+						options: [
+							{
+								type: "voo",
+								company: "Ryanair/TAP Portugal",
+								duration: "2h30",
+								cost: 65,
+								bookingUrl: "https://www.skyscanner.pt",
+								notes: "Várias opções de voos diretos por dia",
+								recommended: true,
+								badge: "tempo"
+							},
+							{
+								type: "voo",
+								company: "Conexão via Madrid/Paris",
+								duration: "5-6h (com conexão)",
+								cost: 90,
+								bookingUrl: "https://www.skyscanner.pt",
+								notes: "Mais opções de horários, porém mais demorado",
+								recommended: false
+							}
+						]
+					},
+					activities: [
+						"Visita às Caves do Vinho do Porto (entrada + degustação: 15-25€)",
+						"Ribeira (passeio clássico)",
+						"Ponte Dom Luís I (gratuito)",
+						"Livraria Lello (entrada: 5€, dedutível na compra de livros)",
+						"Torre dos Clérigos (subida: 6€)",
+						"Cruzeiro no Rio Douro (hora dourada: 15€)",
+						"Mercado do Bolhão (recém-reformado, gratuito para visitar)",
+						"Palácio da Bolsa (tour guiado: 10€)"
+					],
+					accommodation: {
+						name: "Hostel Yes! Porto (dormitório)",
+						cost: 40,
+						bookingUrl: "https://www.yesporto.com",
+						notes: "Localização central, cozinha compartilhada (2 noites)"
+					},
+					// Novas informações locais
+					localInfo: {
+						weather: "Em abril: 10-18°C, primavera com possibilidade de chuvas ocasionais.",
+						language: [
+							{ phrase: "Olá", pronunciation: "o-LA" },
+							{ phrase: "Obrigado/a", pronunciation: "o-bri-GA-do/da" },
+							{ phrase: "Por favor", pronunciation: "por fa-VOR" },
+							{ phrase: "Onde fica...?", pronunciation: "ON-de FI-ca" }
+						],
+						currency: "Euro (€1 ≈ R$5,50)",
+						timezone: "UTC+1 (4 horas a mais que Brasília)",
+						emergency: "Número de emergência: 112",
+						powerPlug: "Tomadas tipo C e F (mesmas da Europa Continental)"
+					},
+					// Informações de transporte
+					transportInfo: {
+						publicTransport: "Metro do Porto e STCP (ônibus). Cartão Andante Tour 1 (24h): €7.",
+						offlineMap: "App 'Porto Offline City Map' com pontos turísticos.",
+						internetAccess: "SIM cards MEO, NOS ou Vodafone desde €10.",
+						cityTransfers: "Caves do Vinho: 10 min a pé da Ribeira, atravessando a Ponte Dom Luís I."
+					},
+					// Informações culturais
+					culturalInfo: {
+						festivals: "Feira Medieval de Santa Maria da Feira (proximidades, verificar datas).",
+						food: "Imperdíveis: Francesinha, Bacalhau à Gomes de Sá, Tripas à Moda do Porto e Vinho do Porto.",
+						freeActivities: "Free Walking Tour Porto sai da Praça da Liberdade às 10:30h (gorjeta sugerida: €10)."
+					},
+					// Informações práticas específicas
+					practicalInfo: {
+						wineInfo: "Tours nas caves: Taylor's (€15), Sandeman (€13), Cálem (€14). Reservar slots matinais para menor lotação.",
+						dayTrips: "Sem carro, você ainda pode fazer excursões de um dia para o Vale do Douro (€100) ou Guimarães (€30) via agências.",
+						romanticSpots: "Jantar com vista no Restaurante Bacalhau na margem do Douro (€50/casal com vinho)."
+					},
+					extraDay: {
+						title: "Estadia Estendida em Porto (23/04-25/04)",
+						description: "Agora com dois dias completos em Porto, você pode explorar a cidade com mais tranquilidade.",
+						activities: [
+							"Dia 1: Foco no centro histórico, Ribeira e caves de vinho do Porto",
+							"Dia 2: Excursão de dia inteiro ao Vale do Douro ou explorar a Foz e Matosinhos (praias e frutos do mar)",
+							"Aproveite mais tempo para experiências gastronômicas e descobrir cantos menos turísticos da cidade"
+						]
+					}
+				},
                 foztua: {
                     name: "Foz Tua (a partir do Porto)",
                     coordinates: { lat: 41.2193, lng: -7.4265 },
@@ -1948,120 +2019,76 @@
                         drivingTip: "Estradas sinuosas: se for dirigir, considere tomar medicamento para enjoo."
                     }
                 },
-                geres: {
-                    name: "Gerês",
-                    coordinates: { lat: 41.7186, lng: -8.1668 },
-                    dates: "24/04 (noite) - 25/04",
-                    activities: [
-                        "Trilha Cascata do Arado (gratuita)",
-                        "Ponte da Misarela (gratuita)",
-                        "Miradouro da Pedra Bela (gratuito)",
-                        "Lagoas naturais (gratuitas)",
-                        "Piquenique na natureza (economia em refeições)"
-                    ],
-                    accommodation: {
-                        name: "Albergue de Campo (tipo rural)",
-                        cost: 50,
-                        bookingUrl: "https://www.booking.com",
-                        notes: "Opção com cozinha para preparar refeições"
-                    },
-                    transport: {
-                        special: "Continuação com carro alugado (2h a partir de Foz Tua)"
-                    },
-                    // Novas informações locais
-                    localInfo: {
-                        weather: "Em abril: 8-16°C, clima de montanha, mais frio e úmido que nas cidades costeiras.",
-                        language: [
-                            { phrase: "Olá", pronunciation: "o-LA" },
-                            { phrase: "Obrigado/a", pronunciation: "o-bri-GA-do/da" },
-                            { phrase: "Por favor", pronunciation: "por fa-VOR" },
-                            { phrase: "Onde fica...?", pronunciation: "ON-de FI-ca" }
-                        ],
-                        currency: "Euro (€1 ≈ R$5,50)",
-                        timezone: "UTC+1 (4 horas a mais que Brasília)",
-                        emergency: "Número de emergência: 112 (cobertura de celular pode ser limitada em áreas remotas)",
-                        powerPlug: "Tomadas tipo C e F (mesmas da Europa Continental)"
-                    },
-                    // Informações de transporte
-                    transportInfo: {
-                        publicTransport: "Transporte público limitado. Recomenda-se o carro alugado.",
-                        offlineMap: "Baixe mapas de trilhas no app 'Wikiloc' antes da viagem.",
-                        internetAccess: "Cobertura de internet limitada em áreas remotas, baixe mapas antecipadamente.",
-                        cityTransfers: "Cascata do Arado: 25 min de carro de Vila do Gerês."
-                    },
-                    // Informações culturais
-                    culturalInfo: {
-                        festivals: "Possíveis festas locais em aldeias próximas (verificar ao chegar).",
-                        food: "Pratos regionais: Cozido à Portuguesa, queijo da serra e Broa caseira.",
-                        freeActivities: "Trilhas gratuitas autoguiadas - pegar mapas no centro de visitantes."
-                    },
-                    // Informações práticas específicas
-                    practicalInfo: {
-                        hikingInfo: "Trilha Cascata do Arado: dificuldade média, 5km ida e volta, 2-3 horas totais, levar água e lanche.",
-                        weatherAlert: "Clima montanhoso imprevisível. Levar casaco impermeável mesmo em dias aparentemente ensolarados.",
-                        romanticSpots: "Pôr do sol no Miradouro Pedra Bela. Levar cobertor e garrafa de vinho verde (acesso de carro)."
-                    }
-                },
-                lisboa_final: {
-                    name: "Lisboa (Partida)",
-                    coordinates: { lat: 38.7223, lng: -9.1393 },
-                    dates: "26/04",
-                    transport: {
-                        from: "Gerês",
-                        options: [
-                            {
-                                type: "carro",
-                                company: "Carro alugado (continuação)",
-                                duration: "4h30",
-                                cost: 0, // Já contabilizado no aluguel
-                                bookingUrl: "",
-                                notes: "Saída cedo para chegar a Lisboa com tempo suficiente",
-                                recommended: true,
-                                badge: "tempo"
-                            }
-                        ]
-                    },
-                    activities: [
-                        "Aeroporto de Lisboa para devolução do carro alugado",
-                        "Tempo livre dependendo do horário do voo",
-                        "Retorno ao Brasil (26/04)"
-                    ],
-                    // Novas informações locais
-                    localInfo: {
-                        weather: "Em abril: 12-20°C, primavera agradável com possibilidade de chuvas leves.",
-                        language: [
-                            { phrase: "Olá", pronunciation: "o-LA" },
-                            { phrase: "Obrigado/a", pronunciation: "o-bri-GA-do/da" },
-                            { phrase: "Por favor", pronunciation: "por fa-VOR" },
-                            { phrase: "Onde fica...?", pronunciation: "ON-de FI-ca" }
-                        ],
-                        currency: "Euro (€1 ≈ R$5,50)",
-                        timezone: "UTC+1 (4 horas a mais que Brasília)",
-                        emergency: "Número de emergência: 112",
-                        powerPlug: "Tomadas tipo C e F (mesmas da Europa Continental)"
-                    },
-                    // Informações de transporte
-                    transportInfo: {
-                        publicTransport: "Metro, ônibus e elétricos. Cartão Viva Viagem (€0,50) + carregamento.",
-                        offlineMap: "App 'Citymapper' funciona bem em Lisboa, com opção offline.",
-                        internetAccess: "Wi-Fi disponível no aeroporto e em muitos cafés.",
-                        cityTransfers: "Aeroporto para centro: 20-30 min via metro (linha vermelha)."
-                    },
-                    // Informações culturais
-                    culturalInfo: {
-                        festivals: "Possíveis eventos de primavera (verificar agenda cultural).",
-                        food: "Se tiver tempo: pastéis de nata, bacalhau à brás, ginjinha (licor de cereja).",
-                        freeActivities: "Miradouros com vista panorâmica da cidade (gratuitos)."
-                    },
-                    // Informações práticas específicas
-                    practicalInfo: {
-                        airportTip: "Chegar com 3h de antecedência para voos intercontinentais. O aeroporto pode ter filas longas.",
-                        taxRefund: "Se fez compras com Tax Free, faça o reembolso de impostos no aeroporto.",
-                        lastMinute: "Se tiver 2-3 horas livres, visite o Parque das Nações próximo ao aeroporto."
-                    }
-                }
+				lisboa_final: {
+					name: "Lisboa (Partida)",
+					coordinates: { lat: 38.7223, lng: -9.1393 },
+					dates: "26/04",
+					transport: {
+						from: "Porto",
+						options: [
+							{
+								type: "trem",
+								company: "Comboios de Portugal (CP)",
+								duration: "3h (Alfa Pendular) ou 3h30 (Intercidades)",
+								cost: 35,
+								bookingUrl: "https://www.cp.pt",
+								notes: "Opção mais confortável e ecológica",
+								recommended: true,
+								badge: "conforto"
+							},
+							{
+								type: "onibus",
+								company: "Rede Expressos",
+								duration: "3h30-4h",
+								cost: 20,
+								bookingUrl: "https://www.rede-expressos.pt",
+								notes: "Opção mais econômica",
+								recommended: false,
+								badge: "economia"
+							}
+						]
+					},
+					activities: [
+						"Aeroporto de Lisboa para voo internacional",
+						"Tempo livre dependendo do horário do voo",
+						"Retorno ao Brasil (26/04)"
+					],
+					// Novas informações locais
+					localInfo: {
+						weather: "Em abril: 12-20°C, primavera agradável com possibilidade de chuvas leves.",
+						language: [
+							{ phrase: "Olá", pronunciation: "o-LA" },
+							{ phrase: "Obrigado/a", pronunciation: "o-bri-GA-do/da" },
+							{ phrase: "Por favor", pronunciation: "por fa-VOR" },
+							{ phrase: "Onde fica...?", pronunciation: "ON-de FI-ca" }
+						],
+						currency: "Euro (€1 ≈ R$5,50)",
+						timezone: "UTC+1 (4 horas a mais que Brasília)",
+						emergency: "Número de emergência: 112",
+						powerPlug: "Tomadas tipo C e F (mesmas da Europa Continental)"
+					},
+					// Informações de transporte
+					transportInfo: {
+						publicTransport: "Metro, ônibus e elétricos. Cartão Viva Viagem (€0,50) + carregamento.",
+						offlineMap: "App 'Citymapper' funciona bem em Lisboa, com opção offline.",
+						internetAccess: "Wi-Fi disponível no aeroporto e em muitos cafés.",
+						cityTransfers: "Aeroporto para centro: 20-30 min via metro (linha vermelha)."
+					},
+					// Informações culturais
+					culturalInfo: {
+						festivals: "Possíveis eventos de primavera (verificar agenda cultural).",
+						food: "Se tiver tempo: pastéis de nata, bacalhau à brás, ginjinha (licor de cereja).",
+						freeActivities: "Miradouros com vista panorâmica da cidade (gratuitos)."
+					},
+					// Informações práticas específicas
+					practicalInfo: {
+						airportTip: "Chegar com 3h de antecedência para voos intercontinentais. O aeroporto pode ter filas longas.",
+						taxRefund: "Se fez compras com Tax Free, faça o reembolso de impostos no aeroporto.",
+						lastMinute: "Se tiver 2-3 horas livres, visite o Parque das Nações próximo ao aeroporto."
+					}
+				}
             },
-            order: ['albufeira', 'madrid', 'valencia', 'geneva', 'pilatus', 'zurich', 'amsterdam', 'porto', 'foztua', 'geres', 'lisboa_final']
+            order: ['albufeira', 'madrid', 'valencia', 'geneva', 'pilatus', 'zurich', 'amsterdam', 'brussels','porto', 'foztua', 'lisboa_final']
         };
 
         // Dados do checklist de viagem
@@ -2100,8 +2127,7 @@
             "Escrever um cartão postal em cada cidade e enviá-lo para vocês mesmos",
             "Tirar uma foto beijando em frente a cada atração principal",
             "Comprar uma pequena lembrança romântica em cada país",
-            "Fazer um piquenique no Vondelpark em Amsterdam",
-            "Assistir ao pôr do sol juntos em Gerês"
+            "Fazer um piquenique no Vondelpark em Amsterdam"
         ];
 
         let map;
@@ -2251,15 +2277,15 @@
             
             // Adicionar destaque para Portugal
             let portugalHtml = '';
-            if (city.name.includes('Porto') || city.name.includes('Gerês') || city.name.includes('Foz Tua')) {
+            if (city.name.includes('Porto') || city.name.includes('Foz Tua')) {
                 portugalHtml = `
                     <div class="portugal-highlight">
                         <h4>Roteiro em Portugal</h4>
                         <p>Conforme solicitado, o roteiro em Portugal foi ampliado:</p>
                         <ul>
-                            <li><strong>22/04-24/04:</strong> Dois dias completos em Porto - tempo para explorar a cidade</li>
-                            <li><strong>24/04:</strong> Visita a Foz Tua durante o dia → Viagem para Gerês</li>
-                            <li><strong>25/04:</strong> Dia completo em Gerês</li>
+                            <li><strong>23/04-25/04:</strong> Dois dias completos em Porto - tempo para explorar a cidade</li>
+                            <li><strong>24/04:</strong> Visita a Foz Tua durante o dia</li>
+                            <li><strong>25/04:</strong> Mais um dia em Porto</li>
                             <li><strong>26/04:</strong> Viagem para Lisboa apenas para pegar o voo de retorno</li>
                         </ul>
                         <p>Este formato otimizado permite aproveitar melhor Portugal como solicitado.</p>
@@ -2642,15 +2668,15 @@
                 
                 // Adicionar destaque para Portugal
                 let portugalHtml = '';
-                if (city.name.includes('Porto') || city.name.includes('Gerês') || city.name.includes('Foz Tua')) {
+                if (city.name.includes('Porto') || city.name.includes('Foz Tua')) {
                     portugalHtml = `
                         <div class="portugal-highlight">
                             <h4>Roteiro em Portugal</h4>
                             <p>Conforme solicitado, o roteiro em Portugal foi ampliado:</p>
                             <ul>
-                                <li><strong>22/04-24/04:</strong> Dois dias completos em Porto - tempo para explorar a cidade</li>
-                                <li><strong>24/04:</strong> Visita a Foz Tua durante o dia → Viagem para Gerês</li>
-                                <li><strong>25/04:</strong> Dia completo em Gerês</li>
+                                <li><strong>23/04-25/04:</strong> Dois dias completos em Porto - tempo para explorar a cidade</li>
+                                <li><strong>24/04:</strong> Visita a Foz Tua durante o dia</li>
+                                <li><strong>25/04:</strong> Mais um dia em Porto</li>
                                 <li><strong>26/04:</strong> Viagem para Lisboa apenas para pegar o voo de retorno</li>
                             </ul>
                             <p>Este formato otimizado permite aproveitar melhor Portugal como solicitado.</p>
@@ -2741,31 +2767,7 @@
                         ` : ''}
                     </div>
                 `;
-            });
-            
-            // Resumo das mudanças do roteiro
-            const roteiroDiff = `
-                <div class="portugal-highlight">
-                    <h4>Roteiro Final: Estadia Estendida em Porto</h4>
-                    <p>O roteiro foi ajustado para incluir duas noites em Porto (22/04 para 24/04) conforme solicitado, com a realocação de noites de outras cidades.</p>
-                    
-                    <h5 style="margin-top: 15px; margin-bottom: 8px;">Cronograma Final Atualizado:</h5>
-                    <ul>
-                        <li><strong>12-14/04:</strong> Albufeira (Casamento)</li>
-                        <li><strong>14/04:</strong> Madrid (apenas visita)</li>
-                        <li><strong>14-16/04:</strong> Valencia (2 noites)</li>
-                        <li><strong>16-18/04:</strong> Geneva (2 noites, incluindo tobogã)</li>
-                        <li><strong>18-20/04:</strong> Zurich (2 noites)</li>
-                        <li><strong>20-22/04:</strong> Amsterdam (2 noites, incluindo Keukenhof e Giethoorn)</li>
-                        <li><strong>22-24/04:</strong> Porto (2 noites)</li>
-                        <li><strong>24-25/04:</strong> Gerês (1 noite, com passagem por Foz Tua)</li>
-                        <li><strong>26/04:</strong> Lisboa (apenas para pegar o voo)</li>
-                    </ul>
-                    
-                    <p style="margin-top: 15px;"><strong>Novas datas:</strong> Reduziu-se 1 dia em Zurich (até 20/04 em vez de 21/04) e adiantou-se a estadia em Amsterdam (20/04-22/04) para aumentar o tempo em Porto (22/04-24/04).</p>
-                </div>
-            `;
-            
+            });            
             // Calcular custos para o roteiro atual
             const costs = calculateTotalCosts();
             const totalBudget = 1000; // Orçamento definido por pessoa
@@ -2788,10 +2790,7 @@
                     <p><strong>Custo Estimado:</strong> €${costs.totalCost}</p>
                     <p><strong>${budgetRemaining >= 0 ? 'Saldo Restante' : 'Excedente'}: </strong> 
                        €${Math.abs(budgetRemaining).toFixed(2)} ${budgetRemaining >= 0 ? '✅' : '❌'}</p>
-                </div>
-                
-                ${roteiroDiff}
-                
+                </div>                
                 <div class="savings-highlight">
                     <h4>Principais Economias no Roteiro Atualizado</h4>
                     <p>Para adequar o orçamento ao valor de €2.000 por pessoa, foram feitas as seguintes modificações:</p>
@@ -2900,7 +2899,6 @@
                 totalCost: Math.round(totalCost)
             };
         }
-
         function showFinancialSummary() {
             const costs = calculateTotalCosts();
             const totalBudget = 1000; // Orçamento definido por pessoa
@@ -2966,7 +2964,7 @@
             const budgetOverviewClass = budgetRemaining >= 0 ? '' : 'over-budget';
             
             document.getElementById('fullItinerary').innerHTML = `
-                <h2 style="text-align: center; margin-bottom: 20px;">Resumo Financeiro - Roteiro Final</h2>
+                <h2 style="text-align: center; margin-bottom: 20px;">Resumo Financeiro - Roteiro</h2>
                 
                 <div class="budget-overview ${budgetOverviewClass}">
                     <h3>Orçamento Total (Casal): €${totalCouplesBudget}</h3>
@@ -2976,60 +2974,7 @@
                     <p><strong>Custo Estimado:</strong> €${costs.totalCost.toFixed(2)}</p>
                     <p><strong>${budgetRemaining >= 0 ? 'Saldo Restante' : 'Excedente'}: </strong> 
                        €${Math.abs(budgetRemaining).toFixed(2)} ${budgetRemaining >= 0 ? '✅' : '❌'}</p>
-                </div>
-                
-                <div class="savings-highlight">
-                    <h4>Economia Total no Roteiro Otimizado</h4>
-                    <p>Comparação entre o roteiro original e o otimizado:</p>
-                    
-                    <table class="comparison-table">
-                        <tr>
-                            <th>Categoria</th>
-                            <th>Valor Original (€)</th>
-                            <th>Valor Otimizado (€)</th>
-                            <th>Economia (€)</th>
-                        </tr>
-                        <tr>
-                            <td>Transporte</td>
-                            <td>1,180</td>
-                            <td>${costs.transport}</td>
-                            <td>${1180 - costs.transport}</td>
-                        </tr>
-                        <tr>
-                            <td>Hospedagem</td>
-                            <td>675</td>
-                            <td>${costs.accommodation}</td>
-                            <td>${675 - costs.accommodation}</td>
-                        </tr>
-                        <tr>
-                            <td>Alimentação</td>
-                            <td>750</td>
-                            <td>${costs.food}</td>
-                            <td>${750 - costs.food}</td>
-                        </tr>
-                        <tr>
-                            <td>Atrações</td>
-                            <td>430</td>
-                            <td>${costs.attractions}</td>
-                            <td>${430 - costs.attractions}</td>
-                        </tr>
-                        <tr>
-                            <td>Extras</td>
-                            <td>200</td>
-                            <td>${costs.extras}</td>
-                            <td>${200 - costs.extras}</td>
-                        </tr>
-                        <tr class="highlight-row">
-                            <td><strong>TOTAL</strong></td>
-                            <td><strong>3,235</strong></td>
-                            <td><strong>${costs.totalCost}</strong></td>
-                            <td><strong>${3235 - costs.totalCost}</strong></td>
-                        </tr>
-                    </table>
-                    
-                    <p style="margin-top: 15px;"><strong>Custo por pessoa:</strong> €${Math.round(costs.totalCost / 2)} (dentro do orçamento de €2.000/pessoa)</p>
-                </div>
-                
+                </div>                
                 <div class="portugal-highlight">
                     <h4>Distribuição de Custos no Roteiro Atualizado</h4>
                     <p>O roteiro final com estadia estendida em Porto tem a seguinte distribuição de custos:</p>
@@ -3544,66 +3489,124 @@
 					}
 				]
 			},
-			amsterdam_porto: {
+			amsterdam_brussels: {
+			    options: [
+					{
+						type: "trem",
+						name: "Thalys/Eurostar",
+						details: {
+							partida: "09:00 (22/04)",
+							chegada: "11:00 (22/04)",
+							duracao: "2h",
+							custo: 35
+						},
+						schedule: [
+							"08:00: Check-out do hostel",
+							"08:30: Chegada à estação Amsterdam Centraal",
+							"09:00: Partida para Bruxelas",
+							"11:00: Chegada à estação Brussels-Midi/Zuid",
+							"11:30: Check-in no hostel ou guardar bagagem",
+							"12:00-19:00: Explorar Bruxelas (Grand Place, Manneken Pis, etc.)"
+						],
+						tips: [
+							"Reservar com antecedência para melhores preços (os bilhetes podem triplicar de valor próximo à data)",
+							"O trajeto Amsterdam-Bruxelas é muito popular, com trens a cada hora durante o dia",
+							"A estação Brussels-Midi é grande e tem três nomes (Midi/Zuid/South) - todos se referem ao mesmo lugar",
+							"Do Midi até o centro (Grand Place): 20 min a pé ou metrô linha 3 (5 min)"
+						],
+						recommended: true,
+						badge: "tempo"
+					},
+					{
+						type: "onibus",
+						name: "FlixBus",
+						details: {
+							partida: "08:30 (22/04)",
+							chegada: "12:00 (22/04)",
+							duracao: "3h30",
+							custo: 22
+						},
+						schedule: [
+							"07:30: Check-out do hostel",
+							"08:00: Chegada à estação Sloterdijk",
+							"08:30: Partida para Bruxelas",
+							"12:00: Chegada à estação Brussels-North",
+							"12:30: Check-in no hostel ou guardar bagagem",
+							"13:00-19:00: Explorar Bruxelas"
+						],
+						tips: [
+							"FlixBus opera da estação Sloterdijk, não da Centraal! Verifique o local exato de partida",
+							"A estação North de Bruxelas fica a 20-25 min a pé do centro (Grand Place)",
+							"Levar lanche para a viagem, as paradas são curtas",
+							"Chegada antecipada recomendada pois a organização dos ônibus pode ser confusa"
+						],
+						recommended: false,
+						badge: "economia"
+					}
+				]
+			},
+			brussels_porto: {
 				options: [
+					{
+						type: "voo",
+						name: "Voo direto Ryanair/TAP",
+						details: {
+							partida: "12:00 (23/04)",
+							chegada: "13:30 (23/04)",
+							duracao: "2h30 (voo direto)",
+							custo: 65
+						},
+						schedule: [
+							"08:30: Check-out do hostel",
+							"09:00-09:30: Transporte até o aeroporto (trem direto: 17 min)",
+							"09:30: Chegada ao aeroporto de Bruxelas (Zaventem)",
+							"10:00: Check-in e segurança",
+							"12:00: Decolagem",
+							"13:30: Chegada em Porto (horário local)",
+							"14:00-14:30: Imigração e coleta de bagagem",
+							"15:00: Transporte para o centro (Metro linha E, 30 min)",
+							"15:30: Check-in no Yes! Porto Hostel"
+						],
+						tips: [
+							"O aeroporto de Bruxelas é bem organizado, mas chegue com 2h de antecedência",
+							"Trem direto do centro de Bruxelas (estação Central) para o aeroporto: €13",
+							"Do aeroporto do Porto ao centro: Metro linha E (€2,60) ou táxi (€25 aprox.)",
+							"Se usar Ryanair, verifique políticas de bagagem com antecedência (muito restritivas)"
+						],
+						recommended: true,
+						badge: "tempo"
+					},
 					{
 						type: "voo",
 						name: "Voo com conexão",
 						details: {
-							partida: "13:00 (22/04)",
-							chegada: "18:00 (22/04)",
-							duracao: "5h (incluindo conexão)",
-							custo: 70
+							partida: "09:00 (23/04)",
+							chegada: "15:00 (23/04)",
+							duracao: "6h (incluindo conexão)",
+							custo: 90
 						},
 						schedule: [
-							"09:00: Check-out do hostel",
-							"09:30-10:15: Traslado para o aeroporto (trem direto)",
-							"10:30: Check-in e segurança",
-							"13:00: Amsterdam → Madrid",
-							"15:30: Chegada em Madrid",
-							"17:30: Madrid → Porto",
-							"18:00: Chegada em Porto",
-							"18:30-19:15: Traslado para hostel",
-							"19:30: Check-in no Hostel Yes! Porto"
+							"06:00: Check-out do hostel",
+							"06:30: Transporte para o aeroporto",
+							"07:00: Check-in e segurança",
+							"09:00: Bruxelas → Madrid/Paris",
+							"11:00: Chegada ao aeroporto de conexão",
+							"13:00: Madrid/Paris → Porto",
+							"15:00: Chegada em Porto",
+							"16:00: Chegada ao hostel"
 						],
 						tips: [
-							"Tempo mínimo de conexão em Madrid: 1h15, mas melhor ter pelo menos 2h",
-							"Se for usar a mesma companhia para os dois voos, a bagagem seguirá até o destino final",
-							"Do aeroporto de Porto ao centro: metrô linha E (40 min) ou táxi (20 min, €25)"
-						],
-						recommended: true,
-						badge: "economia"
-					},
-					{
-						type: "voo",
-						name: "Voo direto",
-						details: {
-							partida: "13:30 (22/04)",
-							chegada: "15:30 (22/04)",
-							duracao: "2h",
-							custo: 95
-						},
-						schedule: [
-							"10:00: Check-out do hostel",
-							"10:30-11:15: Traslado para o aeroporto",
-							"11:30: Check-in e segurança",
-							"13:30: Decolagem",
-							"15:30: Chegada em Porto",
-							"16:00-16:45: Traslado para hostel",
-							"17:00: Check-in",
-							"17:30-21:00: Tempo livre para explorar Porto"
-						],
-						tips: [
-							"Voos diretos entre Amsterdam e Porto são operados por Transavia e TAP",
-							"Cartão Andante Tour (24h) por €7 para usar no metrô e ônibus em Porto",
-							"Do hostel à Ribeira: 15 min a pé ou metrô até São Bento"
+							"Voos com conexão podem ser mais baratos se reservados com muita antecedência",
+							"Tempo mínimo de conexão recomendado: 1h30 para estar seguro",
+							"Se as duas pernas do voo forem de companhias diferentes, precisará retirar e redespachar bagagem (3h mínimo de conexão)",
+							"Conexões via Lisboa geralmente são as mais convenientes para Porto"
 						],
 						recommended: false,
-						badge: "tempo"
+						badge: "flexibilidade"
 					}
 				]
 			},
-			porto_foztua_geres: {
+			porto_foztua: {
 				options: [
 					{
 						type: "carro",
@@ -3621,51 +3624,71 @@
 							"11:30: Chegada a Foz Tua",
 							"11:30-13:30: Visita à Barragem e região vinícola",
 							"13:30-14:30: Almoço com vista para o Douro",
-							"15:00: Saída para Gerês",
-							"17:30: Chegada a Gerês",
-							"18:00: Check-in no albergue"
+							"16:00: Retorno a Porto",
 						],
 						tips: [
 							"Aluguel do carro: opte por locadoras no centro de Porto, não no aeroporto (evita taxa adicional)",
 							"Estradas para Foz Tua e Gerês são sinuosas - se tiver enjoo, leve medicação",
-							"Abasteça em Porto e novamente em Foz Tua (postos são escassos em Gerês)",
-							"Parques de estacionamento em Gerês costumam ser gratuitos fora de temporada alta",
-							"Baixe offline os mapas da região do Douro e Gerês no Google Maps"
+							"Abasteça em Porto e novamente em Foz Tua",
+							"Baixe offline o mapa da região do Douro no Google Maps"
 						],
 						recommended: true,
 						badge: "flexibilidade"
 					}
 				]
 			},
-			geres_lisboa: {
+			porto_lisboa: {
 				options: [
 					{
-						type: "carro",
-						name: "Carro alugado",
+						type: "trem",
+						name: "Alfa Pendular (alta velocidade)",
 						details: {
-							partida: "09:00 (26/04)",
-							chegada: "14:30 (26/04)",
-							duracao: "4h30 + parada para almoço",
-							custo: 0 // Já incluído no aluguel anterior
+							partida: "10:00 (26/04)",
+							chegada: "13:00 (26/04)",
+							duracao: "3h",
+							custo: 35
 						},
 						schedule: [
-							"08:00: Check-out do albergue",
-							"08:30: Último passeio/café em Gerês",
-							"09:00: Início da viagem para Lisboa",
-							"11:30-12:30: Parada para almoço em Coimbra ou Leiria",
-							"14:30: Chegada ao aeroporto de Lisboa",
-							"15:00: Devolução do carro alugado",
-							"15:30-16:00: Check-in para o voo de retorno"
+							"08:30: Check-out do hostel",
+							"09:30: Chegada à estação de São Bento ou Campanhã",
+							"10:00: Partida para Lisboa",
+							"13:00: Chegada a Lisboa (Oriente ou Santa Apolónia)",
+							"13:30-14:00: Transporte para o aeroporto (linha vermelha do metrô ou táxi)",
+							"14:30: Chegada ao aeroporto para voo internacional"
 						],
 						tips: [
-							"Verifique o tanque (deve estar cheio) e procure qualquer dano no carro antes da devolução",
-							"Planeje chegar 3h antes do voo internacional",
-							"A rota mais rápida é pela A3, A7 e A1 (pedágios eletrônicos)",
-							"Se tiver tempo, Coimbra (no caminho) é uma parada agradável para almoço",
-							"Postos de gasolina na autoestrada são mais caros - abasteça em cidades"
+							"O Alfa Pendular é mais rápido e confortável, mas também mais caro que o Intercidades",
+							"Reservar com pelo menos uma semana de antecedência para melhores preços",
+							"Da estação Oriente ao aeroporto: 5 min de táxi (€10) ou 10 min de metrô (€1,50)",
+							"Da estação Santa Apolónia ao aeroporto: 20 min de táxi (€15) ou 25 min de metrô (€1,50)"
 						],
 						recommended: true,
-						badge: "único"
+						badge: "conforto"
+					},
+					{
+						type: "onibus",
+						name: "Rede Expressos",
+						details: {
+							partida: "09:30 (26/04)",
+							chegada: "13:00 (26/04)",
+							duracao: "3h30",
+							custo: 20
+						},
+						schedule: [
+							"08:00: Check-out do hostel",
+							"09:00: Chegada à estação de autocarros do Porto",
+							"09:30: Partida para Lisboa",
+							"13:00: Chegada à estação Oriente em Lisboa",
+							"13:30: Transporte para o aeroporto"
+						],
+						tips: [
+							"Rede Expressos é geralmente 30-40% mais barata que o trem Alfa Pendular",
+							"Estação Oriente: Mesmo complexo do metrô e trens, muito próxima ao aeroporto",
+							"A Rede Expressos tem Wi-Fi grátis em muitos ônibus",
+							"Comprar bilhetes online poupa tempo na estação"
+						],
+						recommended: false,
+						badge: "economia"
 					}
 				]
 			}
@@ -3829,7 +3852,7 @@
 				]
 			},
 			portuguese: {
-				title: "Português de Portugal (Porto, Gerês, Lisboa)",
+				title: "Português de Portugal (Porto, Lisboa)",
 				phrases: [
 					{
 						portuguese: "Onde fica o Hostel Yes! Porto?",
@@ -3868,25 +3891,74 @@
 		// Dados de moedas
 		// Função para buscar taxas de câmbio atualizadas
 		async function fetchExchangeRates() {
-			// Função para atualizar com valores fixos mas mais atuais que os originais
-			// Idealmente usaríamos uma API, mas para fins de demonstração, usamos valores fixos mais atuais
-			
-			// Valores de 17 de março de 2025 (simulados, já que estamos em 2025 neste cenário)
-			const eurRate = 6.15; // 1 EUR = 6.15 BRL
-			const chfRate = 6.45; // 1 CHF = 6.45 BRL
-			
-			// Atualizar o objeto currencyData com as taxas "atualizadas"
-			updateCurrencyData(eurRate, chfRate);
-			
-			console.log(`Taxas atualizadas em ${new Date().toLocaleString()}: 1 EUR = ${eurRate.toFixed(2)} BRL, 1 CHF = ${chfRate.toFixed(2)} BRL`);
-			
-			// Mostrar uma mensagem de sucesso no topo da seção de moedas
-			const statusElement = document.getElementById('currency-status');
-			if (statusElement) {
-				statusElement.innerHTML = `<div class="alert-success">Taxas atualizadas com sucesso em ${new Date().toLocaleTimeString()}!</div>`;
+			try {
+				// Exibir mensagem de carregamento
+				const statusElement = document.getElementById('currency-status');
+				if (statusElement) {
+					statusElement.innerHTML = `<div class="alert-loading">Consultando taxas de câmbio atualizadas...</div>`;
+				}
+				
+				// Fazer as requisições para a API de câmbio
+				// Usando a API gratuita Open Exchange Rates para EUR e CHF
+				const euroResponse = await fetch('https://open.er-api.com/v6/latest/EUR');
+				const chfResponse = await fetch('https://open.er-api.com/v6/latest/CHF');
+				
+				// Verificar se as requisições foram bem-sucedidas
+				if (!euroResponse.ok || !chfResponse.ok) {
+					throw new Error('Erro ao obter taxas de câmbio');
+				}
+				
+				// Converter as respostas para JSON
+				const euroData = await euroResponse.json();
+				const chfData = await chfResponse.json();
+				
+				// Extrair as taxas para BRL (Real Brasileiro)
+				const eurRate = euroData.rates.BRL;
+				const chfRate = chfData.rates.BRL;
+				
+				// Atualizar o objeto currencyData com as taxas obtidas
+				updateCurrencyData(eurRate, chfRate);
+				
+				console.log(`Taxas atualizadas via API em ${new Date().toLocaleString()}: 1 EUR = ${eurRate.toFixed(2)} BRL, 1 CHF = ${chfRate.toFixed(2)} BRL`);
+				
+				// Mostrar mensagem de sucesso
+				if (statusElement) {
+					statusElement.innerHTML = `
+						<div class="alert-success">
+							Taxas atualizadas com sucesso em ${new Date().toLocaleTimeString()}!<br>
+							<small>Fonte: Open Exchange Rates API</small>
+						</div>
+					`;
+				}
+				
+				return { success: true, euroRate: eurRate, chfRate: chfRate };
+			} 
+			catch (error) {
+				console.error('Erro ao atualizar taxas de câmbio:', error);
+				
+				// Em caso de falha, usar valores de fallback
+				const fallbackEurRate = 6.15;
+				const fallbackChfRate = 6.45;
+				updateCurrencyData(fallbackEurRate, fallbackChfRate);
+				
+				// Mostrar mensagem de erro
+				const statusElement = document.getElementById('currency-status');
+				if (statusElement) {
+					statusElement.innerHTML = `
+						<div class="alert-error">
+							Erro ao atualizar taxas. Usando valores aproximados.<br>
+							<small>Tentando novamente em 30 segundos...</small>
+						</div>
+					`;
+					
+					// Tentar novamente após 30 segundos
+					setTimeout(fetchExchangeRates, 30000);
+				}
+				
+				return { success: false, euroRate: fallbackEurRate, chfRate: fallbackChfRate };
 			}
 		}
-
+		
 		// Função para atualizar o objeto currencyData com novas taxas
 		function updateCurrencyData(euroRate, chfRate) {
 			// Arredondar para duas casas decimais para facilitar a exibição
@@ -3934,7 +4006,64 @@
 			// Atualizar a exibição na interface, se a seção já tiver sido renderizada
 			updateCurrencyDisplay();
 		}
-
+		// Função para atualizar o objeto currencyData com novas taxas
+		function addCurrencyAlertStyles() {
+			const styleElement = document.createElement('style');
+			styleElement.textContent = `
+				.alert-success {
+					background-color: #d4edda;
+					color: #155724;
+					padding: 10px;
+					border-radius: 4px;
+					margin-bottom: 15px;
+					text-align: center;
+					font-weight: bold;
+				}
+				
+				.alert-error {
+					background-color: #f8d7da;
+					color: #721c24;
+					padding: 10px;
+					border-radius: 4px;
+					margin-bottom: 15px;
+					text-align: center;
+					font-weight: bold;
+				}
+				
+				.alert-loading {
+					background-color: #e2e3e5;
+					color: #383d41;
+					padding: 10px;
+					border-radius: 4px;
+					margin-bottom: 15px;
+					text-align: center;
+					font-weight: bold;
+				}
+				
+				.currency-last-updated {
+					font-size: 12px;
+					color: #6c757d;
+					text-align: right;
+					margin-top: 5px;
+				}
+				
+				.refresh-button {
+					background-color: #3498db;
+					color: white;
+					border: none;
+					padding: 8px 15px;
+					border-radius: 4px;
+					cursor: pointer;
+					font-size: 14px;
+					margin-top: 10px;
+				}
+				
+				.refresh-button:hover {
+					background-color: #2980b9;
+				}
+			`;
+			document.head.appendChild(styleElement);
+		}
 		// Função para atualizar a exibição de moeda na interface
 		function updateCurrencyDisplay() {
 			const currencySection = document.getElementById('currency-info');
@@ -3991,7 +4120,13 @@
 				document.head.appendChild(styleElement);
 			}
 		}
-
+		function updateCurrencyDataWithTimestamp(eurRate, chfRate) {
+			// Chamar a função original
+			updateCurrencyData(eurRate, chfRate);
+			
+			// Atualizar o timestamp
+			updateLastUpdatedTime();
+		}
 		// Função auxiliar para criar HTML do card de moeda
 		function createCurrencyCardHTML(currencyInfo) {
 			return `
@@ -4619,50 +4754,80 @@
 		
 		// Add this function after the original addUsefulPhrasesAndCurrencyTab function
 		function enhanceCurrencySection() {
-			// Wait for currency section to be rendered
+			// Aguardar o carregamento da seção de moedas
 			setTimeout(() => {
-				// Get the currency section
+				// Obter a seção de moedas
 				const currencySection = document.getElementById('currency-info');
 				if (currencySection) {
-					// 1. Add update button at the top of the section
-					const updateButton = document.createElement('button');
-					updateButton.textContent = 'Atualizar Taxas de Câmbio';
-					updateButton.className = 'booking-button';
-					updateButton.style.margin = '10px 0 20px';
-					updateButton.onclick = fetchExchangeRates;
+					// Adicionar estilos para alertas
+					addCurrencyAlertStyles();
 					
-					// Insert the button at the top of the section
-					currencySection.insertBefore(updateButton, currencySection.firstChild);
+					// 1. Adicionar elemento de status se não existir
+					if (!document.getElementById('currency-status')) {
+						const statusDiv = document.createElement('div');
+						statusDiv.id = 'currency-status';
+						currencySection.insertBefore(statusDiv, currencySection.firstChild);
+					}
 					
-					// 2. Add info box about exchange rates if it doesn't exist yet
+					// 2. Adicionar botão de atualização com contador
+					if (!document.getElementById('refresh-currency')) {
+						const refreshDiv = document.createElement('div');
+						refreshDiv.style.textAlign = 'center';
+						refreshDiv.style.marginBottom = '20px';
+						
+						const refreshButton = document.createElement('button');
+						refreshButton.id = 'refresh-currency';
+						refreshButton.className = 'refresh-button';
+						refreshButton.innerHTML = 'Atualizar Taxas Agora';
+						refreshButton.onclick = fetchExchangeRates;
+						
+						refreshDiv.appendChild(refreshButton);
+						currencySection.insertBefore(refreshDiv, currencySection.firstChild);
+					}
+					
+					// 3. Adicionar caixa informativa sobre as taxas
 					if (!document.getElementById('exchange-info')) {
 						const infoBox = document.createElement('div');
 						infoBox.id = 'exchange-info';
 						infoBox.className = 'currency-card';
 						infoBox.style.marginTop = '20px';
-						infoBox.style.marginBottom = '20px';
 						infoBox.innerHTML = `
 							<h4>Sobre as Taxas de Câmbio</h4>
-							<p>Estas são as taxas de câmbio estimadas para ${new Date().toLocaleDateString()}. Os valores podem variar diariamente.</p>
-							<p>Recomendamos verificar as taxas próximo à sua viagem usando aplicativos como:</p>
+							<p>As taxas exibidas são atualizadas automaticamente através da API Open Exchange Rates. Valores em tempo real, atualizados a cada consulta.</p>
+							<p>Benefícios desta implementação:</p>
 							<ul>
-								<li>XE Currency</li>
-								<li>Wise (Transferwise)</li>
-								<li>Banco Central do Brasil</li>
+								<li>Taxas de câmbio atualizadas em tempo real</li>
+								<li>Conversões precisas para o planejamento da viagem</li>
+								<li>Fallback automático em caso de falha na API</li>
+								<li>Atualização manual disponível pelo botão acima</li>
 							</ul>
-							<p><strong>Dica:</strong> Para obter as melhores taxas, considere adquirir moeda estrangeira com pelo menos 30 dias de antecedência.</p>
+							<p><strong>Dica:</strong> A função de atualização automática pode ser usada a qualquer momento durante o planejamento para ter os valores mais recentes.</p>
+							<div id="last-updated" class="currency-last-updated">
+								Última atualização: ${new Date().toLocaleString()}
+							</div>
 						`;
 						
-						// Append the info box to the currency section
 						currencySection.appendChild(infoBox);
 					}
 					
-					// 3. Call fetchExchangeRates to update with current rates
+					// 4. Iniciar a primeira consulta de taxas
 					fetchExchangeRates();
+					
+					// 5. Configurar atualização automática das taxas a cada 12 horas
+					// Apenas se não estiver já configurado
+					if (!window.currencyUpdateInterval) {
+						window.currencyUpdateInterval = setInterval(fetchExchangeRates, 12 * 60 * 60 * 1000);
+						console.log('Configurada atualização automática de taxas a cada 12 horas');
+					}
 				}
-			}, 1000); // Give the original function time to render the UI
+			}, 1000);
 		}
-
+		function updateLastUpdatedTime() {
+			const lastUpdatedElement = document.getElementById('last-updated');
+			if (lastUpdatedElement) {
+				lastUpdatedElement.textContent = `Última atualização: ${new Date().toLocaleString()}`;
+			}
+		}
 		// Add this code to call enhanceCurrencySection when the tab is shown
 		document.addEventListener('DOMContentLoaded', function() {
 			setTimeout(() => {
